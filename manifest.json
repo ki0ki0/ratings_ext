@@ -1,0 +1,24 @@
+{
+   "name": "__MSG_extName__",
+   "description": "__MSG_extDescr__",
+   "version": "1.5.1.1",
+   "manifest_version": 2,
+   "default_locale": "en",
+   "options_page": "options.html",
+   "icons": {
+      "128": "icons/icon128.png",
+      "48": "icons/icon48.png"
+   },
+   "permissions": [ "storage", "http://www.imdb.com/*", "http://www.kinopoisk.ru/*" , "http://ext.kinopoisk.ru/*" ],
+   "incognito": "split",
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "no_ad.css" ],
+      "js": [ "js/jquery-1.7.2.min.js", "js/md5.js", "js/tVote.js", "js/ratings.js", "js/settings.js", "js/myscript.js" ],
+      "matches": [ "http://fs.ua/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/level/1/film/*" ]
+   } ],
+   "web_accessible_resources": [
+      "images/dark_star.png",
+      "images/star.png"
+   ]
+}

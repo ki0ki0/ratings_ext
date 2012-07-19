@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B854C3F-0A28-4D1F-B76F-851087858F31}"
+	ProjectSection(SolutionItems) = preProject
+		..\js\jquery-1.7.2.min.js = ..\js\jquery-1.7.2.min.js
+		..\manifest.json = ..\manifest.json
+		..\js\md5.js = ..\js\md5.js
+		..\js\myscript.js = ..\js\myscript.js
+		..\no_ad.css = ..\no_ad.css
+		..\options.html = ..\options.html
+		..\js\options.js = ..\js\options.js
+		..\js\ratings.js = ..\js\ratings.js
+		..\js\settings.js = ..\js\settings.js
+		..\js\tVote.js = ..\js\tVote.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
