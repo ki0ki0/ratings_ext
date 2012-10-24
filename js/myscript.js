@@ -9,7 +9,7 @@ function addScript(text) {
 
 if (window.location.href.indexOf("http://www.ex.ua/view/") != -1)
     getFilmInfoExUa();
-if (window.location.href.indexOf("http://fs.ua/video") != -1)
+if (window.location.href.indexOf("http://fs.ua/item/") != -1)
     getFilmInfoFsUa();
 if ((window.location.href.indexOf("http://fs.ua/view") != -1) && (window.location.href.indexOf("?play") != -1)) 
     playerPage();

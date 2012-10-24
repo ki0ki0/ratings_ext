@@ -225,7 +225,7 @@ function ImdbRatings() {
 
     base.vote = function (mouseEvent, labelValue) {
         var irate = document.getElementById("imdb_rate");
-        irate.innerHTML = "<img src='http://st.kinopoisk.ru/images/profile/comajax_gray.gif'>";
+        irate.innerHTML = "<img src='"+chrome.extension.getURL("images/comajax_gray.gif")+"'>";
 
         var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + base.id + "&rating=" + labelValue + "&auth=" + base.auth;
         $.getJSON(url, base.checkVote).error(base.checkVote);
@@ -326,7 +326,7 @@ function KinopoiskRatings() {
 
     base.vote = function (mouseEvent, labelValue) {
         var krate = document.getElementById("kinopoisk_rate");
-        krate.innerHTML = "<img src='http://st.kinopoisk.ru/images/profile/comajax_gray.gif'>";
+        krate.innerHTML = "<img src='"+chrome.extension.getURL("images/comajax_gray.gif")+"'>";
 
         var url = "http://www.kinopoisk.ru/level/1/film/" + base.id + "/#" + labelValue + "#" + base.auth;
 
@@ -353,9 +353,9 @@ function addScript(text) {
 
 function vote_part2(event) {
     if (document.location.hash != "") {
-        var exp = /\/level\/1\/film\/([0-9]*)\/#([0-9])+#([0-9A-z]*)/g;
+        var exp = /\/film\/([0-9]*)\/#([0-9])+#([0-9A-z]*)/g;
         var info = exp.exec(document.location.href);
-        if (info.length != 4)
+        if ((info == null) || (info.length != 4))
             return;
         var rate = info[2];
         var id = info[1];
