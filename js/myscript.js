@@ -46,15 +46,28 @@ function playerPage()
 
 function playerOnly()
 {
-    var item = player.parentNode.parentNode.parentNode;
+    var bdd = document.getElementsByClassName("b-dropdown");
+    if (bdd.length != 4)
+        return;
+    var bdd0 = bdd[0];
+    var bdd1 = bdd[1];
+    var bdd2 = bdd[2];
+    var bdd3 = bdd[3];
+    var bp = document.getElementsByClassName("b-player");
+    if (bp.length != 1)
+	return;
+    bp = bp[0];
+    bp.style.width = "100%";
     while (document.body.children.length > 0 ) 
     {
         document.body.removeChild(document.body.children[0]);
     }
-    document.body.appendChild(item);
-    var item = document.getElementsByClassName("l-top");
-    if ((item != undefined)&&(item.length > 0)) item[0].parentNode.removeChild(item[0]);
-
+    document.body.appendChild(bp);
+    document.body.appendChild(bdd0);
+    document.body.appendChild(bdd1);
+    document.body.appendChild(bdd2);
+    document.body.appendChild(bdd3);
+  
     var item = document.getElementsByClassName("b-tab-item m-wide");
     if ((item != undefined)&&(item.length > 0)) item[0].className = "";
 
