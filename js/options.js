@@ -1,4 +1,4 @@
-function initOptionsPage() {
+function initOptionsTexts() {
     var text = chrome.i18n.getMessage("settings");
     document.getElementById("settingMess").innerHTML = text;
 
@@ -20,35 +20,34 @@ function initOptionsPage() {
     var text = chrome.i18n.getMessage("showVotingSub");
     document.getElementById("showVotingSub").innerHTML = text;
 
-    initOptionsPage2();
-    settings.loadSettings(initOptionsPage2);
+    initOptionsValues();
 }
 
-function initOptionsPage2() {
+function initOptionsValues() {
     var val = document.getElementById("syncSettingsVal");
     val.addEventListener("click", updateSettings);
-    val.checked = settings.syncSettings;
+    val.checked = settings.GetIsSync();
 
     var val = document.getElementById("playerOnlyVal");
     val.addEventListener("click", updateSettings);
-    val.checked = settings.playerOnly;
+    val.checked = settings.GetIsClearPlayer();
 
     var val = document.getElementById("showVotingVal");
     val.addEventListener("click", updateSettings);
-    val.checked = settings.showVoting;
+    val.checked = settings.GetIsShowVoting();
 }
 
 function updateSettings() {
     var val = document.getElementById("syncSettingsVal");
-    settings.syncSettings = val.checked;
+    settings.SetIsSync( val.checked);
 
     var val = document.getElementById("playerOnlyVal");
-    settings.playerOnly = val.checked;
+    settings.SetIsClearPlayer( val.checked);
 
     var val = document.getElementById("showVotingVal");
-    settings.showVoting = val.checked;
-
-    settings.saveSettings();
+    settings.SetIsShowVoting( val.checked);
 }
 
-document.addEventListener('DOMContentLoaded', initOptionsPage);
+document.addEventListener('DOMContentLoaded', initOptionsTexts);
+
+var settings = new Setting(initOptionsValues, null);

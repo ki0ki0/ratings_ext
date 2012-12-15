@@ -22,13 +22,27 @@ function baseRatings() {
         this.next();
     }
 
+    baseRatings.prototype.xhr = function (url, object, success, error) {
+        var xhr = $.getJSON(url, this.xhrSuccess);
+        xhr.error(this.xhrError);
+        xhr.object = object;
+        xhr.objectError = error;
+        xhr.objectSuccess = success;
+    }
+
+    baseRatings.prototype.xhrSuccess = function (data, textStatus, object) {
+	object.objectSuccess.call(object.object, data);
+    }
+
+    baseRatings.prototype.xhrError = function (data, textStatus) {
+	this.objectError.call(this.object);
+    }
+
     baseRatings.prototype.next = function () {
         var title = this.getNextTitle();
         if (title != null) {
             var url = this.formatUrl(title);
-            var xhr = $.getJSON(url, this.success);
-            xhr.error(this.next);
-            xhr.object = this;
+            this.xhr(url, this, this.success, this.error);
         }
         else {
             this.callback();
@@ -60,17 +74,17 @@ function baseRatings() {
         return "";
     }
 
-    baseRatings.prototype.success = function (data, textStatus, jqXHR) {
+    baseRatings.prototype.success = function (data, textStatus) {
         if (data == null) {
-            jqXHR.object.next();
+            this.next();
         }
         else {
-            var info = jqXHR.object.process(data);
+            var info = this.process(data);
             if (info == null)
-                jqXHR.object.next();
+                this.next();
             else {
-                var gen = jqXHR.object.format(info.id, info.title);
-                jqXHR.object.callback(gen);
+                var gen = this.format(info.id, info.title);
+                this.callback(gen);
             }
         }
     }
@@ -399,7 +413,7 @@ function getAllRatings(titles, years, parent) {
     var div = document.createElement("div");
     td.appendChild(div);
 
-    if (settings.showVoting) {
+    if (settings.GetIsShowVoting()) {
         div.innerText = chrome.i18n.getMessage("yourRating");
         div.id = "voting";
         div.style.verticalAlign = "middle";

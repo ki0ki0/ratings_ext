@@ -1,5 +1,7 @@
 noAd();
 
+var settings = new Setting(null, null);
+
 function addScript(text) {
     var start = document.createElement("script");
     start.type = "text/javascript";
@@ -39,7 +41,7 @@ function playerPage()
     addScript(script);
     setCookie("preroll", 1);
 
-    if (settings.playerOnly == false)
+    if (settings.GetIsClearPlayer() == false)
         return;
     playerOnly();
 }

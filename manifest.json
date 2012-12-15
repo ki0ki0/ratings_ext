@@ -14,7 +14,15 @@
    "content_scripts": [ {
       "all_frames": true,
       "css": [ "no_ad.css" ],
-      "js": [ "js/jquery-1.7.2.min.js", "js/md5.js", "js/tVote.js", "js/ratings.js", "js/settings.js", "js/myscript.js" ],
+      "js": [ 
+         "js/jquery-1.7.2.min.js", 
+         "js/md5.js", 
+         "js/tVote.js", 
+         "js/ratings.js", 
+         "js/Settings/LocalStorageSettings.js", 
+         "js/Settings/ChromeStorageSettings.js", 
+         "js/Settings/Settings.js", 
+         "js/myscript.js" ],
       "matches": [ "http://fs.ua/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/film/*" ]
    } ],
    "web_accessible_resources": [
