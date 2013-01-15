@@ -47,12 +47,12 @@ function playerPage()
 function playerOnly()
 {
     var bdd = document.getElementsByClassName("b-dropdown");
-    if (bdd.length != 4)
-        return;
-    var bdd0 = bdd[0];
-    var bdd1 = bdd[1];
-    var bdd2 = bdd[2];
-    var bdd3 = bdd[3];
+    var bdds = new Array();
+    for (var i = 0; i < bdd.length; i++)
+    {
+        bdds[i] = bdd[i];
+    }
+    
     var bp = document.getElementsByClassName("b-player");
     if (bp.length != 1)
 	return;
@@ -63,20 +63,26 @@ function playerOnly()
         document.body.removeChild(document.body.children[0]);
     }
     document.body.appendChild(bp);
-    document.body.appendChild(bdd0);
-    document.body.appendChild(bdd1);
-    document.body.appendChild(bdd2);
-    document.body.appendChild(bdd3);
+
+    for (var i = 0; i < bdds.length; i++) {
+        document.body.appendChild(bdds[i]);
+    }
   
     var item = document.getElementsByClassName("b-tab-item m-wide");
     if ((item != undefined)&&(item.length > 0)) item[0].className = "";
 
-    var item = document.getElementsByClassName("main");
-    if ((item != undefined)&&(item.length > 0)) item[0].style.height = "100%"
-
     var item = document.getElementById("player");
     if (item != undefined)
     {
+        var parent= item.parentNode;
+        while (parent != document.body) {
+            if (parent.className != "main") {
+                parent.style.width = "100%";
+            }
+            parent.style.margin = "0";
+            parent.style.height = "100%";
+            parent = parent.parentNode;
+        }
         item.style.height = "100%"
         item.style.width = "100%"
     }
