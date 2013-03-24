@@ -1,0 +1,1 @@
+function MD5(string);

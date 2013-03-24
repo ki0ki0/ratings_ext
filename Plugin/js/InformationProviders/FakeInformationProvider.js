@@ -14,7 +14,8 @@ var FakeInformationProvider = (function () {
             2005, 
             2004
         ];
-        info.container = null;
+        var doc = document;
+        info.container = doc.body;
         return info;
     };
     return FakeInformationProvider;

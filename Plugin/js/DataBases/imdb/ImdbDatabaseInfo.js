@@ -1,0 +1,38 @@
+var ImdbDatabaseInfo = (function () {
+    function ImdbDatabaseInfo() { }
+    ImdbDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {
+        if(id instanceof ImdbInfo === false) {
+            return false;
+        }
+        var itemInfo = id;
+        var img = "http://tracker.0day.kiev.ua/imdb/imdb_" + itemInfo.id + ".gif";
+        var url = "http://www.imdb.com/title/" + id;
+        var name = "imdb";
+        var item = document.createElement("div");
+        item.style.display = "table-cell";
+        parent.appendChild(item);
+        var input = document.createElement("input");
+        item.appendChild(input);
+        input.type = "hidden";
+        input.name = name + "_id";
+        input.value = itemInfo.id;
+        var link = document.createElement("a");
+        item.appendChild(link);
+        link.href = url;
+        var image = document.createElement("img");
+        link.appendChild(image);
+        image.src = img;
+        var txt = document.createElement("p");
+        link.appendChild(txt);
+        txt.innerText = this.htmlDecode(itemInfo.title);
+    };
+    ImdbDatabaseInfo.prototype.htmlDecode = function (value) {
+        if(value) {
+            return $('<div />').html(value).text();
+        } else {
+            return '';
+        }
+    };
+    return ImdbDatabaseInfo;
+})();
+//@ sourceMappingURL=ImdbDatabaseInfo.js.map

@@ -15,8 +15,9 @@ class EXUAInformationProvider implements IInformationProvider {
         if (header.length == 0)
             return null;
 
-        var text: string = header[0].textContent.trim();
-        titles = text.match("/ [^ | /\(\)\[\]]*/g");
+        var text = header[0].textContent.trim();
+        var reg: RegExp = new RegExp("([^ |,./\\(\\)\\[\\]]*)", "g");
+        titles = text.match(reg);
         if (titles.length == 0)
             return null;
         for (var i in titles) {

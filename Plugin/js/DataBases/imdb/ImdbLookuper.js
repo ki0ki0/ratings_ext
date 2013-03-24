@@ -29,21 +29,35 @@ var ImdbLookuper = (function () {
         this.Lookup();
     };
     ImdbLookuper.prototype.Success = function (data) {
-        var info = this.checkFilms(data["title_popular"]);
-        if(info != null) {
-            return this.callback(info);
-        }
-        info = this.checkFilms(data["title_exact"]);
-        if(info != null) {
-            return this.callback(info);
-        }
-        info = this.checkFilms(data["title_substring"]);
-        if(info != null) {
-            return this.callback(info);
-        }
-        info = this.checkFilms(data["title_approx"]);
-        if(info != null) {
-            return this.callback(info);
+        if(data !== null) {
+            var group = data["title_popular"];
+            if(group !== undefined) {
+                var info = this.checkFilms(group);
+                if(info != null) {
+                    return this.callback(info);
+                }
+            }
+            group = data["title_exact"];
+            if(group !== undefined) {
+                info = this.checkFilms(group);
+                if(info != null) {
+                    return this.callback(info);
+                }
+            }
+            group = data["title_substring"];
+            if(group !== undefined) {
+                info = this.checkFilms(group);
+                if(info != null) {
+                    return this.callback(info);
+                }
+            }
+            group = data["title_approx"];
+            if(group !== undefined) {
+                info = this.checkFilms(group);
+                if(info != null) {
+                    return this.callback(info);
+                }
+            }
         }
         this.Lookup();
     };
@@ -56,10 +70,10 @@ var ImdbLookuper = (function () {
             var id = array[i]["id"];
             var title = array[i]["title"];
             if(this.checkFilm(title, year)) {
-                return {
-                    id: id,
-                    title: title
-                };
+                var itemInfo = new ImdbInfo();
+                itemInfo.id = id;
+                itemInfo.title = title;
+                return itemInfo;
             }
         }
         return null;

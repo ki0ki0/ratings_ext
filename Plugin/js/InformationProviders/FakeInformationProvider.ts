@@ -11,7 +11,8 @@ class FakeInformationProvider implements IInformationProvider {
         var info = new FakeInformation();
         info.titles = ["Пила","Saw"];
         info.years = [2005, 2004];
-        info.container = null;
+        var doc: HTMLDocument = document;
+        info.container = doc.body;
         return info;
     }
 }

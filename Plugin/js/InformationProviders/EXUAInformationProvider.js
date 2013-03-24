@@ -12,7 +12,8 @@ var EXUAInformationProvider = (function () {
             return null;
         }
         var text = header[0].textContent.trim();
-        titles = text.match("/ [^ | /\(\)\[\]]*/g");
+        var reg = new RegExp("([^ |,./\\(\\)\\[\\]]*)", "g");
+        titles = text.match(reg);
         if(titles.length == 0) {
             return null;
         }
