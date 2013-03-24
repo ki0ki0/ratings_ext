@@ -31,7 +31,7 @@
 		 "js/DataBases/kinopoisk/KpDatabaseInfo.js",
 		 "js/DataBases/kinopoisk/md5.js",
 		 "js/main.js" ],
-      "matches": [ "*://*/*", "http://fs.ua/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/film/*" ]
+      "matches": [ "http://fs.ua/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/film/*" ]
    } ],
    "web_accessible_resources": [
       "images/comajax_gray.gif",

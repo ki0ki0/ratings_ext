@@ -9,7 +9,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var itemInfo: ImdbInfo = id;
 
         var img = "http://tracker.0day.kiev.ua/imdb/imdb_" + itemInfo.id + ".gif";
-        var url = "http://www.imdb.com/title/" + id;
+        var url = "http://www.imdb.com/title/" + itemInfo.id;
         var name = "imdb";
 
         var item: HTMLDivElement = <HTMLDivElement>document.createElement("div");

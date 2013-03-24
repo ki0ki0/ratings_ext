@@ -6,7 +6,7 @@ var KpDatabaseInfo = (function () {
         }
         var itemInfo = id;
         var img = "http://tracker.0day.kiev.ua/kinopoisk/f" + itemInfo.id + ".gif";
-        var url = "http://www.kinopoisk.ru/level/1/film/" + id;
+        var url = "http://www.kinopoisk.ru/level/1/film/" + itemInfo.id;
         var name = "kinopoisk";
         var item = document.createElement("div");
         item.style.display = "table-cell";

@@ -9,7 +9,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
         var itemInfo: KpInfo = id;
 
         var img = "http://tracker.0day.kiev.ua/kinopoisk/f" + itemInfo.id + ".gif";
-        var url = "http://www.kinopoisk.ru/level/1/film/" + id;
+        var url = "http://www.kinopoisk.ru/level/1/film/" + itemInfo.id;
         var name = "kinopoisk";
 
         var item: HTMLDivElement = <HTMLDivElement>document.createElement("div");

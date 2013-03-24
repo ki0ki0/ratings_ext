@@ -6,7 +6,7 @@ var ImdbDatabaseInfo = (function () {
         }
         var itemInfo = id;
         var img = "http://tracker.0day.kiev.ua/imdb/imdb_" + itemInfo.id + ".gif";
-        var url = "http://www.imdb.com/title/" + id;
+        var url = "http://www.imdb.com/title/" + itemInfo.id;
         var name = "imdb";
         var item = document.createElement("div");
         item.style.display = "table-cell";
