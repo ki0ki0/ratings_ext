@@ -1,6 +1,6 @@
 /// <reference path="ChromeStorageSettings.ts"/> 
 
-class Setting{
+class Settings{
     private sync: ChromeCachedStorageSettings;
     private local: ChromeCachedStorageSettings;
     private callback: Function;
@@ -37,6 +37,7 @@ class Setting{
     GetIsSync():any { return this.sync.Get(this.names[0]); }
     SetIsSync(isSync: bool) { 
         this.sync.Set(this.names[0], isSync);
+        this.local.Set(this.names[0], isSync);
         if (isSync) {
             for (var i in this.names)
                 this.sync.Set(this.names[i], this.local.Get(this.names[i]));

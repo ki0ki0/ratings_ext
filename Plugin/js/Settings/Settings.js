@@ -1,5 +1,5 @@
-var Setting = (function () {
-    function Setting(callback, obj) {
+var Settings = (function () {
+    function Settings(callback, obj) {
         this.names = [
             "syncSettings", 
             "playerOnly", 
@@ -9,16 +9,16 @@ var Setting = (function () {
         this.obj = obj;
         this.sync = new ChromeCachedStorageSettings(true, this.names, this.syncCallback, this);
     }
-    Setting.prototype.syncCallback = function () {
+    Settings.prototype.syncCallback = function () {
         if(this.GetIsSync()) {
             this.callCallback();
         }
         this.local = new ChromeCachedStorageSettings(false, this.names, this.localCallback, this);
     };
-    Setting.prototype.localCallback = function () {
+    Settings.prototype.localCallback = function () {
         this.callCallback();
     };
-    Setting.prototype.callCallback = function () {
+    Settings.prototype.callCallback = function () {
         if(this.callback) {
             if(this.obj) {
                 this.callback.call(this.obj);
@@ -27,11 +27,12 @@ var Setting = (function () {
             }
         }
     };
-    Setting.prototype.GetIsSync = function () {
+    Settings.prototype.GetIsSync = function () {
         return this.sync.Get(this.names[0]);
     };
-    Setting.prototype.SetIsSync = function (isSync) {
+    Settings.prototype.SetIsSync = function (isSync) {
         this.sync.Set(this.names[0], isSync);
+        this.local.Set(this.names[0], isSync);
         if(isSync) {
             for(var i in this.names) {
                 this.sync.Set(this.names[i], this.local.Get(this.names[i]));
@@ -42,18 +43,18 @@ var Setting = (function () {
             }
         }
     };
-    Setting.prototype.GetIsClearPlayer = function () {
+    Settings.prototype.GetIsClearPlayer = function () {
         return this.sync.Get(this.names[1]);
     };
-    Setting.prototype.SetIsClearPlayer = function (isClear) {
+    Settings.prototype.SetIsClearPlayer = function (isClear) {
         this.sync.Set(this.names[1], isClear);
     };
-    Setting.prototype.GetIsShowVoting = function () {
+    Settings.prototype.GetIsShowVoting = function () {
         return this.sync.Get(this.names[2]);
     };
-    Setting.prototype.SetIsShowVoting = function (isClear) {
+    Settings.prototype.SetIsShowVoting = function (isClear) {
         this.sync.Set(this.names[2], isClear);
     };
-    return Setting;
+    return Settings;
 })();
 //@ sourceMappingURL=Settings.js.map

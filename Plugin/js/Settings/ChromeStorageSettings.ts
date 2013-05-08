@@ -1,4 +1,4 @@
-/// <reference path="Chrome.d.ts"/> 
+/// <reference path="../Chrome.d.ts"/> 
 /// <reference path="LocalStorageSettings.ts"/> 
 
 class ChromeStorageSettings implements ISettings {
@@ -41,7 +41,7 @@ class ChromeStorageSettings implements ISettings {
         for (var i in this.Names) {
             obj[this.Names[i]] = this.Values[i];
         }
-        this.storage.set(obj, this.getCallback);
+        this.storage.set(obj, null);
     }
 
     Get(name: string):any {

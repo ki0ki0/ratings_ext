@@ -34,7 +34,7 @@
     <Content Include="Plugin\js\jquery-1.7.2.min.js" />
     <TypeScriptCompile Include="Plugin\js\main.ts" />
     <TypeScriptCompile Include="Plugin\js\xhr.ts" />
-    <TypeScriptCompile Include="Plugin\js\Settings\Chrome.d.ts" />
+    <TypeScriptCompile Include="Plugin\js\Chrome.d.ts" />
     <TypeScriptCompile Include="Plugin\js\InformationProviders\FSUAInformationProvider.ts" />
     <TypeScriptCompile Include="Plugin\js\InformationProviders\EXUAInformationProvider.ts" />
     <Content Include="Plugin\js\DataBases\ILookuper.ts" />
@@ -43,6 +43,11 @@
     <TypeScriptCompile Include="Plugin\js\InformationProviders\IInformationProvider.ts" />
     <TypeScriptCompile Include="Plugin\js\Settings\LocalStorageSettings.ts" />
     <TypeScriptCompile Include="Plugin\js\Settings\ChromeStorageSettings.ts" />
+    <TypeScriptCompile Include="Plugin\js\options.ts" />
+    <TypeScriptCompile Include="Plugin\js\Localization\Ii18n.ts" />
+    <Content Include="Plugin\js\options.js">
+      <DependentUpon>options.ts</DependentUpon>
+    </Content>
     <Content Include="Plugin\js\Settings\ISettings.ts" />
     <TypeScriptCompile Include="Plugin\js\Settings\Settings.ts" />
   </ItemGroup>
@@ -54,6 +59,7 @@
     <Content Include="Plugin\options.html" />
     <Content Include="web.config" />
     <Content Include="Plugin\manifest.json" />
+    <Content Include="README.md" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

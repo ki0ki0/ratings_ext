@@ -34,7 +34,7 @@ var ChromeStorageSettings = (function () {
         for(var i in this.Names) {
             obj[this.Names[i]] = this.Values[i];
         }
-        this.storage.set(obj, this.getCallback);
+        this.storage.set(obj, null);
     };
     ChromeStorageSettings.prototype.Get = function (name) {
         var i = this.Names.indexOf(name);
