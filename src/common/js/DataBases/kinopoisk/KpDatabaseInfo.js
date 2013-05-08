@@ -1,3 +1,6 @@
+/// <reference path="../IDatabaseInfo.ts"/>
+/// <reference path="../../xhr.ts"/>
+/// <reference path="KpInfo.ts"/>
 var KpDatabaseInfo = (function () {
     function KpDatabaseInfo() { }
     KpDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {

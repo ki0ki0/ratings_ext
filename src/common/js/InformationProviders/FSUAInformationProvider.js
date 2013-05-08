@@ -1,3 +1,4 @@
+/// <reference path="IInformationProvider.ts"/>
 var FSUAInformation = (function () {
     function FSUAInformation() { }
     return FSUAInformation;

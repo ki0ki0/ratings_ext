@@ -1,3 +1,4 @@
+/// <reference path="IInformationProvider.ts"/>
 var EXUAInformation = (function () {
     function EXUAInformation() { }
     return EXUAInformation;

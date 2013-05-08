@@ -1,3 +1,4 @@
+/// <reference path="isettings.ts"/>
 var LocalStorageSettings = (function () {
     function LocalStorageSettings() { }
     LocalStorageSettings.prototype.Get = function (name) {

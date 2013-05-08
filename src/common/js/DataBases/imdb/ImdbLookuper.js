@@ -1,3 +1,6 @@
+/// <reference path="../ILookuper.ts"/>
+/// <reference path="../../xhr.ts"/>
+/// <reference path="ImdbInfo.ts"/>
 var ImdbLookuper = (function () {
     function ImdbLookuper() {
         this.titleIndex = 0;

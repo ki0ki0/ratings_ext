@@ -1,7 +1,16 @@
+/// <reference path="InformationProviders/FSUAInformationProvider.ts"/>
+/// <reference path="InformationProviders/EXUAInformationProvider.ts"/>
+/// <reference path="InformationProviders/FakeInformationProvider.ts"/>
+/// <reference path="Databases/ILookuper.ts"/>
+/// <reference path="Databases/imdb/ImdbLookuper.ts"/>
+/// <reference path="Databases/imdb/ImdbDatabaseInfo.ts"/>
+/// <reference path="Databases/kinopoisk/KpLookuper.ts"/>
+/// <reference path="Databases/kinopoisk/KpDatabaseInfo.ts"/>
 var providers = [
     new FSUAInformationProvider(), 
     new EXUAInformationProvider()
 ];
+//            , new FakeInformationProvider()
 var info = null;
 for(var i = 0; i < providers.length; i++) {
     var infoTmp = providers[i].GetInfo();

@@ -1,3 +1,5 @@
+/// <reference path="../Chrome.d.ts"/>
+/// <reference path="LocalStorageSettings.ts"/>
 var ChromeStorageSettings = (function () {
     function ChromeStorageSettings(isSync, names, vals, callback, obj) {
         this.Names = names;

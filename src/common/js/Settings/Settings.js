@@ -1,3 +1,4 @@
+/// <reference path="ChromeStorageSettings.ts"/>
 var Settings = (function () {
     function Settings(callback, obj) {
         this.names = [

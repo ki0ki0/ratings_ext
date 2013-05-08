@@ -1,3 +1,5 @@
+/// <reference path="Chrome.d.ts"/>
+/// <reference path="Settings/Settings.ts"/>
 var settings = new Settings(initOptionsPage2, null);
 function initOptionsPage() {
     var text = chrome.i18n.getMessage("settings");

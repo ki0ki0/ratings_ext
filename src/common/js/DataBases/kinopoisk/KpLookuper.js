@@ -1,3 +1,7 @@
+/// <reference path="../ILookuper.ts"/>
+/// <reference path="../../xhr.ts"/>
+/// <reference path="md5.d.ts"/>
+/// <reference path="KpInfo.ts"/>
 var KpLookuper = (function () {
     function KpLookuper() {
         this.titleIndex = 0;

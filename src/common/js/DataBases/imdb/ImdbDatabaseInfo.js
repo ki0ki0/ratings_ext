@@ -1,3 +1,6 @@
+/// <reference path="../IDatabaseInfo.ts"/>
+/// <reference path="../../xhr.ts"/>
+/// <reference path="ImdbInfo.ts"/>
 var ImdbDatabaseInfo = (function () {
     function ImdbDatabaseInfo() { }
     ImdbDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {

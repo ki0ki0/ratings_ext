@@ -1,4 +1,5 @@
-﻿var FakeInformation = (function () {
+﻿/// <reference path="IInformationProvider.ts"/>
+var FakeInformation = (function () {
     function FakeInformation() { }
     return FakeInformation;
 })();
