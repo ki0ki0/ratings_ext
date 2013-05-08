@@ -21,51 +21,40 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Plugin\js\InformationProviders\FakeInformationProvider.ts" />
-    <Content Include="index.html" />
-    <Content Include="Plugin\js\DataBases\IDatabaseInfo.ts" />
-    <Content Include="Plugin\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
-    <TypeScriptCompile Include="Plugin\js\DataBases\imdb\ImdbInfo.ts" />
-    <Content Include="Plugin\js\DataBases\kinopoisk\md5.d.ts" />
-    <Content Include="Plugin\js\DataBases\kinopoisk\md5.js" />
-    <TypeScriptCompile Include="Plugin\js\DataBases\kinopoisk\KpLookuper.ts" />
-    <TypeScriptCompile Include="Plugin\js\DataBases\kinopoisk\KpInfo.ts" />
-    <Content Include="Plugin\js\DataBases\kinopoisk\KpDatabaseInfo.ts" />
-    <Content Include="Plugin\js\jquery-1.7.2.min.js" />
-    <TypeScriptCompile Include="Plugin\js\main.ts" />
-    <TypeScriptCompile Include="Plugin\js\xhr.ts" />
-    <TypeScriptCompile Include="Plugin\js\Chrome.d.ts" />
-    <TypeScriptCompile Include="Plugin\js\InformationProviders\FSUAInformationProvider.ts" />
-    <TypeScriptCompile Include="Plugin\js\InformationProviders\EXUAInformationProvider.ts" />
-    <Content Include="Plugin\js\DataBases\ILookuper.ts" />
-    <TypeScriptCompile Include="Plugin\js\DataBases\imdb\ImdbLookuper.ts" />
-    <TypeScriptCompile Include="Plugin\js\jquery.d.ts" />
-    <TypeScriptCompile Include="Plugin\js\InformationProviders\IInformationProvider.ts" />
-    <TypeScriptCompile Include="Plugin\js\Settings\LocalStorageSettings.ts" />
-    <TypeScriptCompile Include="Plugin\js\Settings\ChromeStorageSettings.ts" />
-    <TypeScriptCompile Include="Plugin\js\options.ts" />
-    <TypeScriptCompile Include="Plugin\js\Localization\Ii18n.ts" />
-    <Content Include="Plugin\js\options.js">
+    <TypeScriptCompile Include="src\common\js\InformationProviders\FakeInformationProvider.ts" />
+    <Content Include="src\common\js\DataBases\IDatabaseInfo.ts" />
+    <Content Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbInfo.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\md5.d.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\md5.js" />
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpInfo.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.ts" />
+    <Content Include="src\common\js\jquery-1.7.2.min.js" />
+    <TypeScriptCompile Include="src\common\js\main.ts" />
+    <TypeScriptCompile Include="src\common\js\xhr.ts" />
+    <TypeScriptCompile Include="src\common\js\Chrome.d.ts" />
+    <TypeScriptCompile Include="src\common\js\InformationProviders\FSUAInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\js\InformationProviders\EXUAInformationProvider.ts" />
+    <Content Include="src\common\js\DataBases\ILookuper.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbLookuper.ts" />
+    <TypeScriptCompile Include="src\common\js\jquery.d.ts" />
+    <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\LocalStorageSettings.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\ChromeStorageSettings.ts" />
+    <TypeScriptCompile Include="src\common\js\options.ts" />
+    <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
+    <Content Include="src\common\js\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
-    <Content Include="Plugin\js\Settings\ISettings.ts" />
-    <TypeScriptCompile Include="Plugin\js\Settings\Settings.ts" />
+    <Content Include="src\common\js\Settings\ISettings.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Plugin\no_ad.css" />
-    <Content Include="Plugin\options.html" />
-    <Content Include="web.config" />
-    <Content Include="Plugin\manifest.json" />
+    <Content Include="src\common\no_ad.css" />
+    <Content Include="src\common\options.html" />
+    <Content Include="src\common\manifest.json" />
     <Content Include="README.md" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -120,7 +109,7 @@
   </PropertyGroup>
   <Target Name="BeforeBuild">
     <Message Text="Compiling TypeScript files" />
-    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Message Text="Executing tsc$(TypeScriptSourceMap) -c @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
     <Exec Command="tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
   </Target>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v11.0\WebApplications\Microsoft.WebApplication.targets" />
