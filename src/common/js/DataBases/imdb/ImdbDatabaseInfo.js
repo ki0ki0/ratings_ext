@@ -31,7 +31,9 @@ var ImdbDatabaseInfo = (function () {
     };
     ImdbDatabaseInfo.prototype.htmlDecode = function (value) {
         if(value) {
-            return $('<div />').html(value).text();
+            var a = document.createElement('a');
+            a.innerHTML = value;
+            return a.textContent;
         } else {
             return '';
         }

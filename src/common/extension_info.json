@@ -3,7 +3,6 @@
   "description": "Shows films and series rating from IMDB and Kinopoisk on FS.UA and EX.UA. Allows to vote in both systems in place.", 
   "creator": "Ihor Kostiuk", 
   "content_scripts": [
-         "js/jquery-1.7.2.min.js",
 	 "js/xhr.js",
          "js/Settings/LocalStorageSettings.js",
          "js/Settings/ChromeStorageSettings.js",

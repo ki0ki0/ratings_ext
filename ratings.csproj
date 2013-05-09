@@ -30,7 +30,6 @@
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpInfo.ts" />
     <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.ts" />
-    <Content Include="src\common\js\jquery-1.7.2.min.js" />
     <TypeScriptCompile Include="src\common\js\main.ts" />
     <TypeScriptCompile Include="src\common\js\xhr.ts" />
     <TypeScriptCompile Include="src\common\js\Chrome.d.ts" />
@@ -38,12 +37,15 @@
     <TypeScriptCompile Include="src\common\js\InformationProviders\EXUAInformationProvider.ts" />
     <Content Include="src\common\js\DataBases\ILookuper.ts" />
     <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbLookuper.ts" />
-    <TypeScriptCompile Include="src\common\js\jquery.d.ts" />
     <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
     <TypeScriptCompile Include="src\common\js\Settings\LocalStorageSettings.ts" />
     <TypeScriptCompile Include="src\common\js\Settings\ChromeStorageSettings.ts" />
     <TypeScriptCompile Include="src\common\js\options.ts" />
     <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
+    <TypeScriptCompile Include="src\common\js\kango.d.ts" />
+    <Content Include="src\common\js\kango.js">
+      <DependentUpon>kango.d.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
@@ -63,7 +65,7 @@
     <RootNamespace>ratings</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -94,8 +96,7 @@
     <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)build.cmd</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

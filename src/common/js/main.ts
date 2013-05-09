@@ -1,3 +1,11 @@
+// ==UserScript==
+// @name ChristmasTree
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
+
+
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
 /// <reference path="InformationProviders/EXUAInformationProvider.ts"/> 
 /// <reference path="InformationProviders/FakeInformationProvider.ts"/> 

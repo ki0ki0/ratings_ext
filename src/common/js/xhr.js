@@ -1,18 +1,19 @@
-// ==UserScript==
-// @name ChristmasTree
-// @include http://*
-// @include https://*
-// @include about:blank
-// @require jquery-1.7.2.min.js
-// ==/UserScript==
-/// <reference path="jquery.d.ts"/>
+/// <reference path="kango.d.ts"/>
 function xhr(url, object, success, error) {
-    var xhr = $.getJSON(url);
-    xhr.success(function (data, textStatus, jqXHR) {
-        success.call(object, data, textStatus, jqXHR);
-    });
-    xhr.error(function (jqXHR, textStatus, errorThrown) {
-        error.call(object, jqXHR, textStatus, errorThrown);
+    var details = {
+        url: url,
+        method: 'GET',
+        async: false,
+        contentType: 'json'
+    };
+    kango.xhr.send(details, function (data) {
+        if(data.status == 200 && data.response != null) {
+            var text = data.response;
+            success.call(object, text);
+        } else {
+            // something went wrong
+            error.call(object, data);
+        }
     });
 }
 ;

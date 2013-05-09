@@ -38,7 +38,8 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
     private htmlDecode(value) {
         if (value) {
-            return $('<div />').html(value).text();
+            var a = document.createElement('a'); a.innerHTML = value;
+            return a.textContent;
         } else {
             return '';
         }
