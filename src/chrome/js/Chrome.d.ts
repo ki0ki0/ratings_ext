@@ -1,4 +1,4 @@
-/// <reference path="Localization/Ii18n.ts"/> 
+/// <reference path="../../common/js/Localization/Ii18n.ts"/> 
 
 interface ChromeStorage {
     get(name, callback: Function);

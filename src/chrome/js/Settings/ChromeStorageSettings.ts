@@ -1,5 +1,5 @@
 /// <reference path="../Chrome.d.ts"/> 
-/// <reference path="LocalStorageSettings.ts"/> 
+/// <reference path="..\..\..\common\js\Settings\LocalStorageSettings.ts"/> 
 
 class ChromeStorageSettings implements ISettings {
     public Names: string[];

@@ -8,7 +8,7 @@
 
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
 /// <reference path="InformationProviders/EXUAInformationProvider.ts"/> 
-/// <reference path="InformationProviders/FakeInformationProvider.ts"/> 
+///// <reference path="InformationProviders/FakeInformationProvider.ts"/> 
 /// <reference path="Databases/ILookuper.ts"/> 
 /// <reference path="Databases/imdb/ImdbLookuper.ts"/> 
 /// <reference path="Databases/imdb/ImdbDatabaseInfo.ts"/> 

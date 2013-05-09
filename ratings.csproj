@@ -26,9 +26,6 @@
       <DependentUpon>FakeInformationProvider.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\IDatabaseInfo.ts" />
-    <Content Include="src\common\js\DataBases\IDatabaseInfo.js">
-      <DependentUpon>IDatabaseInfo.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
     <Content Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.js">
       <DependentUpon>ImdbDatabaseInfo.ts</DependentUpon>
@@ -38,9 +35,6 @@
       <DependentUpon>ImdbInfo.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\md5.d.ts" />
-    <Content Include="src\common\js\DataBases\kinopoisk\md5.d.js">
-      <DependentUpon>md5.d.ts</DependentUpon>
-    </Content>
     <Content Include="src\common\js\DataBases\kinopoisk\md5.js" />
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
     <Content Include="src\common\js\DataBases\kinopoisk\KpLookuper.js">
@@ -59,13 +53,18 @@
       <DependentUpon>main.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\xhr.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
+    <TypeScriptCompile Include="src\common\js\options.ts" />
+    <Content Include="src\common\js\options.js">
+      <DependentUpon>options.ts</DependentUpon>
+    </Content>
+    <Content Include="src\common\js\Settings\Settings.js">
+      <DependentUpon>Settings.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\xhr.js">
       <DependentUpon>xhr.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="src\common\js\Chrome.d.ts" />
-    <Content Include="src\common\js\Chrome.d.js">
-      <DependentUpon>Chrome.d.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="src\chrome\js\Chrome.d.ts" />
     <TypeScriptCompile Include="src\common\js\InformationProviders\FSUAInformationProvider.ts" />
     <Content Include="src\common\js\InformationProviders\FSUAInformationProvider.js">
       <DependentUpon>FSUAInformationProvider.ts</DependentUpon>
@@ -75,43 +74,28 @@
       <DependentUpon>EXUAInformationProvider.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\ILookuper.ts" />
-    <Content Include="src\common\js\DataBases\ILookuper.js">
-      <DependentUpon>ILookuper.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbLookuper.ts" />
     <Content Include="src\common\js\DataBases\imdb\ImdbLookuper.js">
       <DependentUpon>ImdbLookuper.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
-    <Content Include="src\common\js\InformationProviders\IInformationProvider.js">
-      <DependentUpon>IInformationProvider.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="src\common\js\Settings\LocalStorageSettings.ts" />
     <Content Include="src\common\js\Settings\LocalStorageSettings.js">
       <DependentUpon>LocalStorageSettings.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="src\common\js\Settings\ChromeStorageSettings.ts" />
-    <Content Include="src\common\js\Settings\ChromeStorageSettings.js">
+    <TypeScriptCompile Include="src\chrome\js\Settings\ChromeStorageSettings.ts" />
+    <Content Include="src\chrome\js\Settings\ChromeStorageSettings.js">
       <DependentUpon>ChromeStorageSettings.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
-    <Content Include="src\common\js\Localization\Ii18n.js">
-      <DependentUpon>Ii18n.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="src\common\js\kango.d.ts" />
-    <Content Include="src\common\js\kango.d.js">
-      <DependentUpon>kango.d.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\options.ts" />
-    <Content Include="src\common\js\options.js">
+    <TypeScriptCompile Include="src\chrome\js\options.ts" />
+    <Content Include="src\chrome\js\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\Settings\ISettings.ts" />
-    <Content Include="src\common\js\Settings\ISettings.js">
-      <DependentUpon>ISettings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
-    <Content Include="src\common\js\Settings\Settings.js">
+    <TypeScriptCompile Include="src\chrome\js\Settings\Settings.ts" />
+    <Content Include="src\chrome\js\Settings\Settings.js">
       <DependentUpon>Settings.ts</DependentUpon>
     </Content>
   </ItemGroup>
@@ -119,6 +103,15 @@
     <Content Include="src\common\no_ad.css" />
     <Content Include="src\common\options.html" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\common\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\chrome\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\chrome\manifest.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
