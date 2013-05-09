@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name ChristmasTree
+// @name Ratings for FS.UA and EX.UA
 // @include http://fs.ua/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*

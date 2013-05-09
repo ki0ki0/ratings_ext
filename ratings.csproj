@@ -100,7 +100,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\common\no_ad.css" />
+    <Content Include="src\chrome\no_ad.css" />
     <Content Include="src\common\options.html" />
     <Content Include="README.md" />
   </ItemGroup>

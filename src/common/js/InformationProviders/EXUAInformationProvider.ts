@@ -1,3 +1,10 @@
+// ==UserScript==
+// @name Ratings for FS.UA and EX.UA
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
+
 /// <reference path="IInformationProvider.ts"/> 
 
 class EXUAInformation implements IInformationContainer {

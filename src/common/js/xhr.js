@@ -1,3 +1,9 @@
+// ==UserScript==
+// @name Ratings for FS.UA and EX.UA
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
 /// <reference path="kango.d.ts"/>
 function xhr(url, object, success, error) {
     var details = {
