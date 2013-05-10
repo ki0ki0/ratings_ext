@@ -9,45 +9,51 @@
 /// <reference path="kango.d.ts"/> 
 /// <reference path="Settings/Settings.ts"/> 
 
-var settings: Settings = new Settings();
+class Options
+{
+    private settings: Settings;
 
-function initOptionsPage() {
-    document.getElementById("syncSettings").style.display = "none";
+    constructor () {
+        this.settings = new Settings();
+    }
 
-    var text = kango.i18n.getMessage("settings");
-    document.getElementById("settingMess").innerHTML = text;
+    initOptionsPage() {
+        document.getElementById("syncSettings").style.display = "none";
 
-    var text = kango.i18n.getMessage("playerOnly");
-    document.getElementById("playerOnlyLabel").innerHTML = text;
+        var text = kango.i18n.getMessage("settings");
+        document.getElementById("settingMess").textContent = text;
 
-    var text = kango.i18n.getMessage("playerOnlySub");
-    document.getElementById("playerOnlySub").innerHTML = text;
+        var text = kango.i18n.getMessage("playerOnly");
+        document.getElementById("playerOnlyLabel").textContent = text;
 
-    var text = kango.i18n.getMessage("showVoting");
-    document.getElementById("showVotingLabel").innerHTML = text;
+        var text = kango.i18n.getMessage("playerOnlySub");
+        document.getElementById("playerOnlySub").textContent = text;
 
-    var text = kango.i18n.getMessage("showVotingSub");
-    document.getElementById("showVotingSub").innerHTML = text;
+        var text = kango.i18n.getMessage("showVoting");
+        document.getElementById("showVotingLabel").textContent = text;
 
-    initOptionsPage2();
+        var text = kango.i18n.getMessage("showVotingSub");
+        document.getElementById("showVotingSub").textContent = text;
+
+        this.initOptionsValues();
+    }
+
+    initOptionsValues() {
+        var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
+        val.addEventListener("click", this.saveSettings);
+        val.checked = this.settings.GetIsClearPlayer();
+
+        val = <HTMLInputElement> document.getElementById("showVotingVal");
+        val.addEventListener("click", this.saveSettings);
+        val.checked = this.settings.GetIsShowVoting();
+    }
+
+    saveSettings() {
+        var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
+        this.settings.SetIsClearPlayer(val.checked);
+
+        val = <HTMLInputElement> document.getElementById("showVotingVal");
+        this.settings.SetIsShowVoting(val.checked);
+    }
+
 }
-
-function initOptionsPage2() {
-    var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-    val.addEventListener("click", updateSettings);
-    val.checked = settings.GetIsClearPlayer();
-
-    val = <HTMLInputElement> document.getElementById("showVotingVal");
-    val.addEventListener("click", updateSettings);
-    val.checked = settings.GetIsShowVoting();
-}
-
-function updateSettings() {
-    var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-    settings.SetIsClearPlayer(val.checked);
-
-    val = <HTMLInputElement> document.getElementById("showVotingVal");
-    settings.SetIsShowVoting(val.checked);
-}
-
-KangoAPI.onReady(initOptionsPage);

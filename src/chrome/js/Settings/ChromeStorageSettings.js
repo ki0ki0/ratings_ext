@@ -1,3 +1,9 @@
+// ==UserScript==
+// @name Ratings for FS.UA and EX.UA
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
 /// <reference path="../Chrome.d.ts"/>
 /// <reference path="..\..\..\common\js\Settings\LocalStorageSettings.ts"/>
 var ChromeStorageSettings = (function () {

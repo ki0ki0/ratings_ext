@@ -1,6 +1,15 @@
-/// <reference path="ChromeStorageSettings.ts"/> 
+// ==UserScript==
+// @name Ratings for FS.UA and EX.UA
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
 
-class SettingsChrome{
+
+/// <reference path="ChromeStorageSettings.ts"/> 
+/// <reference path="../../../common/js/Settings/Settings.ts"/> 
+
+class SettingsChrome extends Settings{
     private sync: ChromeCachedStorageSettings;
     private local: ChromeCachedStorageSettings;
     private callback: Function;
@@ -8,7 +17,8 @@ class SettingsChrome{
 
     private names = ["syncSettings", "playerOnly", "showVoting"];
 
-    constructor (callback: Function, obj: Object) {
+    constructor(callback: Function, obj: Object) {
+        super();
         this.callback = callback;
         this.obj = obj;
         this.sync = new ChromeCachedStorageSettings(true, this.names, this.syncCallback, this);

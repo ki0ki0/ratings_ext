@@ -1,6 +1,20 @@
+var __extends = this.__extends || function (d, b) {
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+// ==UserScript==
+// @name Ratings for FS.UA and EX.UA
+// @include http://fs.ua/*
+// @include http://www.ex.ua/view/*
+// @include http://www.kinopoisk.ru/film/*
+// ==/UserScript==
 /// <reference path="ChromeStorageSettings.ts"/>
-var SettingsChrome = (function () {
+/// <reference path="../../../common/js/Settings/Settings.ts"/>
+var SettingsChrome = (function (_super) {
+    __extends(SettingsChrome, _super);
     function SettingsChrome(callback, obj) {
+        _super.call(this);
         this.names = [
             "syncSettings", 
             "playerOnly", 
@@ -44,18 +58,21 @@ var SettingsChrome = (function () {
             }
         }
     };
+    SettingsChrome.prototype.getCurrentStorage = function () {
+        return this.GetIsSync() ? this.sync : this.local;
+    };
     SettingsChrome.prototype.GetIsClearPlayer = function () {
-        return this.sync.Get(this.names[1]);
+        return this.getCurrentStorage().Get(this.names[1]);
     };
     SettingsChrome.prototype.SetIsClearPlayer = function (isClear) {
-        this.sync.Set(this.names[1], isClear);
+        this.getCurrentStorage().Set(this.names[1], isClear);
     };
     SettingsChrome.prototype.GetIsShowVoting = function () {
-        return this.sync.Get(this.names[2]);
+        return this.getCurrentStorage().Get(this.names[2]);
     };
     SettingsChrome.prototype.SetIsShowVoting = function (isClear) {
-        this.sync.Set(this.names[2], isClear);
+        this.getCurrentStorage().Set(this.names[2], isClear);
     };
     return SettingsChrome;
-})();
+})(Settings);
 //@ sourceMappingURL=SettingsChrome.js.map

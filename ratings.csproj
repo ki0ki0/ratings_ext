@@ -22,6 +22,10 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\common\js\InformationProviders\FakeInformationProvider.ts" />
+    <TypeScriptCompile Include="src\chrome\js\OptionsInit.ts" />
+    <Content Include="src\chrome\js\OptionsInit.js">
+      <DependentUpon>OptionsInit.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\InformationProviders\FakeInformationProvider.js">
       <DependentUpon>FakeInformationProvider.ts</DependentUpon>
     </Content>
@@ -54,9 +58,13 @@
     </Content>
     <TypeScriptCompile Include="src\common\js\xhr.ts" />
     <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
-    <TypeScriptCompile Include="src\common\js\options.ts" />
+    <TypeScriptCompile Include="src\common\js\Options.ts" />
     <Content Include="src\common\js\options.js">
-      <DependentUpon>options.ts</DependentUpon>
+      <DependentUpon>Options.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\OptionsInit.ts" />
+    <Content Include="src\common\js\OptionsInit.js">
+      <DependentUpon>OptionsInit.ts</DependentUpon>
     </Content>
     <Content Include="src\common\js\Settings\Settings.js">
       <DependentUpon>Settings.ts</DependentUpon>
@@ -89,14 +97,14 @@
     </Content>
     <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
     <TypeScriptCompile Include="src\common\js\kango.d.ts" />
-    <TypeScriptCompile Include="src\chrome\js\options.ts" />
-    <Content Include="src\chrome\js\options.js">
-      <DependentUpon>options.ts</DependentUpon>
+    <TypeScriptCompile Include="src\chrome\js\OptionsChrome.ts" />
+    <Content Include="src\chrome\js\OptionsChrome.js">
+      <DependentUpon>OptionsChrome.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\Settings\ISettings.ts" />
-    <TypeScriptCompile Include="src\chrome\js\Settings\Settings.ts" />
-    <Content Include="src\chrome\js\Settings\Settings.js">
-      <DependentUpon>Settings.ts</DependentUpon>
+    <TypeScriptCompile Include="src\chrome\js\Settings\SettingsChrome.ts" />
+    <Content Include="src\chrome\js\Settings\SettingsChrome.js">
+      <DependentUpon>SettingsChrome.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

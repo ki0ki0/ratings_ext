@@ -4,8 +4,6 @@ ratings_ext
 Extention for Chrome to show ratings on fs.ua and ex.ua
 
 TODO:
-- Options base class and successor for chrome
-- Stronger policy for opera and firefox
 - Voting support
 - Player page clearing with support of Options
 - Options for enabling/disabling voting system

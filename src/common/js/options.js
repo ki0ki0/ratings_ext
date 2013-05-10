@@ -6,34 +6,38 @@
 // ==/UserScript==
 /// <reference path="kango.d.ts"/>
 /// <reference path="Settings/Settings.ts"/>
-var settings = new Settings();
-function initOptionsPage() {
-    document.getElementById("syncSettings").style.display = "none";
-    var text = kango.i18n.getMessage("settings");
-    document.getElementById("settingMess").innerHTML = text;
-    var text = kango.i18n.getMessage("playerOnly");
-    document.getElementById("playerOnlyLabel").innerHTML = text;
-    var text = kango.i18n.getMessage("playerOnlySub");
-    document.getElementById("playerOnlySub").innerHTML = text;
-    var text = kango.i18n.getMessage("showVoting");
-    document.getElementById("showVotingLabel").innerHTML = text;
-    var text = kango.i18n.getMessage("showVotingSub");
-    document.getElementById("showVotingSub").innerHTML = text;
-    initOptionsPage2();
-}
-function initOptionsPage2() {
-    var val = document.getElementById("playerOnlyVal");
-    val.addEventListener("click", updateSettings);
-    val.checked = settings.GetIsClearPlayer();
-    val = document.getElementById("showVotingVal");
-    val.addEventListener("click", updateSettings);
-    val.checked = settings.GetIsShowVoting();
-}
-function updateSettings() {
-    var val = document.getElementById("playerOnlyVal");
-    settings.SetIsClearPlayer(val.checked);
-    val = document.getElementById("showVotingVal");
-    settings.SetIsShowVoting(val.checked);
-}
-KangoAPI.onReady(initOptionsPage);
-//@ sourceMappingURL=options.js.map
+var Options = (function () {
+    function Options() {
+        this.settings = new Settings();
+    }
+    Options.prototype.initOptionsPage = function () {
+        document.getElementById("syncSettings").style.display = "none";
+        var text = kango.i18n.getMessage("settings");
+        document.getElementById("settingMess").textContent = text;
+        var text = kango.i18n.getMessage("playerOnly");
+        document.getElementById("playerOnlyLabel").textContent = text;
+        var text = kango.i18n.getMessage("playerOnlySub");
+        document.getElementById("playerOnlySub").textContent = text;
+        var text = kango.i18n.getMessage("showVoting");
+        document.getElementById("showVotingLabel").textContent = text;
+        var text = kango.i18n.getMessage("showVotingSub");
+        document.getElementById("showVotingSub").textContent = text;
+        this.initOptionsValues();
+    };
+    Options.prototype.initOptionsValues = function () {
+        var val = document.getElementById("playerOnlyVal");
+        val.addEventListener("click", this.saveSettings);
+        val.checked = this.settings.GetIsClearPlayer();
+        val = document.getElementById("showVotingVal");
+        val.addEventListener("click", this.saveSettings);
+        val.checked = this.settings.GetIsShowVoting();
+    };
+    Options.prototype.saveSettings = function () {
+        var val = document.getElementById("playerOnlyVal");
+        this.settings.SetIsClearPlayer(val.checked);
+        val = document.getElementById("showVotingVal");
+        this.settings.SetIsShowVoting(val.checked);
+    };
+    return Options;
+})();
+//@ sourceMappingURL=Options.js.map

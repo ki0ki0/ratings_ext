@@ -15,7 +15,6 @@
 /// <reference path="Databases/kinopoisk/KpLookuper.ts"/> 
 /// <reference path="Databases/kinopoisk/KpDatabaseInfo.ts"/> 
 
-
 var providers : IInformationProvider[] = 
         [
             new FSUAInformationProvider()
