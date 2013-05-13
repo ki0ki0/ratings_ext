@@ -31,7 +31,9 @@ var SettingsChrome = (function (_super) {
         this.local = new ChromeCachedStorageSettings(false, this.names, this.localCallback, this);
     };
     SettingsChrome.prototype.localCallback = function () {
-        this.callCallback();
+        if(this.GetIsSync() == false) {
+            this.callCallback();
+        }
     };
     SettingsChrome.prototype.callCallback = function () {
         if(this.callback) {

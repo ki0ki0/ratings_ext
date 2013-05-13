@@ -30,7 +30,7 @@ class ImdbLookuper implements ILookuper {
             this.callback(null);
         }
         else {
-            xhr("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title),
+            xhrJson("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title),
                 this, this.Success, this.Error);
         }
     }

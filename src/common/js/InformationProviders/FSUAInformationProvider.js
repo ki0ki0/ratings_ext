@@ -12,6 +12,9 @@ var FSUAInformation = (function () {
 var FSUAInformationProvider = (function () {
     function FSUAInformationProvider() { }
     FSUAInformationProvider.prototype.GetInfo = function () {
+        if(window.location.href.indexOf("http://fs.ua/item/") == -1) {
+            return null;
+        }
         var category = document.getElementsByClassName("b-subcategory-title");
         if(category.length != 1) {
             return null;

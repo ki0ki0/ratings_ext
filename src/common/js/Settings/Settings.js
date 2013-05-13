@@ -12,7 +12,11 @@ var Settings = (function () {
             "showVoting"
         ];
         this.local = new LocalStorageSettings();
+        Settings._this = this;
     }
+    Settings.GetSettings = function GetSettings() {
+        return Settings._this;
+    };
     Settings.prototype.GetIsClearPlayer = function () {
         return this.local.Get(this.names[1]);
     };

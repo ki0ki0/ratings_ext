@@ -23,7 +23,7 @@ var ImdbLookuper = (function () {
         if(title == null) {
             this.callback(null);
         } else {
-            xhr("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title), this, this.Success, this.Error);
+            xhrJson("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title), this, this.Success, this.Error);
         }
     };
     ImdbLookuper.prototype.NextTitle = function () {

@@ -6,8 +6,8 @@
 // ==/UserScript==
 /// <reference path="../../common/js/kango.d.ts"/>
 /// <reference path="OptionsChrome.ts"/>
-var optionsChrome = new OptionsChrome();
 KangoAPI.onReady(function () {
+    var optionsChrome = new OptionsChrome();
     optionsChrome.initOptionsPage();
 });
 //@ sourceMappingURL=OptionsInit.js.map

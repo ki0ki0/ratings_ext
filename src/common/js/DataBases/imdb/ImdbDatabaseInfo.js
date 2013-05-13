@@ -20,6 +20,7 @@ var ImdbDatabaseInfo = (function () {
         var item = document.createElement("div");
         item.style.display = "table-cell";
         parent.appendChild(item);
+        this.parent = item;
         var input = document.createElement("input");
         item.appendChild(input);
         input.type = "hidden";
@@ -35,7 +36,36 @@ var ImdbDatabaseInfo = (function () {
         link.appendChild(txt);
         txt.innerText = this.htmlDecode(itemInfo.title);
     };
-    ImdbDatabaseInfo.prototype.htmlDecode = function (value) {
+    ImdbDatabaseInfo.prototype.GetUserRating = function (id, callback) {
+        if(id instanceof ImdbInfo === false) {
+            return false;
+        }
+        var itemInfo = id;
+        this.callback = callback;
+        var url = "http://m.imdb.com/title/" + itemInfo.id + "/";
+        xhr(url, this, this.userRatingCallback, this.userRatingCallbackError);
+        return true;
+    };
+    ImdbDatabaseInfo.prototype.userRatingCallbackError = function () {
+        this.callback(null);
+    };
+    ImdbDatabaseInfo.prototype.userRatingCallback = function (data) {
+        var your = /<strong>You: ([0-9]+)/g;
+        var arr_your = your.exec(data);
+        var rate = null;
+        if((arr_your != null) && (arr_your.length > 0)) {
+            rate = parseInt(arr_your[1]);
+            var txt = document.createElement("p");
+            this.parent.appendChild(txt);
+            txt.innerText = "Your rating: " + rate + "/10";
+        }
+        var exp = /data-csrf="([^\"]*)"/g;
+        var arr = exp.exec(data);
+        this.auth = arr[1];
+        this.callback(rate);
+    };
+    ImdbDatabaseInfo.prototype.htmlDecode = //voting url http://m.imdb.com/title/tt1605630/rate?new_rating=<rating>&csrf=<auth>
+    function (value) {
         if(value) {
             var a = document.createElement('a');
             a.innerHTML = value;

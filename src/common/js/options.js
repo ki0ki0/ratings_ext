@@ -26,10 +26,15 @@ var Options = (function () {
     };
     Options.prototype.initOptionsValues = function () {
         var val = document.getElementById("playerOnlyVal");
-        val.addEventListener("click", this.saveSettings);
+        var _this = this;
+        val.addEventListener("click", function () {
+            _this.saveSettings();
+        });
         val.checked = this.settings.GetIsClearPlayer();
         val = document.getElementById("showVotingVal");
-        val.addEventListener("click", this.saveSettings);
+        val.addEventListener("click", function () {
+            _this.saveSettings();
+        });
         val.checked = this.settings.GetIsShowVoting();
     };
     Options.prototype.saveSettings = function () {

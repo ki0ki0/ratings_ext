@@ -26,6 +26,10 @@
     <Content Include="src\chrome\js\OptionsInit.js">
       <DependentUpon>OptionsInit.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="src\chrome\js\Init.ts" />
+    <Content Include="src\chrome\js\Init.js">
+      <DependentUpon>Init.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\InformationProviders\FakeInformationProvider.js">
       <DependentUpon>FakeInformationProvider.ts</DependentUpon>
     </Content>
@@ -52,9 +56,9 @@
     <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.js">
       <DependentUpon>KpDatabaseInfo.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="src\common\js\main.ts" />
-    <Content Include="src\common\js\main.js">
-      <DependentUpon>main.ts</DependentUpon>
+    <TypeScriptCompile Include="src\common\js\Ratings.ts" />
+    <Content Include="src\common\js\Ratings.js">
+      <DependentUpon>Ratings.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\xhr.ts" />
     <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
@@ -68,6 +72,10 @@
     </Content>
     <Content Include="src\common\js\Settings\Settings.js">
       <DependentUpon>Settings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\Init.ts" />
+    <Content Include="src\common\js\Init.js">
+      <DependentUpon>Init.ts</DependentUpon>
     </Content>
     <Content Include="src\common\js\xhr.js">
       <DependentUpon>xhr.ts</DependentUpon>

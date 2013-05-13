@@ -9,12 +9,19 @@
 /// <reference path="LocalStorageSettings.ts"/> 
 
 class Settings {
+    private static _this: Settings;
+
+    public static GetSettings():Settings {
+        return Settings._this;
+    }
+
     private local: LocalStorageSettings;
 
     private names = ["playerOnly", "showVoting"];
 
     constructor() {
         this.local = new LocalStorageSettings();
+        Settings._this = this;
     }
 
     GetIsClearPlayer(): any { return this.local.Get(this.names[1]); }

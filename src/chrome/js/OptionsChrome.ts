@@ -33,7 +33,8 @@ class OptionsChrome extends Options {
 
     initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("syncSettingsVal");
-        val.addEventListener("click", this.saveSettings);
+        var _this = this;
+        val.addEventListener("click", function () { _this.saveSettings(); });
         val.checked = this.settings.GetIsSync();
 
         super.initOptionsValues();

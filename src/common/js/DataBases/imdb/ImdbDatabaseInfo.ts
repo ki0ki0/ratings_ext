@@ -10,6 +10,9 @@
 /// <reference path="ImdbInfo.ts"/> 
 
 class ImdbDatabaseInfo implements IDatabaseInfo {
+
+    private parent:Node;
+
     public CreateItemRatingImg(id: any, parent: Node): bool {
         if (id instanceof ImdbInfo === false)
             return false;
@@ -22,6 +25,8 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var item: HTMLDivElement = <HTMLDivElement>document.createElement("div");
         item.style.display = "table-cell";
         parent.appendChild(item);
+
+        this.parent = item;
 
         var input: HTMLInputElement = <HTMLInputElement> document.createElement("input");
         item.appendChild(input);
@@ -40,8 +45,48 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var txt = document.createElement("p");
         link.appendChild(txt);
         txt.innerText = this.htmlDecode(itemInfo.title);
-
     }
+
+    private callback: Function;
+
+    public GetUserRating(id: any, callback: Function): bool {
+        if (id instanceof ImdbInfo === false)
+            return false;
+        var itemInfo: ImdbInfo = id;
+
+        this.callback = callback;
+
+        var url = "http://m.imdb.com/title/" + itemInfo.id + "/";
+        xhr(url, this, this.userRatingCallback, this.userRatingCallbackError);
+        return true;
+    }
+
+    private userRatingCallbackError() {
+        this.callback(null);
+    }
+
+    private auth: string;
+
+    private userRatingCallback(data) {
+        var your = /<strong>You: ([0-9]+)/g;
+        var arr_your = your.exec(data);
+        var rate = null;
+        if ((arr_your != null) && (arr_your.length > 0)) {
+            rate = parseInt(arr_your[1]);
+
+            var txt = document.createElement("p");
+            this.parent.appendChild(txt);
+            txt.innerText = "Your rating: " + rate + "/10";
+        }
+
+        var exp = /data-csrf="([^\"]*)"/g;
+        var arr = exp.exec(data);
+        this.auth = arr[1];
+
+        this.callback(rate);
+    }
+
+    //voting url http://m.imdb.com/title/tt1605630/rate?new_rating=<rating>&csrf=<auth>
 
     private htmlDecode(value) {
         if (value) {

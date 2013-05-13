@@ -41,7 +41,7 @@ var KpLookuper = (function () {
             var hash = MD5(query + "andrliravlik");
             query = query + "&key=" + hash;
             var url = "http://ext.kinopoisk.ru/android/1.2.0/" + query;
-            xhr(url, this, this.Success, this.Error);
+            xhrJson(url, this, this.Success, this.Error);
         }
     };
     KpLookuper.prototype.NextTitle = function () {

@@ -9,5 +9,9 @@
 /// <reference path="kango.d.ts"/> 
 /// <reference path="Options.ts"/> 
 
-var options = new Options();
-KangoAPI.onReady(function () { options.initOptionsPage(); });
+KangoAPI.onReady(
+    function () {
+        var options = new Options();
+        options.initOptionsPage();
+    }
+);

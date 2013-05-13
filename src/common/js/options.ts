@@ -40,11 +40,12 @@ class Options
 
     initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-        val.addEventListener("click", this.saveSettings);
+        var _this = this;
+        val.addEventListener("click", function () { _this.saveSettings(); });
         val.checked = this.settings.GetIsClearPlayer();
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
-        val.addEventListener("click", this.saveSettings);
+        val.addEventListener("click", function () { _this.saveSettings(); });
         val.checked = this.settings.GetIsShowVoting();
     }
 

@@ -10,5 +10,9 @@
 /// <reference path="OptionsChrome.ts"/> 
 
 
-var optionsChrome = new OptionsChrome();
-KangoAPI.onReady(function () { optionsChrome.initOptionsPage(); });
+KangoAPI.onReady(
+    function () {
+    var optionsChrome = new OptionsChrome();
+    optionsChrome.initOptionsPage();
+    }
+);

@@ -39,7 +39,7 @@ class KpLookuper implements ILookuper {
 
             var url = "http://ext.kinopoisk.ru/android/1.2.0/" + query;
 
-            xhr(url, this, this.Success, this.Error);
+            xhrJson(url, this, this.Success, this.Error);
         }
     }
 

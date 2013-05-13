@@ -28,7 +28,10 @@ var OptionsChrome = (function (_super) {
     };
     OptionsChrome.prototype.initOptionsValues = function () {
         var val = document.getElementById("syncSettingsVal");
-        val.addEventListener("click", this.saveSettings);
+        var _this = this;
+        val.addEventListener("click", function () {
+            _this.saveSettings();
+        });
         val.checked = this.settings.GetIsSync();
         _super.prototype.initOptionsValues.call(this);
     };

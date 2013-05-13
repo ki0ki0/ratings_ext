@@ -32,7 +32,8 @@ class SettingsChrome extends Settings{
     }
 
     private localCallback() {
-        this.callCallback();
+        if (this.GetIsSync() == false)
+            this.callCallback();
     }
 
     private callCallback() {
