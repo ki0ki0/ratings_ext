@@ -9,3 +9,4 @@ TODO:
 - Player page clearing with support of Options
 - Options for enabling/disabling voting system
 - fix player page clearing breaks player in logged out mode
+- imdb transliteration search
