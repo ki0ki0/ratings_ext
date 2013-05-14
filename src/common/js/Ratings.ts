@@ -68,10 +68,11 @@ class Ratings {
         var tdVoting = document.createElement("td");
         trVoting.appendChild(tdVoting);
 
-        var divVoting = document.createElement("div");
-        divVoting.innerText = "Vote: ";
-        divVoting.id = "voting";
-        tdVoting.appendChild(divVoting);
+        this.divVoting = document.createElement("div");
+        this.divVoting.innerText = "Vote: ";
+        this.divVoting.id = "voting";
+        this.divVoting.style.display = "none";
+        tdVoting.appendChild(this.divVoting);
 
         for (var i = 0; i < this.lookupers.length; i++) {
             var _this = this;
@@ -80,13 +81,19 @@ class Ratings {
     }
 
     private voting = null;
+    private divVoting = null;
 
     private GetIdCallback(id) {
+        if (id == null)
+            return;
+
         for (var i = 0; i < this.databases.length; i++) {
             this.databases[i].CreateItemRatingImg(id, this.info.container);
             if (Settings.GetSettings().GetIsShowVoting()) {
                 if (this.voting == null) {
                     var _this = this;
+
+                    this.divVoting.style.display = "block";
                     this.voting = new tVote("voting", {
                         max: 10, def: 0, click: function (mouseEvent, val) {
                             _this.vote(mouseEvent, val);
