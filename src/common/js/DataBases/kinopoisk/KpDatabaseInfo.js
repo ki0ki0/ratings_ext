@@ -53,16 +53,20 @@ var KpDatabaseInfo = (function () {
         var your = /myVote:([0-9]*)/g;
         var arr_your = your.exec(data);
         var rate = null;
+        var txt = null;
         if(arr_your != null) {
             rate = arr_your[1];
-            var txt = document.createElement("p");
+            txt = document.createElement("p");
             this.parent.appendChild(txt);
             txt.innerText = "Your rating: " + rate + "/10";
         }
         var exp = /user_code:'([0-9a-f]*)'/g;
         var arr = exp.exec(data);
         this.auth = arr[1];
-        this.callback(rate);
+        this.callback(rate, txt);
+    };
+    KpDatabaseInfo.prototype.Vote = function (id, rating, callback) {
+        return false;
     };
     KpDatabaseInfo.prototype.htmlDecode = function (value) {
         if(value) {

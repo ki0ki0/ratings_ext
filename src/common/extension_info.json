@@ -17,6 +17,7 @@
 	"js/DataBases/kinopoisk/KpLookuper.js",
 	"js/DataBases/kinopoisk/KpDatabaseInfo.js",
 	"js/DataBases/kinopoisk/md5.js",
+	"js/tVote.js",
 	"js/Ratings.js",
 	"js/Init.js"
   ], 

@@ -53,16 +53,33 @@ var ImdbDatabaseInfo = (function () {
         var your = /<strong>You: ([0-9]+)/g;
         var arr_your = your.exec(data);
         var rate = null;
+        var txt = null;
         if((arr_your != null) && (arr_your.length > 0)) {
             rate = parseInt(arr_your[1]);
-            var txt = document.createElement("p");
+            txt = document.createElement("p");
             this.parent.appendChild(txt);
             txt.innerText = "Your rating: " + rate + "/10";
         }
         var exp = /data-csrf="([^\"]*)"/g;
         var arr = exp.exec(data);
         this.auth = arr[1];
-        this.callback(rate);
+        this.callback(rate, txt);
+    };
+    ImdbDatabaseInfo.prototype.Vote = function (id, rating, callback) {
+        if(id instanceof ImdbInfo === false) {
+            return false;
+        }
+        var itemInfo = id;
+        this.callback = callback;
+        var url = "http://m.imdb.com/title/" + itemInfo.id + "//rate?new_rating=" + rating + "&csrf=" + this.auth;
+        xhr(url, this, this.voteCallback, this.voteCallbackError);
+        return true;
+    };
+    ImdbDatabaseInfo.prototype.voteCallbackError = function () {
+        this.callback(false);
+    };
+    ImdbDatabaseInfo.prototype.voteCallback = function (data) {
+        this.callback(true);
     };
     ImdbDatabaseInfo.prototype.htmlDecode = //voting url http://m.imdb.com/title/tt1605630/rate?new_rating=<rating>&csrf=<auth>
     function (value) {

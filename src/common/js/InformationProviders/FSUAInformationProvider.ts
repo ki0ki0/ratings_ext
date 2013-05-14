@@ -45,22 +45,10 @@ class FSUAInformationProvider implements IInformationProvider {
             }
         }
 
-        var table = document.createElement("table");
-        item_info[0].appendChild(table);
-        var tr = document.createElement("tr");
-        table.appendChild(tr);
-
-        var act = document.getElementsByClassName("item-actions");
-        if ((act == null) || (act.length == 0))
-            return null;
-
-        var div = document.createElement("div");
-        act[0].parentNode.appendChild(div);
-
         var info = new FSUAInformation();
         info.titles = titles;
         info.years = new Array(year);
-        info.container = tr;
+        info.container = item_info[0];
         return info;
     }
 }
