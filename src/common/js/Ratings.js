@@ -89,7 +89,6 @@ var Ratings = (function () {
         }
     };
     Ratings.prototype.GetUserRatingCallback = function (rating, element) {
-        console.log(rating, element);
         this.userRatings[this.userRatings.length] = rating;
         this.userRatingsElements[this.userRatingsElements.length] = element;
         this.updateVoting();
@@ -106,7 +105,6 @@ var Ratings = (function () {
             }
         }
         var display = ((val == -1) ? "block" : "none");
-        console.log(display);
         for(var i = 0; i < this.userRatingsElements.length; i++) {
             this.userRatingsElements[i].style.display = display;
         }

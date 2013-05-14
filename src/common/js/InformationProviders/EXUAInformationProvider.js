@@ -12,6 +12,9 @@ var EXUAInformation = (function () {
 var EXUAInformationProvider = (function () {
     function EXUAInformationProvider() { }
     EXUAInformationProvider.prototype.GetInfo = function () {
+        if(window.location.href.indexOf("http://www.ex.ua/view/") == -1) {
+            return null;
+        }
         var titles = null;
         var year = null;
         var header = document.getElementsByTagName("h1");

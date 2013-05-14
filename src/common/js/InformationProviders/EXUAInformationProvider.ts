@@ -15,6 +15,9 @@ class EXUAInformation implements IInformationContainer {
 
 class EXUAInformationProvider implements IInformationProvider {
     GetInfo(): IInformationContainer {
+        if (window.location.href.indexOf("http://www.ex.ua/view/") == -1)
+            return null;
+
         var titles = null;
         var year = null;
 
