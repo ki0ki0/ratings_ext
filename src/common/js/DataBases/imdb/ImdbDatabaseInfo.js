@@ -8,7 +8,9 @@
 /// <reference path="../../xhr.ts"/>
 /// <reference path="ImdbInfo.ts"/>
 var ImdbDatabaseInfo = (function () {
-    function ImdbDatabaseInfo() { }
+    function ImdbDatabaseInfo() {
+        this.auth = null;
+    }
     ImdbDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {
         if(id instanceof ImdbInfo === false) {
             return false;
@@ -42,7 +44,7 @@ var ImdbDatabaseInfo = (function () {
         }
         var itemInfo = id;
         this.callback = callback;
-        var url = "http://m.imdb.com/title/" + itemInfo.id + "/";
+        var url = "http://www.imdb.com/title/" + itemInfo.id + "/";
         xhr(url, this, this.userRatingCallback, this.userRatingCallbackError);
         return true;
     };
@@ -50,7 +52,7 @@ var ImdbDatabaseInfo = (function () {
         this.callback(null);
     };
     ImdbDatabaseInfo.prototype.userRatingCallback = function (data) {
-        var your = /<strong>You: ([0-9]+)/g;
+        var your = /<span class="rating-rating rating-your"><span class="value">([0-9]+)<\/span>/g;
         var arr_your = your.exec(data);
         var rate = null;
         var txt = null;
@@ -60,9 +62,11 @@ var ImdbDatabaseInfo = (function () {
             this.parent.appendChild(txt);
             txt.innerText = "Your rating: " + rate + "/10";
         }
-        var exp = /data-csrf="([^\"]*)"/g;
+        var exp = /data-auth="([^\"]*)"/g;
         var arr = exp.exec(data);
-        this.auth = arr[1];
+        if((arr != null) && (arr.length > 0)) {
+            this.auth = arr[1];
+        }
         this.callback(rate, txt);
     };
     ImdbDatabaseInfo.prototype.Vote = function (id, rating, callback) {
@@ -71,7 +75,7 @@ var ImdbDatabaseInfo = (function () {
         }
         var itemInfo = id;
         this.callback = callback;
-        var url = "http://m.imdb.com/title/" + itemInfo.id + "//rate?new_rating=" + rating + "&csrf=" + this.auth;
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + this.auth;
         xhr(url, this, this.voteCallback, this.voteCallbackError);
         return true;
     };
@@ -81,8 +85,7 @@ var ImdbDatabaseInfo = (function () {
     ImdbDatabaseInfo.prototype.voteCallback = function (data) {
         this.callback(true);
     };
-    ImdbDatabaseInfo.prototype.htmlDecode = //voting url http://m.imdb.com/title/tt1605630/rate?new_rating=<rating>&csrf=<auth>
-    function (value) {
+    ImdbDatabaseInfo.prototype.htmlDecode = function (value) {
         if(value) {
             var a = document.createElement('a');
             a.innerHTML = value;

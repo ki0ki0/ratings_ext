@@ -56,7 +56,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
         this.callback = callback;
 
-        var url = "http://m.imdb.com/title/" + itemInfo.id + "/";
+        var url = "http://www.imdb.com/title/" + itemInfo.id + "/";
         xhr(url, this, this.userRatingCallback, this.userRatingCallbackError);
         return true;
     }
@@ -65,10 +65,10 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         this.callback(null);
     }
 
-    private auth: string;
+    private auth: string = null;
 
     private userRatingCallback(data) {
-        var your = /<strong>You: ([0-9]+)/g;
+        var your = /<span class="rating-rating rating-your"><span class="value">([0-9]+)<\/span>/g;
         var arr_your = your.exec(data);
         var rate = null;
         var txt = null;
@@ -80,9 +80,11 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
             txt.innerText = "Your rating: " + rate + "/10";
         }
 
-        var exp = /data-csrf="([^\"]*)"/g;
+        var exp = /data-auth="([^\"]*)"/g;
         var arr = exp.exec(data);
-        this.auth = arr[1];
+        if ((arr != null) && (arr.length > 0)) {
+            this.auth = arr[1];
+        }
 
         this.callback(rate, txt);
     }
@@ -94,7 +96,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
         this.callback = callback;
 
-        var url = "http://m.imdb.com/title/" + itemInfo.id + "//rate?new_rating=" + rating + "&csrf=" + this.auth;
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + this.auth;
         xhr(url, this, this.voteCallback, this.voteCallbackError);
         return true;
     }
@@ -106,8 +108,6 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     private voteCallback(data) {
         this.callback(true);
     }
-
-    //voting url http://m.imdb.com/title/tt1605630/rate?new_rating=<rating>&csrf=<auth>
 
     private htmlDecode(value) {
         if (value) {

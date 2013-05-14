@@ -83,9 +83,13 @@ class Ratings {
     private voting = null;
     private divVoting = null;
 
+    private ids = new Array();
+
     private GetIdCallback(id) {
         if (id == null)
             return;
+
+        this.ids[this.ids.length] = id;
 
         for (var i = 0; i < this.databases.length; i++) {
             this.databases[i].CreateItemRatingImg(id, this.info.container);
@@ -131,14 +135,27 @@ class Ratings {
 
         var display = ((val == -1) ? "block" : "none");
         for (var i = 0; i < this.userRatingsElements.length; i++) {
-            this.userRatingsElements[i].style.display = display;
+            if (this.userRatingsElements[i]) {
+                this.userRatingsElements[i].style.display = display;
+            }
         }
 
         this.voting.reset(val);
     }
 
     private vote(mouseEvent, val) {
-        console.log("vote " + val);
+        for (var j = 0; j < this.ids.length; j++) {
+            var id = this.ids[j];
+
+            for (var i = 0; i < this.databases.length; i++) {
+                var _this = this;
+                this.databases[i].Vote(id, val, function (success) { _this.voteCallback(success); });
+            }
+        }
     }
 
+
+    private voteCallback(success) {
+        console.log(success);
+    }
 }

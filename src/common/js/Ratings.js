@@ -32,6 +32,7 @@ var Ratings = (function () {
         this.info = null;
         this.voting = null;
         this.divVoting = null;
+        this.ids = new Array();
         this.userRatings = new Array();
         this.userRatingsElements = new Array();
     }
@@ -73,6 +74,7 @@ var Ratings = (function () {
         if(id == null) {
             return;
         }
+        this.ids[this.ids.length] = id;
         for(var i = 0; i < this.databases.length; i++) {
             this.databases[i].CreateItemRatingImg(id, this.info.container);
             if(Settings.GetSettings().GetIsShowVoting()) {
@@ -112,12 +114,25 @@ var Ratings = (function () {
         }
         var display = ((val == -1) ? "block" : "none");
         for(var i = 0; i < this.userRatingsElements.length; i++) {
-            this.userRatingsElements[i].style.display = display;
+            if(this.userRatingsElements[i]) {
+                this.userRatingsElements[i].style.display = display;
+            }
         }
         this.voting.reset(val);
     };
     Ratings.prototype.vote = function (mouseEvent, val) {
-        console.log("vote " + val);
+        for(var j = 0; j < this.ids.length; j++) {
+            var id = this.ids[j];
+            for(var i = 0; i < this.databases.length; i++) {
+                var _this = this;
+                this.databases[i].Vote(id, val, function (success) {
+                    _this.voteCallback(success);
+                });
+            }
+        }
+    };
+    Ratings.prototype.voteCallback = function (success) {
+        console.log(success);
     };
     return Ratings;
 })();

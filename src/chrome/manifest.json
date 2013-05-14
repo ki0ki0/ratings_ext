@@ -38,7 +38,6 @@
 	    "webNavigation",
 		"storage",
 		"http://www.imdb.com/*",
-		"http://m.imdb.com/*",
 		"http://www.kinopoisk.ru/*" ,
 		"http://ext.kinopoisk.ru/*"
 	],
