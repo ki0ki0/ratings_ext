@@ -84,15 +84,22 @@ class Ratings {
     private divVoting = null;
 
     private ids = new Array();
+    private ratingElements = new Array();
 
     private GetIdCallback(id) {
         if (id == null)
             return;
 
-        this.ids[this.ids.length] = id;
+        var index = this.ids.length;
+        this.ids[index] = id;
 
         for (var i = 0; i < this.databases.length; i++) {
-            this.databases[i].CreateItemRatingImg(id, this.info.container);
+            var element = this.databases[i].CreateItemRatingImg(id, this.info.container);
+            if (element == null)
+                continue;
+
+            this.ratingElements[index] = element;
+
             if (Settings.GetSettings().GetIsShowVoting()) {
                 if (this.voting == null) {
                     var _this = this;
@@ -106,7 +113,7 @@ class Ratings {
                 }
 
                 var _this = this;
-                this.databases[i].GetUserRating(id, function (rating, element) { _this.GetUserRatingCallback(rating, element); });
+                this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
             }
         }
     }
@@ -114,9 +121,24 @@ class Ratings {
     private userRatings = new Array();
     private userRatingsElements = new Array();
 
-    private GetUserRatingCallback(rating, element) {
-        this.userRatings[this.userRatings.length] = rating;
-        this.userRatingsElements[this.userRatingsElements.length] = element;
+    private GetUserRatingCallback(id, rating) {
+        var index = this.ids.indexOf(id);
+
+        this.userRatings[index] = rating;
+
+        var div = document.createElement("div");
+        this.ratingElements[index].appendChild(div);
+        var txt = document.createElement("p");
+        div.appendChild(txt);
+
+        if (rating == null) {
+            txt.innerText = "Please, sing in.";
+        }
+        else {
+            txt.innerText = "Your rating: " + rating + "/10";
+        }
+
+        this.userRatingsElements[index] = div;
         this.updateVoting();
     }
 
@@ -140,7 +162,10 @@ class Ratings {
             }
         }
 
-        this.voting.reset(val);
+        var numberVal: number = parseInt(val);
+        if (numberVal != null) {
+            this.voting.reset(numberVal);
+        }
     }
 
     private vote(mouseEvent, val) {
@@ -149,13 +174,34 @@ class Ratings {
 
             for (var i = 0; i < this.databases.length; i++) {
                 var _this = this;
-                this.databases[i].Vote(id, val, function (success) { _this.voteCallback(success); });
+                if (this.databases[i].Vote(id, val, function (success) { _this.voteCallback(id, success); })) {
+                    var elem: HTMLDivElement = this.userRatingsElements[j];
+                    elem.style.display = "block";
+
+                    elem.removeChild(elem.firstChild);
+
+                    var img: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+                    img.src = kango.io.getResourceUrl("res/comajax_gray.gif");
+                    elem.appendChild(img);
+                }
             }
         }
     }
 
 
-    private voteCallback(success) {
+    private voteCallback(id, success) {
         console.log(success);
+
+        var index = this.ids.indexOf(id);
+        var elem: HTMLDivElement = this.userRatingsElements[index];
+        elem.style.display = "block";
+
+        for (var i = 0; i < this.databases.length; i++) {
+            var _this = this;
+            this.databases[i].GetUserRating(id, function (rating) {
+                elem.removeChild(elem.firstChild);
+                _this.GetUserRatingCallback(id, rating);
+            });
+        }
     }
 }

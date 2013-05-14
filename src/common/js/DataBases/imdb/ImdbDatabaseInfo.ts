@@ -11,11 +11,9 @@
 
 class ImdbDatabaseInfo implements IDatabaseInfo {
 
-    private parent:Node;
-
-    public CreateItemRatingImg(id: any, parent: Node): bool {
+    public CreateItemRatingImg(id: any, parent: Node): Element {
         if (id instanceof ImdbInfo === false)
-            return false;
+            return null;
         var itemInfo: ImdbInfo = id;
 
         var img = "http://tracker.0day.kiev.ua/imdb/imdb_" + itemInfo.id + ".gif";
@@ -25,8 +23,6 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var item: HTMLDivElement = <HTMLDivElement>document.createElement("div");
         item.style.display = "table-cell";
         parent.appendChild(item);
-
-        this.parent = item;
 
         var input: HTMLInputElement = <HTMLInputElement> document.createElement("input");
         item.appendChild(input);
@@ -45,6 +41,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var txt = document.createElement("p");
         link.appendChild(txt);
         txt.innerText = this.htmlDecode(itemInfo.title);
+        return item;
     }
 
     private callback: Function;
@@ -68,25 +65,29 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     private auth: string = null;
 
     private userRatingCallback(data) {
-        var your = /<span class="rating-rating rating-your"><span class="value">([0-9]+)<\/span>/g;
+        var your = /<span class="value">([0-9\-]+)<\/span>/g;
         var arr_your = your.exec(data);
         var rate = null;
-        var txt = null;
         if ((arr_your != null) && (arr_your.length > 0)) {
-            rate = parseInt(arr_your[1]);
-
-            txt = document.createElement("p");
-            this.parent.appendChild(txt);
-            txt.innerText = "Your rating: " + rate + "/10";
+            rate = arr_your[1];
         }
 
         var exp = /data-auth="([^\"]*)"/g;
         var arr = exp.exec(data);
         if ((arr != null) && (arr.length > 0)) {
-            this.auth = arr[1];
+            var auth = arr[1];
+            if (auth.length == 0) {
+                rate = null;
+            }
+            else {
+                this.auth = auth;
+            }
+        }
+        else {
+            rate = null;
         }
 
-        this.callback(rate, txt);
+        this.callback(rate);
     }
 
     Vote(id: any, rating: number, callback: Function): bool {

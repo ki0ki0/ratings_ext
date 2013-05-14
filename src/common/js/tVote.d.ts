@@ -1,4 +1,4 @@
 class tVote {
-    constructor(containerId, settings);
-    set (idx, voting);
+    constructor(containerId:string, settings:Object);
+    reset(val: number);
 }
