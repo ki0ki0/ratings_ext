@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -45,12 +45,16 @@ class Ratings {
             var infoTmp = this.providers[i].GetInfo();
             if (infoTmp != null) {
                 this.info = infoTmp;
+                console.log("Info found");
                 break;
             }
         }
 
         if (this.info == null)
+        {
+            console.log("No info found");
             return;
+        }
 
         var table = document.createElement("table");
         this.info.container.appendChild(table);
@@ -88,7 +92,12 @@ class Ratings {
 
     private GetIdCallback(id) {
         if (id == null)
+        {
+            console.log("Id response empty");
             return;
+        }
+
+        console.log("Id response recived");
 
         var index = this.ids.length;
         this.ids[index] = id;
@@ -102,20 +111,48 @@ class Ratings {
 
             if (Settings.GetSettings().GetIsShowVoting()) {
                 if (this.voting == null) {
-                    var _this = this;
-
                     this.divVoting.style.display = "block";
-                    this.voting = new tVote("voting", {
-                        max: 10, def: 0, click: function (mouseEvent, val) {
-                            _this.vote(mouseEvent, val);
-                        }
-                    });
-                }
 
-                var _this = this;
-                this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                    if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined))
+                    {
+                        var star = kango.io.getResourceUrl("res/star.png");
+                        var darkStar = kango.io.getResourceUrl("res/dark_star.png");
+                        var voteStar = star;
+
+                        this.addVoting(star, darkStar, voteStar);
+                        var _this = this;
+                        this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                    }
+                    else
+                    {
+                        var _this = this;
+                        kango.invokeAsync("kango.storage.getResourceUrl", "res/star.png", function (data) {
+                            var star = data;
+                            kango.invokeAsync("kango.storage.getResourceUrl", "res/dark_star.png", function (data) {
+                                var darkStar = data;
+                                _this.addVoting(star, darkStar, voteStar);
+                                _this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                            });
+                        });
+                    }
+
+                }
+                else
+                {
+                    var _this = this;
+                    this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                }
             }
         }
+    }
+
+    private addVoting(star: string, darkStar: string, voteStar: string) {
+        var _this = this;
+        this.voting = new tVote(star, darkStar, voteStar, "voting", {
+            max: 10, def: 0, click: function (mouseEvent, val) {
+                _this.vote(mouseEvent, val);
+            }
+        });
     }
 
     private userRatings = new Array();

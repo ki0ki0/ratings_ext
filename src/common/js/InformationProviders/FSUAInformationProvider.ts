@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -15,14 +15,14 @@ class FSUAInformation implements IInformationContainer {
 
 class FSUAInformationProvider implements IInformationProvider {
     GetInfo(): IInformationContainer {
-        if (window.location.href.indexOf("http://fs.ua/item/") == -1)
+        if (window.location.href.indexOf("http://fs.to/video/") == -1)
             return null;
 
-        var category = document.getElementsByClassName("b-subcategory-title");
-        if (category.length != 1)
+        var category = document.getElementsByTagName("h1");
+        if ((category === undefined) && (category.length <= 0))
             return null;
 
-        var text = category[0].nextSibling.textContent.trim();
+        var text = category[0].textContent.trim();
         var titles = text.split(String.fromCharCode(160, 47, 160));
         if (titles.length == 0)
             return null;

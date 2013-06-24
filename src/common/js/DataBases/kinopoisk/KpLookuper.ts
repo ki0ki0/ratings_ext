@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -17,8 +17,10 @@ class KpLookuper implements ILookuper {
 
     private titleIndex: number = 0;
 
-    public GetId(info: ILookupInfo, callback: (any) => void ):void  {
+    public GetId(info: ILookupInfo, callback: (any) => void ): void {
+        console.log("KpLookuper GetId");
         if ((info != undefined) && (callback != undefined)) {
+            console.log("KpLookuper GetId initiated");
             this.info = info;
             this.callback = callback;
             this.Lookup();
@@ -28,6 +30,7 @@ class KpLookuper implements ILookuper {
     private Lookup() {
         var title = this.NextTitle();
         if (title == null) {
+            console.log("KpLookuper Lookup finished");
             this.callback(null);
         }
         else {

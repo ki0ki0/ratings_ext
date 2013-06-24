@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
 
 /// <reference path="../Chrome.d.ts"/> 
-/// <reference path="..\..\..\common\js\Settings\LocalStorageSettings.ts"/> 
+/// <reference path="LocalStorageSettings.ts"/> 
 
 class ChromeStorageSettings implements ISettings {
     public Names: string[];

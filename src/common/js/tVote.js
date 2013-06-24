@@ -1,7 +1,7 @@
-function tVote(containerId, settings) {
-    this.STAR = kango.io.getResourceUrl("res/star.png");
-    this.DARK_STAR = kango.io.getResourceUrl("res/dark_star.png");
-    this.VOTE_STAR = this.STAR;
+function tVote(star, dartStar, voteStar, containerId, settings) {
+    this.STAR = star;
+    this.DARK_STAR = dartStar;
+    this.VOTE_STAR = voteStar;
 
     this.container = containerId;
     this.settings = settings;

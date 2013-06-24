@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -11,10 +11,13 @@
 
 class Options
 {
-    private settings: Settings;
-
-    constructor () {
-        this.settings = new Settings();
+    constructor(callInit:bool) {
+        var _this = this;
+        new Settings(function () {
+            if (callInit) {
+                _this.initOptionsValues();
+            }
+        });
     }
 
     initOptionsPage() {
@@ -34,27 +37,25 @@ class Options
 
         var text = kango.i18n.getMessage("showVotingSub");
         document.getElementById("showVotingSub").textContent = text;
-
-        this.initOptionsValues();
     }
 
     initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
         var _this = this;
         val.addEventListener("click", function () { _this.saveSettings(); });
-        val.checked = this.settings.GetIsClearPlayer();
+        val.checked = Settings.GetSettings().GetIsClearPlayer();
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
         val.addEventListener("click", function () { _this.saveSettings(); });
-        val.checked = this.settings.GetIsShowVoting();
+        val.checked = Settings.GetSettings().GetIsShowVoting();
     }
 
     saveSettings() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-        this.settings.SetIsClearPlayer(val.checked);
+        Settings.GetSettings().SetIsClearPlayer(val.checked);
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
-        this.settings.SetIsShowVoting(val.checked);
+        Settings.GetSettings().SetIsShowVoting(val.checked);
     }
 
 }

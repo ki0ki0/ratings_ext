@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -12,16 +12,16 @@ function xhr(url, object, success, error) {
         async: false
     };
     kango.xhr.send(details, function (data) {
-        if(data.status == 200 && data.response != null) {
+        if (data.status == 200 && data.response != null) {
             var text = data.response;
             success.call(object, text);
         } else {
-            // something went wrong
             error.call(object, data);
         }
     });
 }
 ;
+
 function xhrJson(url, object, success, error) {
     var details = {
         url: url,
@@ -30,11 +30,10 @@ function xhrJson(url, object, success, error) {
         contentType: 'json'
     };
     kango.xhr.send(details, function (data) {
-        if(data.status == 200 && data.response != null) {
+        if (data.status == 200 && data.response != null) {
             var text = data.response;
             success.call(object, text);
         } else {
-            // something went wrong
             error.call(object, data);
         }
     });

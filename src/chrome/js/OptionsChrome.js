@@ -1,11 +1,12 @@
 var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -15,17 +16,21 @@ var __extends = this.__extends || function (d, b) {
 var OptionsChrome = (function (_super) {
     __extends(OptionsChrome, _super);
     function OptionsChrome() {
-        _super.call(this);
+        _super.call(this, false);
         this.settings = new SettingsChrome(this.initOptionsValues, this);
     }
     OptionsChrome.prototype.initOptionsPage = function () {
         _super.prototype.initOptionsPage.call(this);
+
         var text = kango.i18n.getMessage("syncSettings");
         document.getElementById("syncSettingsLabel").textContent = text;
+
         var text = kango.i18n.getMessage("syncSettingsSub");
         document.getElementById("syncSettingsSub").textContent = text;
+
         document.getElementById("syncSettings").style.display = "";
     };
+
     OptionsChrome.prototype.initOptionsValues = function () {
         var val = document.getElementById("syncSettingsVal");
         var _this = this;
@@ -33,11 +38,14 @@ var OptionsChrome = (function (_super) {
             _this.saveSettings();
         });
         val.checked = this.settings.GetIsSync();
+
         _super.prototype.initOptionsValues.call(this);
     };
+
     OptionsChrome.prototype.saveSettings = function () {
         var val = document.getElementById("syncSettingsVal");
         this.settings.SetIsSync(val.checked);
+
         _super.prototype.saveSettings.call(this);
     };
     return OptionsChrome;

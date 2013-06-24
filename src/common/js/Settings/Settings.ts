@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
 
-/// <reference path="LocalStorageSettings.ts"/> 
+/// <reference path="KangoStorageSettings.ts"/> 
 
 class Settings {
     private static _this: Settings;
@@ -15,18 +15,32 @@ class Settings {
         return Settings._this;
     }
 
-    private local: LocalStorageSettings;
+    private callback: Function;
+    private local: KangoStorageSettings;
 
     private names = ["playerOnly", "showVoting"];
 
-    constructor() {
-        this.local = new LocalStorageSettings();
+    constructor(callback: Function) {
         Settings._this = this;
+        console.log("Constructor " + Settings._this);
+
+        if (callback == null)
+            return;
+        this.callback = callback;
+        var _this = this;
+        this.local = new KangoStorageSettings(this.names, function () {
+            _this.local = this;
+            _this.storageCallback();
+        });
     }
 
-    GetIsClearPlayer(): any { return this.local.Get(this.names[1]); }
-    SetIsClearPlayer(isClear: bool) { this.local.Set(this.names[1], isClear); }
+    private storageCallback() {
+        this.callback();
+    }
 
-    GetIsShowVoting(): any { return this.local.Get(this.names[2]); }
-    SetIsShowVoting(isClear: bool) { this.local.Set(this.names[2], isClear); }
+    GetIsClearPlayer(): any { return this.local.Get(this.names[0]); }
+    SetIsClearPlayer(isClear: bool) { this.local.Set(this.names[0], isClear); }
+
+    GetIsShowVoting(): any { return this.local.Get(this.names[1]); }
+    SetIsShowVoting(isClear: bool) { this.local.Set(this.names[1], isClear); }
 }

@@ -8,6 +8,7 @@
 	"js/Settings/ChromeStorageSettings.js",
 	"js/Settings/Settings.js",
 	"js/Settings/SettingsChrome.js",
+	"js/Settings/KangoStorageSettings.js",
 	"js/InformationProviders/FSUAInformationProvider.js",
 	"js/InformationProviders/EXUAInformationProvider.js",
 	"js/DataBases/imdb/ImdbInfo.js",

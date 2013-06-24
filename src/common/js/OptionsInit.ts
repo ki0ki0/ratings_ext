@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Ratings for FS.UA and EX.UA
-// @include http://fs.ua/*
+// @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
@@ -11,7 +11,7 @@
 
 KangoAPI.onReady(
     function () {
-        var options = new Options();
+        var options = new Options(true);
         options.initOptionsPage();
     }
 );

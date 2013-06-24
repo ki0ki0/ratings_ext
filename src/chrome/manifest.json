@@ -3,7 +3,7 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"http://fs.ua/*",
+				"http://fs.to/*",
 				"http://www.ex.ua/view/*",
 				"http://www.kinopoisk.ru/film/*" 
 			],

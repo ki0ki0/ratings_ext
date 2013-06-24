@@ -21,7 +21,6 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\common\js\InformationProviders\FakeInformationProvider.ts" />
     <TypeScriptCompile Include="src\chrome\js\OptionsInit.ts" />
     <Content Include="src\chrome\js\OptionsInit.js">
       <DependentUpon>OptionsInit.ts</DependentUpon>
@@ -31,8 +30,9 @@
       <DependentUpon>Init.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
-    <Content Include="src\common\js\InformationProviders\FakeInformationProvider.js">
-      <DependentUpon>FakeInformationProvider.ts</DependentUpon>
+    <TypeScriptCompile Include="src\chrome\js\Settings\LocalStorageSettings.ts" />
+    <Content Include="src\chrome\js\Settings\LocalStorageSettings.js">
+      <DependentUpon>LocalStorageSettings.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\IDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
@@ -97,9 +97,9 @@
       <DependentUpon>ImdbLookuper.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
-    <TypeScriptCompile Include="src\common\js\Settings\LocalStorageSettings.ts" />
-    <Content Include="src\common\js\Settings\LocalStorageSettings.js">
-      <DependentUpon>LocalStorageSettings.ts</DependentUpon>
+    <TypeScriptCompile Include="src\common\js\Settings\KangoStorageSettings.ts" />
+    <Content Include="src\common\js\Settings\KangoStorageSettings.js">
+      <DependentUpon>KangoStorageSettings.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\chrome\js\Settings\ChromeStorageSettings.ts" />
     <Content Include="src\chrome\js\Settings\ChromeStorageSettings.js">
