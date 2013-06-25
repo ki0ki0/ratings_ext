@@ -46,6 +46,7 @@ var KpDatabaseInfo = (function () {
     KpDatabaseInfo.prototype.GetUserRating = function (id, callback) {
         if (id instanceof KpInfo === false)
             return false;
+        console.log("Kp GetUserRating");
         var itemInfo = id;
 
         this.callback = callback;

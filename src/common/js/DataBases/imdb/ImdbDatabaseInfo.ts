@@ -49,6 +49,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     public GetUserRating(id: any, callback: Function): bool {
         if (id instanceof ImdbInfo === false)
             return false;
+        console.log("Imdb GetUserRating");
         var itemInfo: ImdbInfo = id;
 
         this.callback = callback;
@@ -93,20 +94,26 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     Vote(id: any, rating: number, callback: Function): bool {
         if (id instanceof ImdbInfo === false)
             return false;
+        console.log("Imdb voting.");
         var itemInfo: ImdbInfo = id;
 
         this.callback = callback;
 
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + this.auth;
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + this.auth
+            + "&tracking_tag=title-maindetails";
+
+        console.log(url);
         xhr(url, this, this.voteCallback, this.voteCallbackError);
         return true;
     }
 
-    private voteCallbackError() {
+    private voteCallbackError(data) {
+        console.log("Imdb voting error." + data.status);
         this.callback(false);
     }
 
     private voteCallback(data) {
+        console.log("Imdb voting success." + data);
         this.callback(true);
     }
 

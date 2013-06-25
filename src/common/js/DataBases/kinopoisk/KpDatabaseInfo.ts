@@ -49,6 +49,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
     public GetUserRating(id: any, callback: Function): bool {
         if (id instanceof KpInfo === false)
             return false;
+        console.log("Kp GetUserRating");
         var itemInfo: KpInfo = id;
 
         this.callback = callback;

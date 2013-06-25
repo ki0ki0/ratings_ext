@@ -113,35 +113,19 @@ class Ratings {
                 if (this.voting == null) {
                     this.divVoting.style.display = "block";
 
+                    var star = "http://dl.dropboxusercontent.com/u/8771963/res/star.png";
+                    var darkStar = "http://dl.dropboxusercontent.com/u/8771963/res/dark_star.png";
+
                     if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined))
                     {
-                        var star = kango.io.getResourceUrl("res/star.png");
-                        var darkStar = kango.io.getResourceUrl("res/dark_star.png");
-                        var voteStar = star;
-
-                        this.addVoting(star, darkStar, voteStar);
-                        var _this = this;
-                        this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                        star = kango.io.getResourceUrl("res/star.png");
+                        darkStar = kango.io.getResourceUrl("res/dark_star.png");
                     }
-                    else
-                    {
-                        var _this = this;
-                        kango.invokeAsync("kango.storage.getResourceUrl", "res/star.png", function (data) {
-                            var star = data;
-                            kango.invokeAsync("kango.storage.getResourceUrl", "res/dark_star.png", function (data) {
-                                var darkStar = data;
-                                _this.addVoting(star, darkStar, voteStar);
-                                _this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
-                            });
-                        });
-                    }
-
+                    var voteStar = star;
+                    this.addVoting(star, darkStar, voteStar);
                 }
-                else
-                {
-                    var _this = this;
-                    this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
-                }
+                var _this = this;
+                this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
             }
         }
     }
@@ -159,12 +143,16 @@ class Ratings {
     private userRatingsElements = new Array();
 
     private GetUserRatingCallback(id, rating) {
+        console.log("GetUserRatingCallback " + id + " " + rating);
+
         var index = this.ids.indexOf(id);
+        console.log("GetUserRatingCallback index:" + index);
 
         this.userRatings[index] = rating;
 
         var div = document.createElement("div");
         this.ratingElements[index].appendChild(div);
+        console.log("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
         var txt = document.createElement("p");
         div.appendChild(txt);
 
@@ -177,6 +165,7 @@ class Ratings {
 
         this.userRatingsElements[index] = div;
         this.updateVoting();
+        console.log("GetUserRatingCallback done");
     }
 
     private updateVoting() {
@@ -192,7 +181,7 @@ class Ratings {
             }
         }
 
-        var display = ((val == -1) ? "block" : "none");
+        var display = ((val == -1) || (val == null) ? "block" : "none");
         for (var i = 0; i < this.userRatingsElements.length; i++) {
             if (this.userRatingsElements[i]) {
                 this.userRatingsElements[i].style.display = display;
@@ -218,13 +207,19 @@ class Ratings {
                     elem.removeChild(elem.firstChild);
 
                     var img: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-                    img.src = kango.io.getResourceUrl("res/comajax_gray.gif");
+                    if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined))
+                    {
+                        img.src = kango.io.getResourceUrl("res/comajax_gray.gif");
+                    }
+                    else
+                    {
+                        img.src = "https://dl.dropboxusercontent.com/u/8771963/res/comajax_gray.gif";
+                    }
                     elem.appendChild(img);
                 }
             }
         }
     }
-
 
     private voteCallback(id, success) {
         console.log(success);
