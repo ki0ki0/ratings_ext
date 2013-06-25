@@ -93,7 +93,11 @@ var ImdbDatabaseInfo = (function () {
 
         this.callback = callback;
 
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + this.auth + "&tracking_tag=title-maindetails";
+        var a = "%";
+
+        var auth = encodeURIComponent(this.auth);
+
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + auth + "&tracking_tag=title-maindetails";
 
         console.log(url);
         xhr(url, this, this.voteCallback, this.voteCallbackError);
