@@ -4,6 +4,8 @@
 // @all-frames true
 // ==/UserScript==
 
+/// <reference path="../../debug.ts"/>
+
 /// <reference path="../../xhr.ts"/>
 
 class KpDatabaseInfo_Helper {
@@ -26,7 +28,7 @@ class KpDatabaseInfo_Helper {
 
             var url = "http://www.kinopoisk.ru/vote.php?film=" + id + "&film_vote=" + rate + "&c=" + auth + "&rnd=" + Math.random();
 
-            console.log("Vote url: " + url);
+            debug("Vote url: " + url);
             xhr(url, this, this.voteResult, this.voteError);
         }
     }
@@ -41,10 +43,10 @@ class KpDatabaseInfo_Helper {
     }
 }
 
-console.log("Helper loaded");
+debug("Helper loaded");
 
 if (document.location.href.indexOf("www.kinopoisk.ru") >= 0) {
-    console.log("Helper start");
+    debug("Helper start");
     var helper = new KpDatabaseInfo_Helper();
     helper.Vote();
 }

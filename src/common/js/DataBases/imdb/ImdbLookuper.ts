@@ -5,6 +5,8 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+/// <reference path="../../debug.ts"/>
+
 /// <reference path="../ILookuper.ts"/> 
 /// <reference path="../../xhr.ts"/> 
 /// <reference path="ImdbInfo.ts"/> 
@@ -17,9 +19,9 @@ class ImdbLookuper implements ILookuper {
     private titleIndex: number = 0;
 
     public GetId(info: ILookupInfo, callback: (any) => void ): void {
-        console.log("ImdbLookuper GetId");
+        debug("ImdbLookuper GetId");
         if ((info != undefined) && (callback != undefined)) {
-            console.log("ImdbLookuper GetId initiated");
+            debug("ImdbLookuper GetId initiated");
             this.info = info;
             this.callback = callback;
             this.Lookup();
@@ -29,7 +31,7 @@ class ImdbLookuper implements ILookuper {
     private Lookup() {
         var title = this.NextTitle();
         if (title == null) {
-            console.log("KpLookuper Lookup finished");
+            debug("KpLookuper Lookup finished");
             this.callback(null);
         }
         else {

@@ -5,6 +5,8 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+/// <reference path="../../debug.ts"/>
+
 /// <reference path="../IDatabaseInfo.ts"/> 
 /// <reference path="../../xhr.ts"/>
 /// <reference path="KpInfo.ts"/> 
@@ -49,7 +51,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
     public GetUserRating(id: any, callback: Function): bool {
         if (id instanceof KpInfo === false)
             return false;
-        console.log("Kp GetUserRating");
+        debug("Kp GetUserRating");
         var itemInfo: KpInfo = id;
 
         this.callback = callback;
@@ -101,7 +103,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
     Vote(id: any, rating: number, callback: Function): bool {
         if (id instanceof KpInfo === false)
             return false;
-        console.log("Kp voting.");
+        debug("Kp voting.");
         this.kpInfo = id;
 
         this.callback = callback;
@@ -121,7 +123,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
     }
 
     private receiveMessage(event) {
-        console.log("Kp receiveMessage " + event);
+        debug("Kp receiveMessage " + event);
         if (event.data.indexOf("vote:") >= 0) {
             this.callback(this.kpInfo, event.data.indexOf("Ok") >= 0);
         }

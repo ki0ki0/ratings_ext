@@ -4,6 +4,7 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="../../debug.ts"/>
 /// <reference path="../ILookuper.ts"/>
 /// <reference path="../../xhr.ts"/>
 /// <reference path="md5.d.ts"/>
@@ -25,9 +26,9 @@ var KpLookuper = (function () {
         };
     }
     KpLookuper.prototype.GetId = function (info, callback) {
-        console.log("KpLookuper GetId");
+        debug("KpLookuper GetId");
         if ((info != undefined) && (callback != undefined)) {
-            console.log("KpLookuper GetId initiated");
+            debug("KpLookuper GetId initiated");
             this.info = info;
             this.callback = callback;
             this.Lookup();
@@ -37,7 +38,7 @@ var KpLookuper = (function () {
     KpLookuper.prototype.Lookup = function () {
         var title = this.NextTitle();
         if (title == null) {
-            console.log("KpLookuper Lookup finished");
+            debug("KpLookuper Lookup finished");
             this.callback(null);
         } else {
             var query = "getKPGlobalSearch?cityID=49&countryID=62&keyword=";

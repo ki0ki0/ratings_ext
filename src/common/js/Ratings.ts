@@ -5,6 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+/// <reference path="debug.ts"/>
 
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
 /// <reference path="InformationProviders/EXUAInformationProvider.ts"/> 
@@ -45,14 +46,14 @@ class Ratings {
             var infoTmp = this.providers[i].GetInfo();
             if (infoTmp != null) {
                 this.info = infoTmp;
-                console.log("Info found");
+                debug("Info found");
                 break;
             }
         }
 
         if (this.info == null)
         {
-            console.log("No info found");
+            debug("No info found");
             return;
         }
 
@@ -93,11 +94,11 @@ class Ratings {
     private GetIdCallback(id) {
         if (id == null)
         {
-            console.log("Id response empty");
+            debug("Id response empty");
             return;
         }
 
-        console.log("Id response recived");
+        debug("Id response recived");
 
         var index = this.ids.length;
         this.ids[index] = id;
@@ -143,16 +144,16 @@ class Ratings {
     private userRatingsElements = new Array();
 
     private GetUserRatingCallback(id, rating) {
-        console.log("GetUserRatingCallback " + id + " " + rating);
+        debug("GetUserRatingCallback " + id + " " + rating);
 
         var index = this.ids.indexOf(id);
-        console.log("GetUserRatingCallback index:" + index);
+        debug("GetUserRatingCallback index:" + index);
 
         this.userRatings[index] = rating;
 
         var div = document.createElement("div");
         this.ratingElements[index].appendChild(div);
-        console.log("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
+        debug("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
         var txt = document.createElement("p");
         div.appendChild(txt);
 
@@ -165,7 +166,7 @@ class Ratings {
 
         this.userRatingsElements[index] = div;
         this.updateVoting();
-        console.log("GetUserRatingCallback done");
+        debug("GetUserRatingCallback done");
     }
 
     private updateVoting() {
@@ -223,10 +224,10 @@ class Ratings {
     }
 
     private voteCallback(id, success) {
-        console.log(success);
+        debug(success);
 
         var index = this.ids.indexOf(id);
-        console.log("voteCallback id: " + id);
+        debug("voteCallback id: " + id);
         var elem: HTMLDivElement = this.userRatingsElements[index];
         elem.style.display = "block";
 

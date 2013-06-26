@@ -5,11 +5,12 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+/// <reference path="../../common/js/debug.ts"/>
 
 /// <reference path="Settings/SettingsChrome.ts"/>
 /// <reference path="../../common/js/Ratings.ts"/>
 
-console.log("chrome/init");
+debug("chrome/init");
 
 new SettingsChrome(function () {
     new Ratings().GetRatings();

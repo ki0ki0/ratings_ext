@@ -4,12 +4,13 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="../debug.ts"/>
 /// <reference path="KangoStorageSettings.ts"/>
 var Settings = (function () {
     function Settings(callback) {
         this.names = ["playerOnly", "showVoting"];
         Settings._this = this;
-        console.log("Constructor " + Settings._this);
+        debug("Constructor " + Settings._this);
 
         if (callback == null)
             return;

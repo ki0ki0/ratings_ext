@@ -4,6 +4,7 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="../../debug.ts"/>
 /// <reference path="../IDatabaseInfo.ts"/>
 /// <reference path="../../xhr.ts"/>
 /// <reference path="ImdbInfo.ts"/>
@@ -47,7 +48,7 @@ var ImdbDatabaseInfo = (function () {
     ImdbDatabaseInfo.prototype.GetUserRating = function (id, callback) {
         if (id instanceof ImdbInfo === false)
             return false;
-        console.log("Imdb GetUserRating");
+        debug("Imdb GetUserRating");
         var itemInfo = id;
 
         this.callback = callback;
@@ -88,7 +89,7 @@ var ImdbDatabaseInfo = (function () {
     ImdbDatabaseInfo.prototype.Vote = function (id, rating, callback) {
         if (id instanceof ImdbInfo === false)
             return false;
-        console.log("Imdb voting.");
+        debug("Imdb voting.");
         this.itemInfo = id;
 
         this.callback = callback;
@@ -97,18 +98,18 @@ var ImdbDatabaseInfo = (function () {
 
         var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + this.itemInfo.id + "&rating=" + rating + "&auth=" + auth + "&tracking_tag=title-maindetails";
 
-        console.log(url);
+        debug(url);
         xhr(url, this, this.voteCallback, this.voteCallbackError);
         return true;
     };
 
     ImdbDatabaseInfo.prototype.voteCallbackError = function (data) {
-        console.log("Imdb voting error." + data.status);
+        debug("Imdb voting error." + data.status);
         this.callback(this.itemInfo, false);
     };
 
     ImdbDatabaseInfo.prototype.voteCallback = function (data) {
-        console.log("Imdb voting success." + data);
+        debug("Imdb voting success." + data);
         this.callback(this.itemInfo, true);
     };
 

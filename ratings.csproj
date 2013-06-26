@@ -62,6 +62,10 @@
       <DependentUpon>KpDatabaseInfo.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\Ratings.ts" />
+    <TypeScriptCompile Include="src\common\js\debug.ts" />
+    <Content Include="src\common\js\debug.js">
+      <DependentUpon>debug.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\Ratings.js">
       <DependentUpon>Ratings.ts</DependentUpon>
     </Content>

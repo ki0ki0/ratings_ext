@@ -5,6 +5,9 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+
+/// <reference path="../../debug.ts"/>
+
 /// <reference path="../IDatabaseInfo.ts"/> 
 /// <reference path="../../xhr.ts"/>
 /// <reference path="ImdbInfo.ts"/> 
@@ -49,7 +52,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     public GetUserRating(id: any, callback: Function): bool {
         if (id instanceof ImdbInfo === false)
             return false;
-        console.log("Imdb GetUserRating");
+        debug("Imdb GetUserRating");
         var itemInfo: ImdbInfo = id;
 
         this.callback = callback;
@@ -97,7 +100,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     Vote(id: any, rating: number, callback: Function): bool {
         if (id instanceof ImdbInfo === false)
             return false;
-        console.log("Imdb voting.");
+        debug("Imdb voting.");
         this.itemInfo = id;
 
         this.callback = callback;
@@ -107,18 +110,18 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + this.itemInfo.id + "&rating=" + rating + "&auth=" + auth
             + "&tracking_tag=title-maindetails";
 
-        console.log(url);
+        debug(url);
         xhr(url, this, this.voteCallback, this.voteCallbackError);
         return true;
     }
 
     private voteCallbackError(data) {
-        console.log("Imdb voting error." + data.status);
+        debug("Imdb voting error." + data.status);
         this.callback(this.itemInfo, false);
     }
 
     private voteCallback(data) {
-        console.log("Imdb voting success." + data);
+        debug("Imdb voting success." + data);
         this.callback(this.itemInfo, true);
     }
 

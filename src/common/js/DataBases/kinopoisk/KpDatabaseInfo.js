@@ -4,6 +4,7 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="../../debug.ts"/>
 /// <reference path="../IDatabaseInfo.ts"/>
 /// <reference path="../../xhr.ts"/>
 /// <reference path="KpInfo.ts"/>
@@ -46,7 +47,7 @@ var KpDatabaseInfo = (function () {
     KpDatabaseInfo.prototype.GetUserRating = function (id, callback) {
         if (id instanceof KpInfo === false)
             return false;
-        console.log("Kp GetUserRating");
+        debug("Kp GetUserRating");
         var itemInfo = id;
 
         this.callback = callback;
@@ -92,7 +93,7 @@ var KpDatabaseInfo = (function () {
     KpDatabaseInfo.prototype.Vote = function (id, rating, callback) {
         if (id instanceof KpInfo === false)
             return false;
-        console.log("Kp voting.");
+        debug("Kp voting.");
         this.kpInfo = id;
 
         this.callback = callback;
@@ -114,7 +115,7 @@ var KpDatabaseInfo = (function () {
     };
 
     KpDatabaseInfo.prototype.receiveMessage = function (event) {
-        console.log("Kp receiveMessage " + event);
+        debug("Kp receiveMessage " + event);
         if (event.data.indexOf("vote:") >= 0) {
             this.callback(this.kpInfo, event.data.indexOf("Ok") >= 0);
         }

@@ -3,6 +3,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // @all-frames true
 // ==/UserScript==
+/// <reference path="../../debug.ts"/>
 /// <reference path="../../xhr.ts"/>
 var KpDatabaseInfo_Helper = (function () {
     function KpDatabaseInfo_Helper() {
@@ -26,7 +27,7 @@ var KpDatabaseInfo_Helper = (function () {
 
             var url = "http://www.kinopoisk.ru/vote.php?film=" + id + "&film_vote=" + rate + "&c=" + auth + "&rnd=" + Math.random();
 
-            console.log("Vote url: " + url);
+            debug("Vote url: " + url);
             xhr(url, this, this.voteResult, this.voteError);
         }
     };
@@ -41,10 +42,10 @@ var KpDatabaseInfo_Helper = (function () {
     return KpDatabaseInfo_Helper;
 })();
 
-console.log("Helper loaded");
+debug("Helper loaded");
 
 if (document.location.href.indexOf("www.kinopoisk.ru") >= 0) {
-    console.log("Helper start");
+    debug("Helper start");
     var helper = new KpDatabaseInfo_Helper();
     helper.Vote();
 }

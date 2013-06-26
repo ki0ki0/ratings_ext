@@ -4,9 +4,10 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="debug.ts"/>
 /// <reference path="Settings/Settings.ts"/>
 /// <reference path="Ratings.ts"/>
-console.log("init");
+debug("init");
 
 new Settings(function () {
     new Ratings().GetRatings();

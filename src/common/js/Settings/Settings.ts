@@ -5,6 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
+/// <reference path="../debug.ts"/>
 
 /// <reference path="KangoStorageSettings.ts"/> 
 
@@ -22,7 +23,7 @@ class Settings {
 
     constructor(callback: Function) {
         Settings._this = this;
-        console.log("Constructor " + Settings._this);
+        debug("Constructor " + Settings._this);
 
         if (callback == null)
             return;

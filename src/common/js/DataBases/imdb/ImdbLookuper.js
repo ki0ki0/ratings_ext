@@ -4,6 +4,7 @@
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
+/// <reference path="../../debug.ts"/>
 /// <reference path="../ILookuper.ts"/>
 /// <reference path="../../xhr.ts"/>
 /// <reference path="ImdbInfo.ts"/>
@@ -12,9 +13,9 @@ var ImdbLookuper = (function () {
         this.titleIndex = 0;
     }
     ImdbLookuper.prototype.GetId = function (info, callback) {
-        console.log("ImdbLookuper GetId");
+        debug("ImdbLookuper GetId");
         if ((info != undefined) && (callback != undefined)) {
-            console.log("ImdbLookuper GetId initiated");
+            debug("ImdbLookuper GetId initiated");
             this.info = info;
             this.callback = callback;
             this.Lookup();
@@ -24,7 +25,7 @@ var ImdbLookuper = (function () {
     ImdbLookuper.prototype.Lookup = function () {
         var title = this.NextTitle();
         if (title == null) {
-            console.log("KpLookuper Lookup finished");
+            debug("KpLookuper Lookup finished");
             this.callback(null);
         } else {
             xhrJson("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title), this, this.Success, this.Error);
