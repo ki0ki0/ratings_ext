@@ -96,8 +96,35 @@ class KpDatabaseInfo implements IDatabaseInfo {
         this.callback(rate);
     }
 
+    private kpInfo: KpInfo;
+
     Vote(id: any, rating: number, callback: Function): bool {
-        return false;
+        if (id instanceof KpInfo === false)
+            return false;
+        console.log("Kp voting.");
+        this.kpInfo = id;
+
+        this.callback = callback;
+
+        var url = "http://www.kinopoisk.ru/film/" + this.kpInfo.id + "/#" + rating + "#" + this.auth;
+
+        var _this = this;
+        window.addEventListener("message", function (ev) { _this.receiveMessage(ev); }, false);
+
+        var ifr = <HTMLIFrameElement> document.createElement("iframe");
+        ifr.height = "0";
+        ifr.width = "0";
+        ifr.src = url;
+
+        document.body.appendChild(ifr);
+        return true;
+    }
+
+    private receiveMessage(event) {
+        console.log("Kp receiveMessage " + event);
+        if (event.data.indexOf("vote:") >= 0) {
+            this.callback(this.kpInfo, event.data.indexOf("Ok") >= 0);
+        }
     }
 
     private htmlDecode(value) {

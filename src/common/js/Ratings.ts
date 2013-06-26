@@ -198,9 +198,10 @@ class Ratings {
         for (var j = 0; j < this.ids.length; j++) {
             var id = this.ids[j];
 
+            var index = this.ids.indexOf(id);
             for (var i = 0; i < this.databases.length; i++) {
                 var _this = this;
-                if (this.databases[i].Vote(id, val, function (success) { _this.voteCallback(id, success); })) {
+                if (this.databases[i].Vote(id, val, function (id, success) { _this.voteCallback(id, success); })) {
                     var elem: HTMLDivElement = this.userRatingsElements[j];
                     elem.style.display = "block";
 
@@ -225,6 +226,7 @@ class Ratings {
         console.log(success);
 
         var index = this.ids.indexOf(id);
+        console.log("voteCallback id: " + id);
         var elem: HTMLDivElement = this.userRatingsElements[index];
         elem.style.display = "block";
 

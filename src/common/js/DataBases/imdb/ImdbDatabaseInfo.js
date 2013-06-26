@@ -89,15 +89,13 @@ var ImdbDatabaseInfo = (function () {
         if (id instanceof ImdbInfo === false)
             return false;
         console.log("Imdb voting.");
-        var itemInfo = id;
+        this.itemInfo = id;
 
         this.callback = callback;
 
-        var a = "%";
-
         var auth = encodeURIComponent(this.auth);
 
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + auth + "&tracking_tag=title-maindetails";
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + this.itemInfo.id + "&rating=" + rating + "&auth=" + auth + "&tracking_tag=title-maindetails";
 
         console.log(url);
         xhr(url, this, this.voteCallback, this.voteCallbackError);
@@ -106,12 +104,12 @@ var ImdbDatabaseInfo = (function () {
 
     ImdbDatabaseInfo.prototype.voteCallbackError = function (data) {
         console.log("Imdb voting error." + data.status);
-        this.callback(false);
+        this.callback(this.itemInfo, false);
     };
 
     ImdbDatabaseInfo.prototype.voteCallback = function (data) {
         console.log("Imdb voting success." + data);
-        this.callback(true);
+        this.callback(this.itemInfo, true);
     };
 
     ImdbDatabaseInfo.prototype.htmlDecode = function (value) {

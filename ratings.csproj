@@ -44,6 +44,10 @@
       <DependentUpon>ImdbInfo.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\md5.d.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.js">
+      <DependentUpon>KpDatabaseInfo_Helper.ts</DependentUpon>
+    </Content>
     <Content Include="src\common\js\DataBases\kinopoisk\md5.js" />
     <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
     <Content Include="src\common\js\DataBases\kinopoisk\KpLookuper.js">

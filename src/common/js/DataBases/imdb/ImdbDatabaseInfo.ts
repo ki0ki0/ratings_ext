@@ -91,19 +91,20 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         this.callback(rate);
     }
 
+
+    private itemInfo: ImdbInfo;
+
     Vote(id: any, rating: number, callback: Function): bool {
         if (id instanceof ImdbInfo === false)
             return false;
         console.log("Imdb voting.");
-        var itemInfo: ImdbInfo = id;
+        this.itemInfo = id;
 
         this.callback = callback;
 
-        var a = "%";
-
         var auth = encodeURIComponent(this.auth);
 
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + itemInfo.id + "&rating=" + rating + "&auth=" + auth
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + this.itemInfo.id + "&rating=" + rating + "&auth=" + auth
             + "&tracking_tag=title-maindetails";
 
         console.log(url);
@@ -113,12 +114,12 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
     private voteCallbackError(data) {
         console.log("Imdb voting error." + data.status);
-        this.callback(false);
+        this.callback(this.itemInfo, false);
     }
 
     private voteCallback(data) {
         console.log("Imdb voting success." + data);
-        this.callback(true);
+        this.callback(this.itemInfo, true);
     }
 
     private htmlDecode(value) {

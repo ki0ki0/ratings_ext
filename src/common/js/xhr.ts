@@ -3,6 +3,7 @@
 // @include http://fs.to/*
 // @include http://www.ex.ua/view/*
 // @include http://www.kinopoisk.ru/film/*
+// @all-frames true
 // ==/UserScript==
 
 
