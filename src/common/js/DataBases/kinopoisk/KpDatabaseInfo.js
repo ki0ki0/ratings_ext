@@ -11,6 +11,10 @@
 var KpDatabaseInfo = (function () {
     function KpDatabaseInfo() {
     }
+    KpDatabaseInfo.prototype.IsValid = function (id) {
+        return (id instanceof KpInfo);
+    };
+
     KpDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {
         if (id instanceof KpInfo === false)
             return null;

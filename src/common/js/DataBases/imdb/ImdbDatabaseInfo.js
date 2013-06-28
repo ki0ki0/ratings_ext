@@ -12,6 +12,10 @@ var ImdbDatabaseInfo = (function () {
     function ImdbDatabaseInfo() {
         this.auth = null;
     }
+    ImdbDatabaseInfo.prototype.IsValid = function (id) {
+        return (id instanceof ImdbInfo);
+    };
+
     ImdbDatabaseInfo.prototype.CreateItemRatingImg = function (id, parent) {
         if (id instanceof ImdbInfo === false)
             return null;

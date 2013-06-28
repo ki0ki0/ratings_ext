@@ -13,6 +13,10 @@
 
 class KpDatabaseInfo implements IDatabaseInfo {
 
+    public IsValid(id: any) {
+        return (id instanceof KpInfo);
+    }
+
     public CreateItemRatingImg(id: any, parent: Node): Element {
         if (id instanceof KpInfo === false)
             return null;

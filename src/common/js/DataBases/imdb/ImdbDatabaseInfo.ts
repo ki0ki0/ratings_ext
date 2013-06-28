@@ -14,6 +14,10 @@
 
 class ImdbDatabaseInfo implements IDatabaseInfo {
 
+    public IsValid(id: any) {
+        return (id instanceof ImdbInfo);
+    }
+
     public CreateItemRatingImg(id: any, parent: Node): Element {
         if (id instanceof ImdbInfo === false)
             return null;

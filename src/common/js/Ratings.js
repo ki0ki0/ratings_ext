@@ -161,8 +161,7 @@ var Ratings = (function () {
             this.userRatingsElements[index] = div;
         } else {
             debug("UR Element " + elem + " child " + elem.firstChild);
-            if (elem.firstChild != null)
-                elem.removeChild(elem.firstChild);
+            elem.removeChild(elem.firstChild);
             elem.appendChild(txtNode);
         }
         this.updateVoting();
@@ -202,15 +201,12 @@ var Ratings = (function () {
             var index = this.ids.indexOf(id);
             for (var i = 0; i < this.databases.length; i++) {
                 var _this = this;
-                if (this.databases[i].Vote(id, val, function (id, success) {
-                    _this.voteCallback(id, success);
-                })) {
+                if (this.databases[i].IsValid(id)) {
                     var elem = this.userRatingsElements[j];
                     elem.style.display = "block";
 
                     debug("Element " + elem + " child " + elem.firstChild);
-                    if (elem.firstChild !== null)
-                        elem.removeChild(elem.firstChild);
+                    elem.removeChild(elem.firstChild);
 
                     var img = document.createElement("img");
                     if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined)) {
@@ -219,6 +215,9 @@ var Ratings = (function () {
                         img.src = "https://dl.dropboxusercontent.com/u/8771963/res/comajax_gray.gif";
                     }
                     elem.appendChild(img);
+                    this.databases[i].Vote(id, val, function (id, success) {
+                        _this.voteCallback(id, success);
+                    });
                 }
             }
         }

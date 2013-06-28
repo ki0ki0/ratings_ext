@@ -35,8 +35,8 @@ class Ratings {
 
     private databases: IDatabaseInfo[] =
             [
-                new ImdbDatabaseInfo(),
-                new KpDatabaseInfo()
+                new ImdbDatabaseInfo()
+                ,new KpDatabaseInfo()
             ];
 
     private info: IInformationContainer = null;
@@ -174,8 +174,7 @@ class Ratings {
         }
         else {
             debug("UR Element " + elem + " child " + elem.firstChild);
-            if (elem.firstChild != null)
-                elem.removeChild(elem.firstChild);
+            elem.removeChild(elem.firstChild);
             elem.appendChild(txtNode);
         }
         this.updateVoting();
@@ -215,13 +214,12 @@ class Ratings {
             var index = this.ids.indexOf(id);
             for (var i = 0; i < this.databases.length; i++) {
                 var _this = this;
-                if (this.databases[i].Vote(id, val, function (id, success) { _this.voteCallback(id, success); })) {
+                if (this.databases[i].IsValid(id)) {
                     var elem: HTMLDivElement = this.userRatingsElements[j];
                     elem.style.display = "block";
 
                     debug("Element " + elem + " child " + elem.firstChild);
-                    if (elem.firstChild !== null)
-                        elem.removeChild(elem.firstChild);
+                    elem.removeChild(elem.firstChild);
 
                     var img: HTMLImageElement = <HTMLImageElement> document.createElement("img");
                     if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined))
@@ -233,6 +231,7 @@ class Ratings {
                         img.src = "https://dl.dropboxusercontent.com/u/8771963/res/comajax_gray.gif";
                     }
                     elem.appendChild(img);
+                    this.databases[i].Vote(id, val, function (id, success) { _this.voteCallback(id, success); });
                 }
             }
         }
