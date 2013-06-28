@@ -144,16 +144,26 @@ var Ratings = (function () {
         var div = document.createElement("div");
         this.ratingElements[index].appendChild(div);
         debug("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
-        var txt = document.createElement("p");
-        div.appendChild(txt);
+        var txt = "";
 
         if (rating == null) {
-            txt.innerText = "Please, sing in.";
+            txt = "Please, sing in.";
         } else {
-            txt.innerText = "Your rating: " + rating + "/10";
+            txt = "Your rating: " + rating + "/10";
         }
+        var txtNode = document.createTextNode(txt);
 
-        this.userRatingsElements[index] = div;
+        var elem = this.userRatingsElements[index];
+
+        if ((elem === undefined) || (elem === null)) {
+            div.appendChild(txtNode);
+            this.userRatingsElements[index] = div;
+        } else {
+            debug("UR Element " + elem + " child " + elem.firstChild);
+            if (elem.firstChild != null)
+                elem.removeChild(elem.firstChild);
+            elem.appendChild(txtNode);
+        }
         this.updateVoting();
         debug("GetUserRatingCallback done");
     };
@@ -197,7 +207,9 @@ var Ratings = (function () {
                     var elem = this.userRatingsElements[j];
                     elem.style.display = "block";
 
-                    elem.removeChild(elem.firstChild);
+                    debug("Element " + elem + " child " + elem.firstChild);
+                    if (elem.firstChild !== null)
+                        elem.removeChild(elem.firstChild);
 
                     var img = document.createElement("img");
                     if ((kango.io !== undefined) && (kango.io.getResourceUrl !== undefined)) {
