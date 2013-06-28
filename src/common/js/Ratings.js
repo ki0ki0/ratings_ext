@@ -69,7 +69,8 @@ var Ratings = (function () {
         trVoting.appendChild(tdVoting);
 
         this.divVoting = document.createElement("div");
-        this.divVoting.innerText = "Vote: ";
+        var txtNode = document.createTextNode("Vote: ");
+        this.divVoting.appendChild(txtNode);
         this.divVoting.id = "voting";
         this.divVoting.style.display = "none";
         tdVoting.appendChild(this.divVoting);
@@ -234,7 +235,6 @@ var Ratings = (function () {
         for (var i = 0; i < this.databases.length; i++) {
             var _this = this;
             this.databases[i].GetUserRating(id, function (rating) {
-                elem.removeChild(elem.firstChild);
                 _this.GetUserRatingCallback(id, rating);
             });
         }

@@ -40,9 +40,12 @@ class KpDatabaseInfo implements IDatabaseInfo {
         link.appendChild(image);
         image.src = img;
 
+        var txtNode = document.createTextNode(this.htmlDecode(itemInfo.title));
+        link.appendChild(txtNode);
+
         var txt = document.createElement("p");
+        txt.appendChild(txtNode);
         link.appendChild(txt);
-        txt.innerText = this.htmlDecode(itemInfo.title);
         return item;
     }
 
