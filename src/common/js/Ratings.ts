@@ -24,7 +24,6 @@ class Ratings {
         [
             new FSUAInformationProvider()
             , new EXUAInformationProvider()
-//            , new FakeInformationProvider()
         ];
 
     private lookupers: ILookuper[] =
