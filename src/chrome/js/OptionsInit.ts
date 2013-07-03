@@ -9,10 +9,23 @@
 /// <reference path="../../common/js/kango.d.ts"/> 
 /// <reference path="OptionsChrome.ts"/> 
 
+var optionsInit;
 
-KangoAPI.onReady(
-    function () {
-    var optionsChrome = new OptionsChrome();
-    optionsChrome.initOptionsPage();
+if (navigator["vendor"].indexOf("Google") != -1)
+{
+    optionsInit = function ()
+    {
+        var optionsChrome = new OptionsChrome();
+        optionsChrome.initOptionsPage();
     }
-);
+}
+else {
+    optionsInit = function () {
+        var options = new Options(true);
+        options.initOptionsPage();
+    }
+}
+
+
+
+KangoAPI.onReady(optionsInit);

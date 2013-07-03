@@ -10,8 +10,16 @@
 /// <reference path="Settings/SettingsChrome.ts"/>
 /// <reference path="../../common/js/Ratings.ts"/>
 
-debug("chrome/init");
-
-new SettingsChrome(function () {
-    new Ratings().GetRatings();
-}, null);
+if (navigator["vendor"].indexOf("Google") != -1)
+{
+    debug("chrome/init");
+    new SettingsChrome(function () {
+        new Ratings().GetRatings();
+    }, null);
+}
+else {
+    debug("blink/init");
+    new Settings(function () {
+        new Ratings().GetRatings();
+    });
+}
