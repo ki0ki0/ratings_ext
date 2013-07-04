@@ -217,7 +217,7 @@ function ImdbRatings() {
         var rate = null;
         if (arr_your != null)
             rate = arr_your.length;
-        var exp = /data-auth="([0-9A-z-_]*)"/g;
+        var exp = /data-auth="([^\"]*)"/g;
         var arr = exp.exec(data);
         base.auth = arr[1];
         return rate;
@@ -227,7 +227,7 @@ function ImdbRatings() {
         var irate = document.getElementById("imdb_rate");
         irate.innerHTML = "<img src='"+chrome.extension.getURL("images/comajax_gray.gif")+"'>";
 
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + base.id + "&rating=" + labelValue + "&auth=" + base.auth;
+        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + base.id + "&rating=" + labelValue + "&auth=" + encodeURIComponent(base.auth) + "&tracking_tag=title-maindetails";
         $.getJSON(url, base.checkVote).error(base.checkVote);
     }
 
@@ -268,7 +268,7 @@ function KinopoiskRatings() {
             return info;
 
         var films = data["searchFilms"];
-        for (var i = 0; i < films.length; i++) {
+        for (var i = 0; films !== undefined && i < films.length; i++) {
 
             info = this.checkItem(films[i]);
             if (info != null)

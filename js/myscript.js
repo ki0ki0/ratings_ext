@@ -9,9 +9,9 @@ function addScript(text) {
 
 if (window.location.href.indexOf("http://www.ex.ua/view/") != -1)
     getFilmInfoExUa();
-if (window.location.href.indexOf("http://fs.ua/item/") != -1)
+if (window.location.href.indexOf("http://fs.to/video/") != -1)
     getFilmInfoFsUa();
-if ((window.location.href.indexOf("http://fs.ua/view") != -1) && (window.location.href.indexOf("?play") != -1)) 
+if ((window.location.href.indexOf("http://fs.to/view") != -1) && (window.location.href.indexOf("?play") != -1)) 
     playerPage();
 
 function setCookie(c_name,value,exdays)
@@ -36,12 +36,13 @@ function playerPage()
     }\
     $f().onStart(changeUrl);';
 
-    addScript(script);
     setCookie("preroll", 1);
 
-    if (settings.playerOnly == false)
-        return;
-    playerOnly();
+    if (settings.playerOnly)
+    {
+       playerOnly();
+    }
+    addScript(script);
 }
 
 function playerOnly()
@@ -127,11 +128,11 @@ function getFilmInfoFsUa() {
     var titles = null;
     var year = null;
 
-    var category = document.getElementsByClassName("b-subcategory-title");
-    if (category.length != 1)
+    var category = document.getElementsByTagName("h1");
+    if (category.length != 2)
         return null;
 
-    var text =  category[0].nextSibling.textContent.trim();
+    var text =  category[0].textContent.trim();
     titles = text.split(String.fromCharCode(160, 47, 160));
     if (titles.length == 0)
         return null;

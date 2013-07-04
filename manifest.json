@@ -1,7 +1,7 @@
 {
    "name": "__MSG_extName__",
    "description": "__MSG_extDescr__",
-   "version": "1.5.4.1",
+   "version": "1.5.6.2",
    "manifest_version": 2,
    "default_locale": "en",
    "options_page": "options.html",
@@ -15,7 +15,7 @@
       "all_frames": true,
       "css": [ "no_ad.css" ],
       "js": [ "js/jquery-1.7.2.min.js", "js/md5.js", "js/tVote.js", "js/ratings.js", "js/settings.js", "js/myscript.js" ],
-      "matches": [ "http://fs.ua/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/film/*" ]
+      "matches": [ "http://fs.to/*", "http://www.ex.ua/view/*", "http://www.kinopoisk.ru/film/*" ]
    } ],
    "web_accessible_resources": [
       "images/comajax_gray.gif",
