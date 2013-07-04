@@ -37,6 +37,12 @@ class Options
 
         var text = kango.i18n.getMessage("showVotingSub");
         document.getElementById("showVotingSub").textContent = text;
+
+        var text = kango.i18n.getMessage("removeAdv");
+        document.getElementById("removeAdvLabel").textContent = text;
+
+        var text = kango.i18n.getMessage("removeAdvSub");
+        document.getElementById("removeAdvSub").textContent = text;
     }
 
     initOptionsValues() {
@@ -48,6 +54,10 @@ class Options
         val = <HTMLInputElement> document.getElementById("showVotingVal");
         val.addEventListener("click", function () { _this.saveSettings(); });
         val.checked = Settings.GetSettings().GetIsShowVoting();
+
+        val = <HTMLInputElement> document.getElementById("removeAdvVal");
+        val.addEventListener("click", function () { _this.saveSettings(); });
+        val.checked = Settings.GetSettings().GetIsRemoveAd();
     }
 
     saveSettings() {
@@ -56,6 +66,9 @@ class Options
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
         Settings.GetSettings().SetIsShowVoting(val.checked);
+
+        val = <HTMLInputElement> document.getElementById("removeAdvVal");
+        Settings.GetSettings().SetIsRemoveAd(val.checked);
     }
 
 }

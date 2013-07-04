@@ -16,7 +16,7 @@ var SettingsChrome = (function (_super) {
     __extends(SettingsChrome, _super);
     function SettingsChrome(callback, obj) {
         _super.call(this, null);
-        this.namesChrome = ["playerOnly", "showVoting", "syncSettings"];
+        this.namesChrome = ["playerOnly", "showVoting", "removeAdv", "syncSettings"];
         this.callbackChrome = callback;
         this.obj = obj;
         this.sync = new ChromeCachedStorageSettings(true, this.namesChrome, this.syncCallback, this);
@@ -42,11 +42,11 @@ var SettingsChrome = (function (_super) {
     };
 
     SettingsChrome.prototype.GetIsSync = function () {
-        return this.sync.Get(this.namesChrome[2]);
+        return this.sync.Get(this.namesChrome[3]);
     };
     SettingsChrome.prototype.SetIsSync = function (isSync) {
-        this.sync.Set(this.namesChrome[2], isSync);
-        this.localChrome.Set(this.namesChrome[2], isSync);
+        this.sync.Set(this.namesChrome[3], isSync);
+        this.localChrome.Set(this.namesChrome[3], isSync);
         if (isSync) {
             for (var i in this.namesChrome)
                 this.sync.Set(this.namesChrome[i], this.localChrome.Get(this.namesChrome[i]));
@@ -72,6 +72,13 @@ var SettingsChrome = (function (_super) {
     };
     SettingsChrome.prototype.SetIsShowVoting = function (isClear) {
         this.getCurrentStorage().Set(this.namesChrome[1], isClear);
+    };
+
+    SettingsChrome.prototype.GetIsRemoveAd = function () {
+        return this.getCurrentStorage().Get(this.namesChrome[2]);
+    };
+    SettingsChrome.prototype.SetIsRemoveAd = function (isClear) {
+        this.getCurrentStorage().Set(this.namesChrome[2], isClear);
     };
     return SettingsChrome;
 })(Settings);

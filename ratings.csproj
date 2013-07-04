@@ -139,6 +139,11 @@
   <ItemGroup>
     <Content Include="src\chrome\manifest.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\common\locales\en.json" />
+    <Content Include="src\common\locales\ru.json" />
+    <Content Include="src\common\locales\uk.json" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

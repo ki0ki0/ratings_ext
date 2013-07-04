@@ -19,7 +19,7 @@ class Settings {
     private callback: Function;
     private local: KangoStorageSettings;
 
-    private names = ["playerOnly", "showVoting"];
+    private names = ["playerOnly", "showVoting", "removeAdv"];
 
     constructor(callback: Function) {
         Settings._this = this;
@@ -44,4 +44,7 @@ class Settings {
 
     GetIsShowVoting(): any { return this.local.Get(this.names[1]); }
     SetIsShowVoting(isClear: bool) { this.local.Set(this.names[1], isClear); }
+
+    GetIsRemoveAd(): any { return this.local.Get(this.names[2]); }
+    SetIsRemoveAd(isClear: bool) { this.local.Set(this.names[2], isClear); }
 }

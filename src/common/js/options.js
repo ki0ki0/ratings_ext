@@ -32,6 +32,12 @@ var Options = (function () {
 
         var text = kango.i18n.getMessage("showVotingSub");
         document.getElementById("showVotingSub").textContent = text;
+
+        var text = kango.i18n.getMessage("removeAdv");
+        document.getElementById("removeAdvLabel").textContent = text;
+
+        var text = kango.i18n.getMessage("removeAdvSub");
+        document.getElementById("removeAdvSub").textContent = text;
     };
 
     Options.prototype.initOptionsValues = function () {
@@ -47,6 +53,12 @@ var Options = (function () {
             _this.saveSettings();
         });
         val.checked = Settings.GetSettings().GetIsShowVoting();
+
+        val = document.getElementById("removeAdvVal");
+        val.addEventListener("click", function () {
+            _this.saveSettings();
+        });
+        val.checked = Settings.GetSettings().GetIsRemoveAd();
     };
 
     Options.prototype.saveSettings = function () {
@@ -55,6 +67,9 @@ var Options = (function () {
 
         val = document.getElementById("showVotingVal");
         Settings.GetSettings().SetIsShowVoting(val.checked);
+
+        val = document.getElementById("removeAdvVal");
+        Settings.GetSettings().SetIsRemoveAd(val.checked);
     };
     return Options;
 })();

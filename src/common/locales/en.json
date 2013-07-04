@@ -12,5 +12,7 @@
   "syncSettings": "Synchronize settings between browsers.",
   "syncSettingsSub": "All browsers with same account will use same settings.",
   "showVoting": "Show voting.",
-  "showVotingSub": "Helps you to vote in both systems in one place."
+  "showVotingSub": "Helps you to vote in both systems in one place.",
+  "removeAdv": "Remove ads.",
+  "removeAdvSub": "Try to remove ads from fs.to."
 }

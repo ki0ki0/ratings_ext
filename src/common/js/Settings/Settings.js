@@ -8,7 +8,7 @@
 /// <reference path="KangoStorageSettings.ts"/>
 var Settings = (function () {
     function Settings(callback) {
-        this.names = ["playerOnly", "showVoting"];
+        this.names = ["playerOnly", "showVoting", "removeAdv"];
         Settings._this = this;
         debug("Constructor " + Settings._this);
 
@@ -41,6 +41,13 @@ var Settings = (function () {
     };
     Settings.prototype.SetIsShowVoting = function (isClear) {
         this.local.Set(this.names[1], isClear);
+    };
+
+    Settings.prototype.GetIsRemoveAd = function () {
+        return this.local.Get(this.names[2]);
+    };
+    Settings.prototype.SetIsRemoveAd = function (isClear) {
+        this.local.Set(this.names[2], isClear);
     };
     return Settings;
 })();

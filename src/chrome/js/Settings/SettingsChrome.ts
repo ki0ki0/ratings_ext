@@ -15,7 +15,7 @@ class SettingsChrome extends Settings{
     private callbackChrome: Function;
     private obj: Object;
 
-    private namesChrome = ["playerOnly", "showVoting", "syncSettings"];
+    private namesChrome = ["playerOnly", "showVoting", "removeAdv", "syncSettings"];
 
     constructor(callback: Function, obj: Object) {
         super(null);
@@ -45,10 +45,10 @@ class SettingsChrome extends Settings{
         }
     }
 
-    GetIsSync():any { return this.sync.Get(this.namesChrome[2]); }
+    GetIsSync():any { return this.sync.Get(this.namesChrome[3]); }
     SetIsSync(isSync: bool) { 
-        this.sync.Set(this.namesChrome[2], isSync);
-        this.localChrome.Set(this.namesChrome[2], isSync);
+        this.sync.Set(this.namesChrome[3], isSync);
+        this.localChrome.Set(this.namesChrome[3], isSync);
         if (isSync) {
             for (var i in this.namesChrome)
                 this.sync.Set(this.namesChrome[i], this.localChrome.Get(this.namesChrome[i]));
@@ -68,4 +68,7 @@ class SettingsChrome extends Settings{
 
     GetIsShowVoting(): any { return this.getCurrentStorage().Get(this.namesChrome[1]); }
     SetIsShowVoting(isClear: bool) { this.getCurrentStorage().Set(this.namesChrome[1], isClear); }
+
+    GetIsRemoveAd(): any { return this.getCurrentStorage().Get(this.namesChrome[2]); }
+    SetIsRemoveAd(isClear: bool) { this.getCurrentStorage().Set(this.namesChrome[2], isClear); }
 }
