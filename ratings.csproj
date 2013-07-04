@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{7574BEA9-FCD8-4082-B231-87D709D0A23A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\chrome\js\OptionsInit.ts" />
+    <Content Include="src\chrome\js\OptionsInit.js">
+      <DependentUpon>OptionsInit.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\chrome\js\Init.ts" />
+    <Content Include="src\chrome\js\Init.js">
+      <DependentUpon>Init.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
+    <TypeScriptCompile Include="src\chrome\js\Settings\LocalStorageSettings.ts" />
+    <Content Include="src\chrome\js\Settings\LocalStorageSettings.js">
+      <DependentUpon>LocalStorageSettings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\IDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
+    <Content Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.js">
+      <DependentUpon>ImdbDatabaseInfo.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbInfo.ts" />
+    <Content Include="src\common\js\DataBases\imdb\ImdbInfo.js">
+      <DependentUpon>ImdbInfo.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\md5.d.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.js">
+      <DependentUpon>KpDatabaseInfo_Helper.ts</DependentUpon>
+    </Content>
+    <Content Include="src\common\js\DataBases\kinopoisk\md5.js" />
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpLookuper.js">
+      <DependentUpon>KpLookuper.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpInfo.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpInfo.js">
+      <DependentUpon>KpInfo.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.ts" />
+    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.js">
+      <DependentUpon>KpDatabaseInfo.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\Ratings.ts" />
+    <TypeScriptCompile Include="src\common\js\debug.ts" />
+    <Content Include="src\common\js\debug.js">
+      <DependentUpon>debug.ts</DependentUpon>
+    </Content>
+    <Content Include="src\common\js\Ratings.js">
+      <DependentUpon>Ratings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\xhr.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
+    <TypeScriptCompile Include="src\common\js\Options.ts" />
+    <Content Include="src\common\js\options.js">
+      <DependentUpon>Options.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\OptionsInit.ts" />
+    <Content Include="src\common\js\OptionsInit.js">
+      <DependentUpon>OptionsInit.ts</DependentUpon>
+    </Content>
+    <Content Include="src\common\js\Settings\Settings.js">
+      <DependentUpon>Settings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\Init.ts" />
+    <Content Include="src\common\js\Init.js">
+      <DependentUpon>Init.ts</DependentUpon>
+    </Content>
+    <Content Include="src\common\js\tVote.js" />
+    <Content Include="src\common\js\xhr.js">
+      <DependentUpon>xhr.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\chrome\js\Chrome.d.ts" />
+    <TypeScriptCompile Include="src\common\js\InformationProviders\FSUAInformationProvider.ts" />
+    <Content Include="src\common\js\InformationProviders\FSUAInformationProvider.js">
+      <DependentUpon>FSUAInformationProvider.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\InformationProviders\EXUAInformationProvider.ts" />
+    <Content Include="src\common\js\InformationProviders\EXUAInformationProvider.js">
+      <DependentUpon>EXUAInformationProvider.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\DataBases\ILookuper.ts" />
+    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbLookuper.ts" />
+    <Content Include="src\common\js\DataBases\imdb\ImdbLookuper.js">
+      <DependentUpon>ImdbLookuper.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\js\Settings\KangoStorageSettings.ts" />
+    <Content Include="src\common\js\Settings\KangoStorageSettings.js">
+      <DependentUpon>KangoStorageSettings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\chrome\js\Settings\ChromeStorageSettings.ts" />
+    <Content Include="src\chrome\js\Settings\ChromeStorageSettings.js">
+      <DependentUpon>ChromeStorageSettings.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
+    <TypeScriptCompile Include="src\common\js\kango.d.ts" />
+    <TypeScriptCompile Include="src\chrome\js\OptionsChrome.ts" />
+    <Content Include="src\chrome\js\OptionsChrome.js">
+      <DependentUpon>OptionsChrome.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="src\common\js\Settings\ISettings.ts" />
+    <TypeScriptCompile Include="src\chrome\js\Settings\SettingsChrome.ts" />
+    <Content Include="src\chrome\js\Settings\SettingsChrome.js">
+      <DependentUpon>SettingsChrome.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\common\options.html" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\common\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\chrome\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\chrome\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\common\locales\en.json" />
+    <Content Include="src\common\locales\ru.json" />
+    <Content Include="src\common\locales\uk.json" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ratings</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50183</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59752/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptSourceMap> --sourcemap</TypeScriptSourceMap>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <PublishDatabases>false</PublishDatabases>
+    <WarningLevel>2</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>$(SolutionDir)build.cmd</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PublishDatabases>false</PublishDatabases>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+  </PropertyGroup>
+  <Target Name="BeforeBuild">
+    <Message Text="Compiling TypeScript files" />
+    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Exec Command="tsc$(TypeScriptSourceMap) -c @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+  </Target>
+</Project>

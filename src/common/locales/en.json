@@ -1,0 +1,16 @@
+{
+  "__info_name__": "Ratings for FS.UA and EX.UA",
+  "__info_description__": "Shows films and series rating from IMDB and Kinopoisk on FS.UA and EX.UA. Allows to vote in both systems in place.",
+  "signIn": "Please, sign in.",
+  "yourRating": "Your rating:",
+  "vote": "Vote:",
+  "settings": "Settings",
+  "playerOnly": "Remove all unnecessary content from Video player page.",
+  "playerOnlySub": "Only player window and season/video quality/audio stream selectors.",
+  "syncSettings": "Synchronize settings between browsers.",
+  "syncSettingsSub": "All browsers with same account will use same settings.",
+  "showVoting": "Show voting.",
+  "showVotingSub": "Helps you to vote in both systems in one place.",
+  "removeAdv": "Remove ads.",
+  "removeAdvSub": "Try to remove ads from fs.to."
+}

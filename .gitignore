@@ -1,0 +1,6 @@
+*.zip
+*.user
+*.suo
+*\obj*/
+*\bin*/
+output/*
