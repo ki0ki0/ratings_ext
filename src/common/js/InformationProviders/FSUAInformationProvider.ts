@@ -76,7 +76,10 @@ class FSUAInformationProvider implements IInformationProvider {
             var newUrl = document.location.href.replace(/file=[0-9]*/,"file="+fileId);\
             history.replaceState(null, newUrl, newUrl);\
         }\
-        $f().onBeforeBegin(changeUrl);';
+        if ($f() !== undefined)\
+            $f().onBeforeBegin(changeUrl);\
+        else\
+            setTimeout("$f().onBeforeBegin(changeUrl)", 1000);';
         this.addScript(script);
     }
 
