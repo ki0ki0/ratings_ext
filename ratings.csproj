@@ -21,109 +21,40 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\chrome\js\OptionsInit.ts" />
-    <Content Include="src\chrome\js\OptionsInit.js">
-      <DependentUpon>OptionsInit.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\chrome\js\Init.ts" />
-    <Content Include="src\chrome\js\Init.js">
-      <DependentUpon>Init.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="src\chrome\ts\OptionsInit.ts" />
+    <TypeScriptCompile Include="src\chrome\ts\Init.ts" />
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
-    <TypeScriptCompile Include="src\chrome\js\Settings\LocalStorageSettings.ts" />
-    <Content Include="src\chrome\js\Settings\LocalStorageSettings.js">
-      <DependentUpon>LocalStorageSettings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\IDatabaseInfo.ts" />
-    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.ts" />
-    <Content Include="src\common\js\DataBases\imdb\ImdbDatabaseInfo.js">
-      <DependentUpon>ImdbDatabaseInfo.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbInfo.ts" />
-    <Content Include="src\common\js\DataBases\imdb\ImdbInfo.js">
-      <DependentUpon>ImdbInfo.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\md5.d.ts" />
-    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
-    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo_Helper.js">
-      <DependentUpon>KpDatabaseInfo_Helper.ts</DependentUpon>
-    </Content>
-    <Content Include="src\common\js\DataBases\kinopoisk\md5.js" />
-    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpLookuper.ts" />
-    <Content Include="src\common\js\DataBases\kinopoisk\KpLookuper.js">
-      <DependentUpon>KpLookuper.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpInfo.ts" />
-    <Content Include="src\common\js\DataBases\kinopoisk\KpInfo.js">
-      <DependentUpon>KpInfo.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.ts" />
-    <Content Include="src\common\js\DataBases\kinopoisk\KpDatabaseInfo.js">
-      <DependentUpon>KpDatabaseInfo.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\Ratings.ts" />
-    <TypeScriptCompile Include="src\common\js\debug.ts" />
-    <Content Include="src\common\js\debug.js">
-      <DependentUpon>debug.ts</DependentUpon>
-    </Content>
-    <Content Include="src\common\js\Ratings.js">
-      <DependentUpon>Ratings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\xhr.ts" />
-    <TypeScriptCompile Include="src\common\js\Settings\Settings.ts" />
-    <TypeScriptCompile Include="src\common\js\Options.ts" />
-    <Content Include="src\common\js\options.js">
-      <DependentUpon>Options.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\OptionsInit.ts" />
-    <Content Include="src\common\js\OptionsInit.js">
-      <DependentUpon>OptionsInit.ts</DependentUpon>
-    </Content>
-    <Content Include="src\common\js\Settings\Settings.js">
-      <DependentUpon>Settings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\Init.ts" />
-    <Content Include="src\common\js\Init.js">
-      <DependentUpon>Init.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="src\chrome\ts\Settings\LocalStorageSettings.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\IDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbInfo.ts" />
+    <TypeScriptCompile Include="src\common\js\md5.d.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
+    <Content Include="src\common\js\md5.js" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpLookuper.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\Ratings.ts" />
+    <TypeScriptCompile Include="src\common\ts\debug.ts" />
+    <TypeScriptCompile Include="src\common\ts\xhr.ts" />
+    <TypeScriptCompile Include="src\common\ts\Settings\Settings.ts" />
+    <TypeScriptCompile Include="src\common\ts\Options.ts" />
+    <TypeScriptCompile Include="src\common\ts\OptionsInit.ts" />
+    <TypeScriptCompile Include="src\common\ts\Init.ts" />
     <Content Include="src\common\js\tVote.js" />
-    <Content Include="src\common\js\xhr.js">
-      <DependentUpon>xhr.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\chrome\js\Chrome.d.ts" />
-    <TypeScriptCompile Include="src\common\js\InformationProviders\FSUAInformationProvider.ts" />
-    <Content Include="src\common\js\InformationProviders\FSUAInformationProvider.js">
-      <DependentUpon>FSUAInformationProvider.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\InformationProviders\EXUAInformationProvider.ts" />
-    <Content Include="src\common\js\InformationProviders\EXUAInformationProvider.js">
-      <DependentUpon>EXUAInformationProvider.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\DataBases\ILookuper.ts" />
-    <TypeScriptCompile Include="src\common\js\DataBases\imdb\ImdbLookuper.ts" />
-    <Content Include="src\common\js\DataBases\imdb\ImdbLookuper.js">
-      <DependentUpon>ImdbLookuper.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\InformationProviders\IInformationProvider.ts" />
-    <TypeScriptCompile Include="src\common\js\Settings\KangoStorageSettings.ts" />
-    <Content Include="src\common\js\Settings\KangoStorageSettings.js">
-      <DependentUpon>KangoStorageSettings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\chrome\js\Settings\ChromeStorageSettings.ts" />
-    <Content Include="src\chrome\js\Settings\ChromeStorageSettings.js">
-      <DependentUpon>ChromeStorageSettings.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\Localization\Ii18n.ts" />
-    <TypeScriptCompile Include="src\common\js\kango.d.ts" />
-    <TypeScriptCompile Include="src\chrome\js\OptionsChrome.ts" />
-    <Content Include="src\chrome\js\OptionsChrome.js">
-      <DependentUpon>OptionsChrome.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="src\common\js\Settings\ISettings.ts" />
-    <TypeScriptCompile Include="src\chrome\js\Settings\SettingsChrome.ts" />
-    <Content Include="src\chrome\js\Settings\SettingsChrome.js">
-      <DependentUpon>SettingsChrome.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="src\chrome\ts\Chrome.d.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\EXUAInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\ILookuper.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbLookuper.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\IInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\ts\Settings\KangoStorageSettings.ts" />
+    <TypeScriptCompile Include="src\chrome\ts\Settings\ChromeStorageSettings.ts" />
+    <TypeScriptCompile Include="src\common\ts\Localization\Ii18n.ts" />
+    <TypeScriptCompile Include="src\common\ts\kango.d.ts" />
+    <TypeScriptCompile Include="src\chrome\ts\OptionsChrome.ts" />
+    <TypeScriptCompile Include="src\common\ts\Settings\ISettings.ts" />
+    <TypeScriptCompile Include="src\chrome\ts\Settings\SettingsChrome.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\common\options.html" />
@@ -143,6 +74,7 @@
     <Content Include="src\common\locales\ru.json" />
     <Content Include="src\common\locales\uk.json" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
