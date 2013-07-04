@@ -1,11 +1,9 @@
 {
   "__info_name__": "Ratings for FS.UA and EX.UA",
   "__info_description__": "Shows films and series rating from IMDB and Kinopoisk on FS.UA and EX.UA. Allows to vote in both systems in place.",
-  "imdbDone": "Imdb voting done!",
-  "imdbLogin": "Login to IMDB!",
-  "kpDone": "Kinopoisk voting done!",
-  "kpLogin": "Login to Kinopoisk!",
+  "signIn": "Please, sign in.",
   "yourRating": "Your rating:",
+  "vote": "Vote:",
   "settings": "Settings",
   "playerOnly": "Remove all unnecessary content from Video player page.",
   "playerOnlySub": "Only player window and season/video quality/audio stream selectors.",

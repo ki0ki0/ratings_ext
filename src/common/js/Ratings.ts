@@ -73,11 +73,16 @@ class Ratings {
         trVoting.appendChild(tdVoting);
 
         this.divVoting = document.createElement("div");
-        var txtNode = document.createTextNode("Vote: ");
+        var txtNode = document.createTextNode("Vote:");
         this.divVoting.appendChild(txtNode);
         this.divVoting.id = "voting";
         this.divVoting.style.display = "none";
         tdVoting.appendChild(this.divVoting);
+
+        var _divVoting = this.divVoting;
+        kango.invokeAsync("kango.i18n.getMessage", "vote", function (data) {
+            _divVoting.textContent = data;
+        });
 
         for (var i = 0; i < this.lookupers.length; i++) {
             var _this = this;
@@ -156,13 +161,7 @@ class Ratings {
         debug("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
         var txt = "";
 
-        if (rating == null) {
-            txt = "Please, sing in.";
-        }
-        else {
-            txt = "Your rating: " + rating + "/10";
-        }
-        var txtNode = document.createTextNode(txt);
+        var txtNode = document.createTextNode("");
 
         var elem = this.userRatingsElements[index];
 
@@ -176,6 +175,23 @@ class Ratings {
             elem.removeChild(elem.firstChild);
             elem.appendChild(txtNode);
         }
+
+        if (rating == null) {
+            txt = "Please, sing in.";
+            var _txtNode = txtNode;
+            kango.invokeAsync("kango.i18n.getMessage", "signIn", function (data) {
+                _txtNode.textContent = data;
+            });
+        }
+        else {
+            txt = "Your rating: " + rating + "/10";
+            var _txtNode = txtNode;
+            kango.invokeAsync("kango.i18n.getMessage", "yourRating", function (data) {
+                _txtNode.textContent = data + " " + rating + "/10";
+            });
+        }
+        txtNode.textContent = txt;
+
         this.updateVoting();
         debug("GetUserRatingCallback done");
     }
