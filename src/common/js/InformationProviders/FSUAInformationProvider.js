@@ -13,6 +13,59 @@ var FSUAInformation = (function () {
 
 var FSUAInformationProvider = (function () {
     function FSUAInformationProvider() {
+        this.playerOnlyScript = '\
+    function playerOnly() {\
+        if (playerOnly === null)\
+			return;\
+        var bdd = document.getElementsByClassName("b-dropdown");\
+        var bdds = new Array();\
+        for (var i = 0; i < bdd.length; i++)\
+        {\
+            bdds[i] = bdd[i];\
+        }\
+\
+        var bps = document.getElementsByClassName("b-player");\
+        if (bps.length != 1)\
+            return;\
+        var bp = bps[0];\
+        bp.style.width = "100%";\
+        while (document.body.children.length > 0)\
+        {\
+            document.body.removeChild(document.body.children[0]);\
+        }\
+        document.body.appendChild(bp);\
+\
+        for (var i = 0; i < bdds.length; i++) {\
+            document.body.appendChild(bdds[i]);\
+        }\
+\
+        var items = document.getElementsByClassName("b-tab-item m-wide");\
+        if ((items != undefined) && (items.length > 0))        {\
+            var item = items[0];\
+            item.className = "";\
+        }\
+\
+        var itemPlayer = document.getElementById("player");\
+        if (itemPlayer !== undefined)\
+        {\
+            var parent = itemPlayer.parentNode;\
+            while (parent != document.body) {\
+                if (parent.className != "main") {\
+                    parent.style.width = "100%";\
+                }\
+                parent.style.margin = "0";\
+                parent.style.height = "100%";\
+                parent = parent.parentNode;\
+            }\
+            itemPlayer.style.height = "100%";\
+            itemPlayer.style.width = "100%";\
+        }\
+        playerOnly = null;\
+    }\
+    if (document.readyState == "complete")\
+        $f().onBeforeBegin(playerOnly);\
+    else\
+        setTimeout("$f().onBeforeBegin(playerOnly)", 1000);';
     }
     FSUAInformationProvider.prototype.GetInfo = function () {
         this.CheckPlayerPage();
@@ -58,8 +111,7 @@ var FSUAInformationProvider = (function () {
             return;
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
-            var _this = this;
-            setTimeout(_this.playerOnly, 1000);
+            this.addScript(this.playerOnlyScript);
         }
 
         var script = '\
@@ -72,54 +124,15 @@ var FSUAInformationProvider = (function () {
             var newUrl = document.location.href.replace(/file=[0-9]*/,"file="+fileId);\
             history.replaceState(null, newUrl, newUrl);\
         }\
-        $f().onStart(changeUrl);';
+        $f().onBeforeBegin(changeUrl);';
+        this.addScript(script);
+    };
+
+    FSUAInformationProvider.prototype.addScript = function (script) {
         var start = document.createElement("script");
         start.type = "text/javascript";
         start.innerHTML = script;
         document.body.appendChild(start);
-    };
-
-    FSUAInformationProvider.prototype.playerOnly = function () {
-        var bdd = document.getElementsByClassName("b-dropdown");
-        var bdds = new Array();
-        for (var i = 0; i < bdd.length; i++) {
-            bdds[i] = bdd[i];
-        }
-
-        var bps = document.getElementsByClassName("b-player");
-        if (bps.length != 1)
-            return;
-        var bp = bps[0];
-        bp.style.width = "100%";
-        while (document.body.children.length > 0) {
-            document.body.removeChild(document.body.children[0]);
-        }
-        document.body.appendChild(bp);
-
-        for (var i = 0; i < bdds.length; i++) {
-            document.body.appendChild(bdds[i]);
-        }
-
-        var items = document.getElementsByClassName("b-tab-item m-wide");
-        if ((items != undefined) && (items.length > 0)) {
-            var item = items[0];
-            item.className = "";
-        }
-
-        var itemPlayer = document.getElementById("player");
-        if (itemPlayer != undefined) {
-            var parent = itemPlayer.parentNode;
-            while (parent != document.body) {
-                if (parent.className != "main") {
-                    parent.style.width = "100%";
-                }
-                parent.style.margin = "0";
-                parent.style.height = "100%";
-                parent = parent.parentNode;
-            }
-            itemPlayer.style.height = "100%";
-            itemPlayer.style.width = "100%";
-        }
     };
     return FSUAInformationProvider;
 })();
