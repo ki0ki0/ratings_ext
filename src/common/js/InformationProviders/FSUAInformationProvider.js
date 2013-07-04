@@ -5,6 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 /// <reference path="IInformationProvider.ts"/>
+/// <reference path="../Settings/Settings.ts"/>
 var FSUAInformation = (function () {
     function FSUAInformation() {
     }
@@ -62,13 +63,25 @@ var FSUAInformationProvider = (function () {
         }\
         playerOnly = null;\
     }\
-    if (document.readyState == "complete")\
+    if ($f() !== undefined)\
         $f().onBeforeBegin(playerOnly);\
     else\
         setTimeout("$f().onBeforeBegin(playerOnly)", 1000);';
+        this.ids = [
+            "adsProxy-zone-section-glowadswide",
+            "adsProxy-zone-section-adsuniversal",
+            "adsProxy-zone-video"
+        ];
+        this.classes = [
+            "h-ad",
+            "l-content-right"
+        ];
     }
     FSUAInformationProvider.prototype.GetInfo = function () {
         this.CheckPlayerPage();
+
+        this.CheckAndCleanAd();
+
         if (window.location.href.indexOf("http://fs.to/video/") == -1)
             return null;
 
@@ -133,6 +146,39 @@ var FSUAInformationProvider = (function () {
         start.type = "text/javascript";
         start.innerHTML = script;
         document.body.appendChild(start);
+    };
+
+    FSUAInformationProvider.prototype.CheckAndCleanAd = function () {
+        if (window.location.href.indexOf("http://fs.to/") == -1)
+            return;
+
+        if (Settings.GetSettings().GetIsRemoveAd() == false)
+            return;
+
+        this.setCookie("preroll", 1);
+
+        for (var i = 0; i < this.ids.length; i++) {
+            var ad = document.getElementById(this.ids[i]);
+            if (ad !== null)
+                ad.style.display = "none";
+        }
+
+        for (var i = 0; i < this.classes.length; i++) {
+            var ads = document.getElementsByClassName(this.classes[i]);
+            for (var n = 0; n < ads.length; n++) {
+                var ad = ads[n];
+                if (ad !== null)
+                    ad.style.display = "none";
+            }
+        }
+    };
+
+    FSUAInformationProvider.prototype.setCookie = function (c_name, value, exdays) {
+        if (typeof exdays === "undefined") { exdays = null; }
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value = encodeURIComponent(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = c_name + "=" + c_value;
     };
     return FSUAInformationProvider;
 })();

@@ -15,7 +15,6 @@
 				"kango/userscript_client.js",
 				"includes/content_init.js"
 			],
-			"css": [ "no_ad.css" ],
 			"run_at": "document_start"
 		}
 	],

@@ -7,6 +7,8 @@
 
 /// <reference path="IInformationProvider.ts"/> 
 
+/// <reference path="../Settings/Settings.ts"/> 
+
 class FSUAInformation implements IInformationContainer {
     titles: string[];
     years: Number[];
@@ -16,6 +18,9 @@ class FSUAInformation implements IInformationContainer {
 class FSUAInformationProvider implements IInformationProvider {
     GetInfo(): IInformationContainer {
         this.CheckPlayerPage();
+
+        this.CheckAndCleanAd();
+
         if (window.location.href.indexOf("http://fs.to/video/") == -1)
             return null;
 
@@ -131,57 +136,52 @@ class FSUAInformationProvider implements IInformationProvider {
         }\
         playerOnly = null;\
     }\
-    if (document.readyState == "complete")\
+    if ($f() !== undefined)\
         $f().onBeforeBegin(playerOnly);\
     else\
         setTimeout("$f().onBeforeBegin(playerOnly)", 1000);';
 
-    //playerOnly() {
-    //    if (this.playerOnly === null)
-    //        return;
-    //    var bdd = document.getElementsByClassName("b-dropdown");
-    //    var bdds = new Array();
-    //    for (var i = 0; i < bdd.length; i++)
-    //    {
-    //        bdds[i] = bdd[i];
-    //    }
+    ids = ["adsProxy-zone-section-glowadswide",
+        "adsProxy-zone-section-adsuniversal",
+        "adsProxy-zone-video"
+    ];
 
-    //    var bps = document.getElementsByClassName("b-player");
-    //    if (bps.length != 1)
-    //        return;
-    //    var bp = <HTMLDivElement> bps[0];
-    //    bp.style.width = "100%";
-    //    while (document.body.children.length > 0)
-    //    {
-    //        document.body.removeChild(document.body.children[0]);
-    //    }
-    //    document.body.appendChild(bp);
+    classes = ["h-ad",
+        "l-content-right"
+    ];
 
-    //    for (var i = 0; i < bdds.length; i++) {
-    //        document.body.appendChild(bdds[i]);
-    //    }
+    CheckAndCleanAd() {
+        if (window.location.href.indexOf("http://fs.to/") == -1)
+            return;
 
-    //    var items = document.getElementsByClassName("b-tab-item m-wide");
-    //    if ((items != undefined) && (items.length > 0))        {
-    //        var item = <HTMLDivElement> items[0];
-    //        item.className = "";
-    //    }
+        if (Settings.GetSettings().GetIsRemoveAd() == false)
+            return;
 
-    //    var itemPlayer = <HTMLDivElement> document.getElementById("player");
-    //    if (itemPlayer != undefined)
-    //    {
-    //        var parent = <HTMLElement> itemPlayer.parentNode;
-    //        while (parent != document.body) {
-    //            if (parent.className != "main") {
-    //                parent.style.width = "100%";
-    //            }
-    //            parent.style.margin = "0";
-    //            parent.style.height = "100%";
-    //            parent = <HTMLElement> parent.parentNode;
-    //        }
-    //        itemPlayer.style.height = "100%";
-    //        itemPlayer.style.width = "100%";
-    //    }
-    //    this.playerOnly = null;
-    //}
+        this.setCookie("preroll", 1);
+
+        for (var i = 0; i < this.ids.length; i++)
+        {
+            var ad = <HTMLDivElement> document.getElementById(this.ids[i]);
+            if (ad !== null)
+                ad.style.display = "none";
+        }
+
+        for (var i = 0; i < this.classes.length; i++)
+        {
+            var ads = document.getElementsByClassName(this.classes[i]);
+            for (var n = 0; n < ads.length; n++)
+            {
+                var ad = <HTMLDivElement> ads[n];
+                if (ad !== null)
+                    ad.style.display = "none";
+            }
+        }
+    }
+
+    setCookie(c_name, value, exdays = null) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value = encodeURIComponent(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = c_name + "=" + c_value;
+    }
 }
