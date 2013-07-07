@@ -21,6 +21,9 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="src\common\res\comajax_gray.gif" />
+    <Content Include="src\common\res\dark_star.png" />
+    <Content Include="src\common\res\star.png" />
     <TypeScriptCompile Include="src\chrome\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\chrome\ts\Init.ts" />
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
@@ -30,6 +33,12 @@
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbInfo.ts" />
     <TypeScriptCompile Include="src\common\js\md5.d.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
+    <Content Include="src\common\icons\button.png" />
+    <Content Include="src\common\icons\icon100.png" />
+    <Content Include="src\common\icons\icon128.png" />
+    <Content Include="src\common\icons\icon32.png" />
+    <Content Include="src\common\icons\icon48.png" />
+    <Content Include="src\common\icons\icon64.png" />
     <Content Include="src\common\js\md5.js" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpLookuper.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
@@ -74,7 +83,28 @@
     <Content Include="src\common\locales\ru.json" />
     <Content Include="src\common\locales\uk.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="src\firefox\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\firefox\ts\Init.ts" />
+    <TypeScriptCompile Include="src\firefox\ts\OptionsFirefox.ts" />
+    <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
+    <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
+    <Content Include="src\ie\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\opera\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\safari\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.sh" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

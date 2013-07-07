@@ -9,6 +9,7 @@
 		"ts/Settings/ChromeStorageSettings.js",
 		"ts/Settings/Settings.js",
 		"ts/Settings/SettingsChrome.js",
+		"ts/Settings/SettingsFirefox.js",
 		"ts/Settings/KangoStorageSettings.js",
 		"ts/InformationProviders/FSUAInformationProvider.js",
 		"ts/InformationProviders/EXUAInformationProvider.js",
