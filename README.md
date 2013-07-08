@@ -1,7 +1,7 @@
 ratings_ext
 ===========
 
-Extention for Chrome to show ratings on fs.ua and ex.ua
+Extention for Chrome to show ratings on FS.TO (ex FS.UA) and EX.UA
 
 TODO:
 - Player page clearing for firefox

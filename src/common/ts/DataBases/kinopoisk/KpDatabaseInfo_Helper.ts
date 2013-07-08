@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name Ratings for FS.UA and EX.UA
+// @name Ratings for FS.TO (ex FS.UA) and EX.UA
 // @include http://www.kinopoisk.ru/film/*
 // @all-frames true
 // ==/UserScript==
