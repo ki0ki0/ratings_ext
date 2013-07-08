@@ -43,7 +43,7 @@ class KangoStorageSettings implements ISettings {
     }
 
     Get(name: string):any {
-        return this.storage[name];
+        return (this.storage[name] === undefined) ? true : this.storage[name];
     }
 
     Set(name: string, val: any) {

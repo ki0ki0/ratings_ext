@@ -56,7 +56,7 @@ class ChromeStorageSettings implements ISettings {
         var i = this.Names.indexOf(name);
         if ( i == -1)
             return null;
-        return this.Values[i];
+        return (this.Values[i] === undefined) ? true : this.Values[i];
     }
 
     Set(name: string, val: any) {
