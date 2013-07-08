@@ -6,4 +6,6 @@ PUSHD %~dp0
 
 call "%KANGODIR%\kango.py" build .\
 
+call clean.cmd 2> nul > nul
+
 POPD
