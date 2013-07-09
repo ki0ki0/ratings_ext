@@ -102,9 +102,6 @@
   <ItemGroup>
     <Content Include="build.cmd" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="build.sh" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
