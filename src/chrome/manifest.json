@@ -34,7 +34,6 @@
 		"page": "background.html"
 	},
 	"permissions": [
-	    "webNavigation",
 		"storage",
 		"http://www.imdb.com/*",
 		"http://www.kinopoisk.ru/*" ,
