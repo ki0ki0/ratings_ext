@@ -26,7 +26,7 @@
 		"ts/Init.js"
 	], 
 	"homepage_url": "https://github.com/ki0ki0/ratings_ext", 
-	"version": "2.1.2",
+	"version": "2.1.3",
 	"options_page": "options.html",
 	"default_locale": "en"
 }

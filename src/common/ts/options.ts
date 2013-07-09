@@ -21,8 +21,6 @@ class Options
     }
 
     initOptionsPage() {
-        document.getElementById("syncSettings").style.display = "none";
-
         var text = kango.i18n.getMessage("settings");
         document.getElementById("settingMess").textContent = text;
 

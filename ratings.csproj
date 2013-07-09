@@ -21,6 +21,7 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="src\chrome\options.html" />
     <Content Include="src\common\res\comajax_gray.gif" />
     <Content Include="src\common\res\dark_star.png" />
     <Content Include="src\common\res\star.png" />
@@ -91,6 +92,7 @@
     <TypeScriptCompile Include="src\firefox\ts\OptionsFirefox.ts" />
     <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
+    <Content Include="src\firefox\options.html" />
     <Content Include="src\ie\extension_info.json" />
   </ItemGroup>
   <ItemGroup>

@@ -27,8 +27,6 @@ class OptionsChrome extends Options {
 
         var text = kango.i18n.getMessage("syncSettingsSub");
         document.getElementById("syncSettingsSub").textContent = text;
-
-        document.getElementById("syncSettings").style.display = "";
     }
 
     initOptionsValues() {
