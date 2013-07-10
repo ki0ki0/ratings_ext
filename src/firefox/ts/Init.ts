@@ -5,11 +5,4 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
-/// <reference path="../../common/ts/debug.ts"/>
-
-/// <reference path="Settings/SettingsFirefox.ts"/>
-/// <reference path="../../common/ts/Ratings.ts"/>
-
-new SettingsFirefox(function () {
-    new Ratings().GetRatings();
-});
+// Do nothing in common Init because of browser specific Init present!

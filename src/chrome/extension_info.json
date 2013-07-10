@@ -1,3 +1,9 @@
 {
-  "id": "{1B389E5B-D947-4A3C-A0A0-16421F422FED}"
+  "id": "{1B389E5B-D947-4A3C-A0A0-16421F422FED}",
+  "content_scripts": [
+		"ts/Settings/LocalStorageSettings.js",
+		"ts/Settings/ChromeStorageSettings.js",
+		"ts/Settings/SettingsChrome.js",
+		"ts/InitChrome.js"
+	]
 }

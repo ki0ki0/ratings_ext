@@ -7,7 +7,9 @@
 
 /// <reference path="../../common/ts/debug.ts"/>
 
-/// <reference path="Settings/SettingsChrome.ts"/>
+/// <reference path="Settings/SettingsFirefox.ts"/>
 /// <reference path="../../common/ts/Ratings.ts"/>
 
-// Do nothing in common Init because of browser specific Init present!
+new SettingsFirefox(function () {
+    new Ratings().GetRatings();
+});

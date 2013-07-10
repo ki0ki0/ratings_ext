@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="src\chrome\options.html" />
+    <TypeScriptCompile Include="src\chrome\ts\InitChrome.ts" />
     <Content Include="src\common\res\comajax_gray.gif" />
     <Content Include="src\common\res\dark_star.png" />
     <Content Include="src\common\res\star.png" />
@@ -93,6 +94,7 @@
     <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
     <Content Include="src\firefox\options.html" />
+    <TypeScriptCompile Include="src\firefox\ts\InitFirefox.ts" />
     <Content Include="src\ie\extension_info.json" />
   </ItemGroup>
   <ItemGroup>
