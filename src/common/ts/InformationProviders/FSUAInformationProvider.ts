@@ -99,6 +99,7 @@ class FSUAInformationProvider implements IInformationProvider {
         for (var i = 0; i < bdd.length; i++)\
         {\
             bdds[i] = bdd[i];\
+            bdds[i].className = bdds[i].className.replace("m-popup","");\
         }\
 \
         var bps = document.getElementsByClassName("b-player");\
