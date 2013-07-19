@@ -82,7 +82,8 @@ class FSUAInformationProvider implements IInformationProvider {
             return;
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
-            this.executeScript(this.PlayerOnly);
+            this.ChangeLists();
+            this.executeScript(this.PlayerOnlyInject);
         }
 
         this.executeScript(this.ChangeUrl);
@@ -96,7 +97,7 @@ class FSUAInformationProvider implements IInformationProvider {
         document.head.appendChild(start);
     }
 
-    PlayerOnly() {
+    PlayerOnlyInject() {
 
         var playerOnly = function () {
             if (playerOnly === null)
@@ -107,7 +108,6 @@ class FSUAInformationProvider implements IInformationProvider {
             for (var i = 0; i < bdd.length; i++)
             {
                 bdds[i] = bdd[i];
-                bdds[i].className = bdds[i].className.replace("m-popup", "");
             }
 
             var bps = document.getElementsByClassName("b-player");
@@ -115,10 +115,12 @@ class FSUAInformationProvider implements IInformationProvider {
                 return;
             var bp = <HTMLElement> bps[0];
             bp.style.width = "100%";
+
             while (document.body.children.length > 0)
             {
-                document.body.removeChild(document.body.children[0]);
+                document.body.removeChild(document.body.firstChild);
             }
+
             document.body.appendChild(bp);
 
             for (var i = 0; i < bdds.length; i++) {
@@ -164,12 +166,34 @@ class FSUAInformationProvider implements IInformationProvider {
         "l-content-right"
     ];
 
+
+    ChangeLists() {
+        var bti = document.getElementsByClassName("m-dropdown-movie");
+        if ((bti != null) && (bti.length > 0))
+        {
+            var insert = bti[0];
+            var parent = bti[0].parentNode;
+            var popup = document.getElementsByClassName("m-popup");
+            while ((popup != null) && (popup.length > 0))
+            {
+                var item = <HTMLDivElement> popup[0];
+                item.className = item.className.replace("m-popup", "m-dropdown-movie");
+                parent.insertBefore(item, insert);
+                popup = document.getElementsByClassName("m-popup");
+            }
+        }
+    }
+
     CheckAndCleanAd() {
         if (window.location.href.indexOf("http://fs.to/") == -1)
             return;
 
         if (Settings.GetSettings().GetIsRemoveAd() == false)
             return;
+
+        debug("cleaner starting");
+
+        this.ChangeLists();
 
         this.setCookie("preroll", 1);
 
