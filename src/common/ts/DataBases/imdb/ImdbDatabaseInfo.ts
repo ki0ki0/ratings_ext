@@ -6,7 +6,7 @@
 // ==/UserScript==
 
 
-/// <reference path="../../debug.ts"/>
+/// <reference path="../../common.ts"/>
 
 /// <reference path="../IDatabaseInfo.ts"/> 
 /// <reference path="../../xhr.ts"/>
@@ -45,7 +45,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
         link.appendChild(image);
         image.src = img;
 
-        var txtNode = document.createTextNode(this.htmlDecode(itemInfo.title));
+        var txtNode = document.createTextNode(HtmlDecode(itemInfo.title));
 
         var txt = document.createElement("p");
         txt.appendChild(txtNode);
@@ -129,15 +129,6 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
     private voteCallback(data) {
         debug("Imdb voting success." + data);
         this.callback(this.itemInfo, true);
-    }
-
-    private htmlDecode(value) {
-        if (value) {
-            var a = document.createElement('a'); a.innerHTML = value;
-            return a.textContent;
-        } else {
-            return '';
-        }
     }
 
 }

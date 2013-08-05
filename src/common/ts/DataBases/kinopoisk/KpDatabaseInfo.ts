@@ -5,7 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
-/// <reference path="../../debug.ts"/>
+/// <reference path="../../common.ts"/>
 
 /// <reference path="../IDatabaseInfo.ts"/> 
 /// <reference path="../../xhr.ts"/>
@@ -44,7 +44,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
         link.appendChild(image);
         image.src = img;
 
-        var txtNode = document.createTextNode(this.htmlDecode(itemInfo.title));
+        var txtNode = document.createTextNode(HtmlDecode(itemInfo.title));
         link.appendChild(txtNode);
 
         var txt = document.createElement("p");
@@ -133,15 +133,6 @@ class KpDatabaseInfo implements IDatabaseInfo {
         debug("Kp receiveMessage " + event);
         if (event.data.indexOf("vote:") >= 0) {
             this.callback(this.kpInfo, event.data.indexOf("Ok") >= 0);
-        }
-    }
-
-    private htmlDecode(value) {
-        if (value) {
-            var a = document.createElement('a'); a.innerHTML = value;
-            return a.textContent;
-        } else {
-            return '';
         }
     }
 

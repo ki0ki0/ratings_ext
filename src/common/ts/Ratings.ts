@@ -5,7 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
-/// <reference path="debug.ts"/>
+/// <reference path="common.ts"/>
 
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
 /// <reference path="InformationProviders/EXUAInformationProvider.ts"/> 

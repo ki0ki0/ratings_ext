@@ -3,7 +3,7 @@
 	"description": "Shows films and series rating from IMDB and Kinopoisk on FS.TO (ex FS.UA) and EX.UA. Allows to vote in both systems in place.", 
 	"creator": "Ihor Kostiuk", 
 	"content_scripts": [
-	    "ts/debug.js",
+	    "ts/common.js",
 		"ts/xhr.js",
 		"ts/Settings/Settings.js",
 		"ts/Settings/KangoStorageSettings.js",

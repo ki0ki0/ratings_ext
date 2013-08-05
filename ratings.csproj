@@ -46,7 +46,7 @@
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\Ratings.ts" />
-    <TypeScriptCompile Include="src\common\ts\debug.ts" />
+    <TypeScriptCompile Include="src\common\ts\common.ts" />
     <TypeScriptCompile Include="src\common\ts\xhr.ts" />
     <TypeScriptCompile Include="src\common\ts\Settings\Settings.ts" />
     <TypeScriptCompile Include="src\common\ts\Options.ts" />

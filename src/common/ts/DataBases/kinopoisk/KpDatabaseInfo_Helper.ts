@@ -4,7 +4,7 @@
 // @all-frames true
 // ==/UserScript==
 
-/// <reference path="../../debug.ts"/>
+/// <reference path="../../common.ts"/>
 
 /// <reference path="../../xhr.ts"/>
 

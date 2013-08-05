@@ -5,7 +5,7 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
-/// <reference path="../../common/ts/debug.ts"/>
+/// <reference path="../../common/ts/common.ts"/>
 
 /// <reference path="Settings/SettingsChrome.ts"/>
 /// <reference path="../../common/ts/Ratings.ts"/>

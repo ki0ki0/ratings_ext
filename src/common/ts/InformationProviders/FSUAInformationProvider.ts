@@ -11,6 +11,8 @@
 
 declare var $f;
 
+declare var FS_FLOWPLAYER_CONFIG;
+
 class FSUAInformation implements IInformationContainer {
     titles: string[];
     years: Number[];
@@ -68,8 +70,15 @@ class FSUAInformationProvider implements IInformationProvider {
                 return;
             var newUrl = document.location.href.replace(/file=[0-9]*/, "file=" + fileId);
             history.replaceState(null, newUrl, newUrl);
-        }
+        };
 
+        console.log("ratings replace in change url");
+        //var oldOnStart = FS_FLOWPLAYER_CONFIG.player.options.clip.onStart;
+        //FS_FLOWPLAYER_CONFIG.player.options.clip.onStart = function (clip) {
+        //    changeUrl(clip);
+        //    oldOnStart(clip);
+        //};
+    
         if ($f() !== undefined)
             $f().onBeforeBegin(changeUrl);
         else
@@ -90,6 +99,7 @@ class FSUAInformationProvider implements IInformationProvider {
     }
 
     executeScript(script) {
+        debug("ratings add script");
         var start = document.createElement("script");
         start.type = "text/javascript";
         var text = "(" + script.toString() + ")();";
@@ -99,8 +109,10 @@ class FSUAInformationProvider implements IInformationProvider {
 
     PlayerOnlyInject() {
 
+        var playerCleared = false;
+
         var playerOnly = function () {
-            if (playerOnly === null)
+            if (playerCleared === true)
                 return;
 
             var bdd = document.getElementsByClassName("b-dropdown");
@@ -128,13 +140,13 @@ class FSUAInformationProvider implements IInformationProvider {
             }
 
             var items = document.getElementsByClassName("b-tab-item m-wide");
-            if ((items != undefined) && (items.length > 0)) {
+            if ((items != null) && (items.length > 0)) {
                 var item = <HTMLElement> items[0];
                 item.className = "";
             }
 
             var itemPlayer = <HTMLElement> document.getElementById("player");
-            if (itemPlayer !== undefined)
+            if ((itemPlayer !== null) && (itemPlayer !== undefined))
             {
                 var parent = <HTMLElement> itemPlayer.parentNode;
                 while (parent != document.body) {
@@ -148,8 +160,15 @@ class FSUAInformationProvider implements IInformationProvider {
                 itemPlayer.style.height = "100%";
                 itemPlayer.style.width = "100%";
             }
-            playerOnly = null;
-        }
+            playerCleared = true;
+        };
+
+        console.log("ratings replace in player only");
+        //var oldOnStart = FS_FLOWPLAYER_CONFIG.player.options.clip.onStart;
+        //FS_FLOWPLAYER_CONFIG.player.options.clip.onStart = function (clip) {
+        //    playerOnly();
+        //    oldOnStart(clip);
+        //};
 
         if($f() !== undefined)
             $f().onBeforeBegin(playerOnly);
@@ -196,10 +215,10 @@ class FSUAInformationProvider implements IInformationProvider {
         this.ChangeLists();
 
         this.setCookie("preroll", 1);
-
+        var ad;
         for (var i = 0; i < this.ids.length; i++)
         {
-            var ad = <HTMLDivElement> document.getElementById(this.ids[i]);
+            ad = <HTMLDivElement> document.getElementById(this.ids[i]);
             if (ad !== null)
                 ad.style.display = "none";
         }
@@ -209,7 +228,7 @@ class FSUAInformationProvider implements IInformationProvider {
             var ads = document.getElementsByClassName(this.classes[i]);
             for (var n = 0; n < ads.length; n++)
             {
-                var ad = <HTMLDivElement> ads[n];
+                ad = <HTMLDivElement> ads[n];
                 if (ad !== null)
                     ad.style.display = "none";
             }
