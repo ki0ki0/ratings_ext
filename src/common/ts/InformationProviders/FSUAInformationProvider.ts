@@ -92,79 +92,64 @@ class FSUAInformationProvider implements IInformationProvider {
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
             this.ChangeLists();
-            executeScript(this.PlayerOnlyInject);
+            this.PlayerOnly();
         }
 
         executeScript(this.ChangeUrl);
     }
 
-    PlayerOnlyInject() {
+    playerCleared = false;
 
-        var playerCleared = false;
+    PlayerOnly() {
+        if (this.playerCleared === true)
+            return;
 
-        var playerOnly = function () {
-            if (playerCleared === true)
-                return;
+        var bdd = document.getElementsByClassName("b-dropdown");
+        var bdds = new Array();
+        for (var i = 0; i < bdd.length; i++)
+        {
+            bdds[i] = bdd[i];
+        }
 
-            var bdd = document.getElementsByClassName("b-dropdown");
-            var bdds = new Array();
-            for (var i = 0; i < bdd.length; i++)
-            {
-                bdds[i] = bdd[i];
-            }
+        var bps = document.getElementsByClassName("b-player");
+        if (bps.length != 1)
+            return;
+        var bp = <HTMLElement> bps[0];
+        bp.style.width = "100%";
 
-            var bps = document.getElementsByClassName("b-player");
-            if (bps.length != 1)
-                return;
-            var bp = <HTMLElement> bps[0];
-            bp.style.width = "100%";
+        while (document.body.children.length > 0)
+        {
+            document.body.removeChild(document.body.firstChild);
+        }
 
-            while (document.body.children.length > 0)
-            {
-                document.body.removeChild(document.body.firstChild);
-            }
+        document.body.appendChild(bp);
 
-            document.body.appendChild(bp);
+        for (var i = 0; i < bdds.length; i++) {
+            document.body.appendChild(bdds[i]);
+        }
 
-            for (var i = 0; i < bdds.length; i++) {
-                document.body.appendChild(bdds[i]);
-            }
+        var items = document.getElementsByClassName("b-tab-item m-wide");
+        if ((items != null) && (items.length > 0)) {
+            var item = <HTMLElement> items[0];
+            item.className = "";
+        }
 
-            var items = document.getElementsByClassName("b-tab-item m-wide");
-            if ((items != null) && (items.length > 0)) {
-                var item = <HTMLElement> items[0];
-                item.className = "";
-            }
-
-            var itemPlayer = <HTMLElement> document.getElementById("player");
-            if ((itemPlayer !== null) && (itemPlayer !== undefined))
-            {
-                var parent = <HTMLElement> itemPlayer.parentNode;
-                while (parent != document.body) {
-                    if (parent.className != "main") {
-                        parent.style.width = "100%";
-                    }
-                    parent.style.margin = "0";
-                    parent.style.height = "100%";
-                    parent = <HTMLElement> parent.parentNode;
+        var itemPlayer = <HTMLElement> document.getElementById("player");
+        if ((itemPlayer !== null) && (itemPlayer !== undefined))
+        {
+            var parent = <HTMLElement> itemPlayer.parentNode;
+            while (parent != document.body) {
+                if (parent.className != "main") {
+                    parent.style.width = "100%";
                 }
-                itemPlayer.style.height = "100%";
-                itemPlayer.style.width = "100%";
+                parent.style.margin = "0";
+                parent.style.height = "100%";
+                parent = <HTMLElement> parent.parentNode;
             }
-            playerCleared = true;
-        };
-
-        console.log("ratings replace in player only");
-        //var oldOnStart = FS_FLOWPLAYER_CONFIG.player.options.clip.onStart;
-        //FS_FLOWPLAYER_CONFIG.player.options.clip.onStart = function (clip) {
-        //    playerOnly();
-        //    oldOnStart(clip);
-        //};
-
-        if($f() !== undefined)
-            $f().onBeforeBegin(playerOnly);
-        else
-            setTimeout(function () { $f().onBeforeBegin(playerOnly); }, 1000);
+            itemPlayer.style.height = "100%";
+            itemPlayer.style.width = "100%";
+        }
+        this.playerCleared = true;
     }
 
     ids = ["adsProxy-zone-section-glowadswide",
