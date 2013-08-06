@@ -11,7 +11,7 @@
 
 class Options
 {
-    constructor(callInit:bool) {
+    constructor(callInit:boolean) {
         var _this = this;
         new Settings(function () {
             if (callInit) {

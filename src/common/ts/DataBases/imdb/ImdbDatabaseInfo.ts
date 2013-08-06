@@ -55,7 +55,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
     private callback: Function;
 
-    public GetUserRating(id: any, callback: Function): bool {
+    public GetUserRating(id: any, callback: Function): boolean {
         if (id instanceof ImdbInfo === false)
             return false;
         debug("Imdb GetUserRating");
@@ -103,7 +103,7 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
     private itemInfo: ImdbInfo;
 
-    Vote(id: any, rating: number, callback: Function): bool {
+    Vote(id: any, rating: number, callback: Function): boolean {
         if (id instanceof ImdbInfo === false)
             return false;
         debug("Imdb voting.");

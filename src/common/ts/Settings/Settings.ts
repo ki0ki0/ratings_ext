@@ -40,11 +40,11 @@ class Settings {
     }
 
     GetIsClearPlayer(): any { return this.local.Get(this.names[0]); }
-    SetIsClearPlayer(isClear: bool) { this.local.Set(this.names[0], isClear); }
+    SetIsClearPlayer(isClear: boolean) { this.local.Set(this.names[0], isClear); }
 
     GetIsShowVoting(): any { return this.local.Get(this.names[1]); }
-    SetIsShowVoting(isClear: bool) { this.local.Set(this.names[1], isClear); }
+    SetIsShowVoting(isClear: boolean) { this.local.Set(this.names[1], isClear); }
 
     GetIsRemoveAd(): any { return this.local.Get(this.names[2]); }
-    SetIsRemoveAd(isClear: bool) { this.local.Set(this.names[2], isClear); }
+    SetIsRemoveAd(isClear: boolean) { this.local.Set(this.names[2], isClear); }
 }

@@ -43,7 +43,7 @@ class ImdbLookuper implements ILookuper {
     private NextTitle(): string {
         var res = null;
         if (this.titleIndex < this.info.titles.length) {
-            var res = this.info.titles[this.titleIndex];
+            res = this.info.titles[this.titleIndex];
             this.titleIndex++;
         }
         return res;

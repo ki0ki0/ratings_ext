@@ -16,7 +16,7 @@ class ChromeStorageSettings implements ISettings {
     private callback: Function;
     private obj: Object;
 
-    constructor (isSync: bool, names : string[], vals: any[], callback: Function, obj: Object) {
+    constructor (isSync: boolean, names : string[], vals: any[], callback: Function, obj: Object) {
         this.Names = names;
         this.Values = new Array();
         for (var i in this.Names) {
@@ -73,7 +73,7 @@ class ChromeCachedStorageSettings implements ISettings {
     private cache: LocalStorageSettings;
     private settings: ChromeStorageSettings;
 
-    constructor (isSync: bool, names : string[], callback: Function, obj: Object) {
+    constructor(isSync: boolean, names : string[], callback: Function, obj: Object) {
         this.cache = new LocalStorageSettings();
         var vals = this.loadCache(names);
         this.settings = new ChromeStorageSettings(isSync, names, vals, callback, obj);

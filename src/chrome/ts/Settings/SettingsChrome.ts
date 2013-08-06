@@ -46,7 +46,7 @@ class SettingsChrome extends Settings{
     }
 
     GetIsSync():any { return this.sync.Get(this.namesChrome[3]); }
-    SetIsSync(isSync: bool) { 
+    SetIsSync(isSync: boolean) { 
         this.sync.Set(this.namesChrome[3], isSync);
         this.localChrome.Set(this.namesChrome[3], isSync);
         if (isSync) {
@@ -64,11 +64,11 @@ class SettingsChrome extends Settings{
     }
 
     GetIsClearPlayer(): any { return this.getCurrentStorage().Get(this.namesChrome[0]); }
-    SetIsClearPlayer(isClear: bool) { this.getCurrentStorage().Set(this.namesChrome[0], isClear); }
+    SetIsClearPlayer(isClear: boolean) { this.getCurrentStorage().Set(this.namesChrome[0], isClear); }
 
     GetIsShowVoting(): any { return this.getCurrentStorage().Get(this.namesChrome[1]); }
-    SetIsShowVoting(isClear: bool) { this.getCurrentStorage().Set(this.namesChrome[1], isClear); }
+    SetIsShowVoting(isClear: boolean) { this.getCurrentStorage().Set(this.namesChrome[1], isClear); }
 
     GetIsRemoveAd(): any { return this.getCurrentStorage().Get(this.namesChrome[2]); }
-    SetIsRemoveAd(isClear: bool) { this.getCurrentStorage().Set(this.namesChrome[2], isClear); }
+    SetIsRemoveAd(isClear: boolean) { this.getCurrentStorage().Set(this.namesChrome[2], isClear); }
 }

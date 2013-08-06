@@ -14,11 +14,11 @@ class SettingsFirefox extends Settings {
     }
 
     GetIsClearPlayer(): any { return false; }
-    SetIsClearPlayer(isClear: bool) { super.SetIsClearPlayer(isClear); }
+    SetIsClearPlayer(isClear: boolean) { super.SetIsClearPlayer(isClear); }
 
     GetIsShowVoting(): any { return super.GetIsShowVoting(); }
-    SetIsShowVoting(isClear: bool) { super.SetIsClearPlayer(isClear); }
+    SetIsShowVoting(isClear: boolean) { super.SetIsClearPlayer(isClear); }
 
     GetIsRemoveAd(): any { return super.GetIsRemoveAd(); }
-    SetIsRemoveAd(isClear: bool) { super.SetIsClearPlayer(isClear); }
+    SetIsRemoveAd(isClear: boolean) { super.SetIsClearPlayer(isClear); }
 }
