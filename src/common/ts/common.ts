@@ -15,6 +15,18 @@ function debug(a) {
     }
 }
 
+function executeScript(func) {
+    var text = "(" + func.toString() + ")();";
+    addScript(text);
+}
+
+function addScript(scriptSource) {
+    var start = document.createElement("script");
+    start.type = "text/javascript";
+    start.innerHTML = scriptSource;
+    document.body.appendChild(start);
+}
+
 // HtmlDecode http://lab.msdn.microsoft.com/annotations/htmldecode.js
 //   client side version of the useful Server.HtmlDecode method
 //   takes one string (encoded) and returns another (decoded)

@@ -9,13 +9,7 @@
 /// <reference path="../../xhr.ts"/>
 
 class KpDatabaseInfo_Helper {
-    private addScript(text) {
-        var start = document.createElement("script");
-        start.type = "text/javascript";
-        start.innerHTML = text;
-        document.body.appendChild(start);
-    }
-
+    
     public Vote() {
         if (document.location.hash != "") {
             var exp = /\/film\/([0-9]*)\/#([0-9])+#([0-9A-z]*)/g;
@@ -33,13 +27,16 @@ class KpDatabaseInfo_Helper {
         }
     }
 
+    private sendResponse(result) {
+        parent.postMessage("vote:" + result.toString(), '*');
+    }
 
     private voteResult(data) {
-        this.addScript("parent.postMessage(\"vote:" + data + "\", '*');");
+        addScript("(" + this.sendResponse.toString() + ")('" + data.toString() + "')");
     }
 
     private voteError(data) {
-        this.addScript("parent.postMessage(\"vote:error\", '*');");
+        addScript("(" + this.sendResponse.toString() + ")('error')");
     }
 }
 

@@ -92,19 +92,10 @@ class FSUAInformationProvider implements IInformationProvider {
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
             this.ChangeLists();
-            this.executeScript(this.PlayerOnlyInject);
+            executeScript(this.PlayerOnlyInject);
         }
 
-        this.executeScript(this.ChangeUrl);
-    }
-
-    executeScript(script) {
-        debug("ratings add script");
-        var start = document.createElement("script");
-        start.type = "text/javascript";
-        var text = "(" + script.toString() + ")();";
-        start.innerHTML = text;
-        document.head.appendChild(start);
+        executeScript(this.ChangeUrl);
     }
 
     PlayerOnlyInject() {
