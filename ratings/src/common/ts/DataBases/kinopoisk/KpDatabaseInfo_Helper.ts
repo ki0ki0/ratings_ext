@@ -27,12 +27,13 @@ class KpDatabaseInfo_Helper {
         }
     }
 
-    private sendResponse(result) {
+    private sendResponse(result: string) {
         parent.postMessage("vote:" + result.toString(), '*');
     }
 
     private voteResult(data) {
-        addScript("(" + this.sendResponse.toString() + ")('" + data.toString() + "')");
+        var result = data.indexOf("Ok") >= 0;
+        addScript("(" + this.sendResponse.toString() + ")('" + (result? "Ok": "fail") + "')");
     }
 
     private voteError(data) {
