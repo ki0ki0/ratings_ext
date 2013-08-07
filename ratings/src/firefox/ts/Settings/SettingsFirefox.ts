@@ -17,8 +17,8 @@ class SettingsFirefox extends Settings {
     SetIsClearPlayer(isClear: boolean) { super.SetIsClearPlayer(isClear); }
 
     GetIsShowVoting(): any { return super.GetIsShowVoting(); }
-    SetIsShowVoting(isClear: boolean) { super.SetIsClearPlayer(isClear); }
+    SetIsShowVoting(isClear: boolean) { super.SetIsShowVoting(isClear); }
 
     GetIsRemoveAd(): any { return super.GetIsRemoveAd(); }
-    SetIsRemoveAd(isClear: boolean) { super.SetIsClearPlayer(isClear); }
+    SetIsRemoveAd(isClear: boolean) { super.SetIsRemoveAd(isClear); }
 }
