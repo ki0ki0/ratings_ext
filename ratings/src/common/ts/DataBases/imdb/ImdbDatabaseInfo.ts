@@ -76,10 +76,10 @@ class ImdbDatabaseInfo implements IDatabaseInfo {
 
     private userRatingCallback(data) {
         var your = /<span class="value">([0-9\-]+)<\/span>/g;
-        var arr_your = your.exec(data);
+        var arrYour = your.exec(data);
         var rate = null;
-        if ((arr_your != null) && (arr_your.length > 0)) {
-            rate = arr_your[1];
+        if ((arrYour != null) && (arrYour.length > 0)) {
+            rate = arrYour[1];
         }
 
         var exp = /data-auth="([^\"]*)"/g;

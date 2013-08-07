@@ -18,7 +18,7 @@ class EXUAInformationProvider implements IInformationProvider {
         if (window.location.href.indexOf("http://www.ex.ua/view/") == -1)
             return null;
 
-        var titles = null;
+        var titles;
         var year = null;
 
         var header = document.getElementsByTagName("h1");
@@ -39,7 +39,10 @@ class EXUAInformationProvider implements IInformationProvider {
 
         var info = new EXUAInformation();
         info.titles = titles;
-        info.years = new Array(year);
+        if (year !== null) {
+            info.years = new Array(1);
+            info.years[0] = year;
+        }
         info.container = header[0];
         return info;
     }

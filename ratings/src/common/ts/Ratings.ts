@@ -41,7 +41,8 @@ class Ratings {
     private info: IInformationContainer = null;
 
     public GetRatings() {
-        for (var i = 0; i < this.providers.length; i++) {
+        var i: number;
+        for (i = 0; i < this.providers.length; i++) {
             var infoTmp = this.providers[i].GetInfo();
             if (infoTmp != null) {
                 this.info = infoTmp;
@@ -79,14 +80,12 @@ class Ratings {
         this.divVoting.style.display = "none";
         tdVoting.appendChild(this.divVoting);
 
-        var _divVoting = this.divVoting;
-        kango.invokeAsync("kango.i18n.getMessage", "vote", function (data) {
-            _divVoting.textContent = data;
+        kango.invokeAsync("kango.i18n.getMessage", "vote", (data) => {
+            this.divVoting.textContent = data;
         });
 
-        for (var i = 0; i < this.lookupers.length; i++) {
-            var _this = this;
-            this.lookupers[i].GetId(this.info, function (id) { _this.GetIdCallback(id); });
+        for (i = 0; i < this.lookupers.length; i++) {
+            this.lookupers[i].GetId(this.info, (id) => { this.GetIdCallback(id); });
         }
     }
 
@@ -130,17 +129,15 @@ class Ratings {
                     var voteStar = star;
                     this.addVoting(star, darkStar, voteStar);
                 }
-                var _this = this;
-                this.databases[i].GetUserRating(id, function (rating) { _this.GetUserRatingCallback(id, rating); });
+                this.databases[i].GetUserRating(id, (rating) => { this.GetUserRatingCallback(id, rating); });
             }
         }
     }
 
     private addVoting(star: string, darkStar: string, voteStar: string) {
-        var _this = this;
         this.voting = new tVote(star, darkStar, voteStar, "voting", {
-            max: 10, def: 0, click: function (mouseEvent, val) {
-                _this.vote(mouseEvent, val);
+            max: 10, def: 0, click: (mouseEvent, val)  => {
+                this.vote(mouseEvent, val);
             }
         });
     }
@@ -159,7 +156,7 @@ class Ratings {
         var div = document.createElement("div");
         this.ratingElements[index].appendChild(div);
         debug("GetUserRatingCallback ratingElements[index]:" + this.ratingElements[index]);
-        var txt = "";
+        var txt: string;
 
         var txtNode = document.createTextNode("");
 
@@ -178,16 +175,14 @@ class Ratings {
 
         if (rating == null) {
             txt = "Please, sing in.";
-            var _txtNode = txtNode;
-            kango.invokeAsync("kango.i18n.getMessage", "signIn", function (data) {
-                _txtNode.textContent = data;
+            kango.invokeAsync("kango.i18n.getMessage", "signIn", (data) => {
+                txtNode.textContent = data;
             });
         }
         else {
             txt = "Your rating: " + rating + "/10";
-            var _txtNode = txtNode;
-            kango.invokeAsync("kango.i18n.getMessage", "yourRating", function (data) {
-                _txtNode.textContent = data + " " + rating + "/10";
+            kango.invokeAsync("kango.i18n.getMessage", "yourRating", (data) => {
+                txtNode.textContent = data + " " + rating + "/10";
             });
         }
         txtNode.textContent = txt;
@@ -202,7 +197,8 @@ class Ratings {
 
         var val = this.userRatings[0];
 
-        for (var i = 1; i < this.userRatings.length; i++) {
+        var i: number;
+        for (i = 1; i < this.userRatings.length; i++) {
             if (val != this.userRatings[i]) {
                 val = -1;
                 break;
@@ -210,7 +206,7 @@ class Ratings {
         }
 
         var display = ((val == -1) || (val == null) ? "block" : "none");
-        for (var i = 0; i < this.userRatingsElements.length; i++) {
+        for (i = 0; i < this.userRatingsElements.length; i++) {
             if (this.userRatingsElements[i]) {
                 this.userRatingsElements[i].style.display = display;
             }
@@ -226,9 +222,7 @@ class Ratings {
         for (var j = 0; j < this.ids.length; j++) {
             var id = this.ids[j];
 
-            var index = this.ids.indexOf(id);
             for (var i = 0; i < this.databases.length; i++) {
-                var _this = this;
                 if (this.databases[i].IsValid(id)) {
                     var elem: HTMLDivElement = this.userRatingsElements[j];
                     elem.style.display = "block";
@@ -246,7 +240,7 @@ class Ratings {
                         img.src = "https://dl.dropboxusercontent.com/u/8771963/res/comajax_gray.gif";
                     }
                     elem.appendChild(img);
-                    this.databases[i].Vote(id, val, function (id, success) { _this.voteCallback(id, success); });
+                    this.databases[i].Vote(id, val, (idRet, success) => { this.voteCallback(idRet, success); });
                 }
             }
         }
@@ -261,9 +255,8 @@ class Ratings {
         elem.style.display = "block";
 
         for (var i = 0; i < this.databases.length; i++) {
-            var _this = this;
-            this.databases[i].GetUserRating(id, function (rating) {
-                _this.GetUserRatingCallback(id, rating);
+            this.databases[i].GetUserRating(id, (rating) => {
+                this.GetUserRatingCallback(id, rating);
             });
         }
     }

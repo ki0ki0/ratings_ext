@@ -12,7 +12,7 @@
 
 class OptionsChrome extends Options {
     
-    private settings: SettingsChrome;
+    public settings: SettingsChrome;
 
     constructor() {
         super(false);
@@ -24,8 +24,7 @@ class OptionsChrome extends Options {
 
         var text = kango.i18n.getMessage("syncSettings");
         document.getElementById("syncSettingsLabel").textContent = text;
-
-        var text = kango.i18n.getMessage("syncSettingsSub");
+        text = kango.i18n.getMessage("syncSettingsSub");
         document.getElementById("syncSettingsSub").textContent = text;
 
         document.getElementById("syncSettings").style.display = "";
@@ -33,8 +32,7 @@ class OptionsChrome extends Options {
 
     initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("syncSettingsVal");
-        var _this = this;
-        val.addEventListener("click", function () { _this.saveSettings(); });
+        val.addEventListener("click", () => {this.saveSettings();});
         val.checked = this.settings.GetIsSync();
 
         super.initOptionsValues();

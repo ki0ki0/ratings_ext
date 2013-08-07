@@ -13,7 +13,7 @@ function tVote(star, dartStar, voteStar, containerId, settings) {
     this.init();
 }
 
-tVote.prototype.init = function () {
+tVote.prototype.init = function() {
     var that = this;
 
     var parent = document.getElementById(this.container);
@@ -27,15 +27,15 @@ tVote.prototype.init = function () {
         this.images[i].alt = i + 1;
         image.style.cursor = 'pointer';
 
-        image.onmouseover = function () {
+        image.onmouseover = function() {
             that.set(this.value - 1, 1);
         };
 
-        image.addEventListener('click', function (event) {
+        image.addEventListener('click', function(event) {
             var e = event || window.event;
             if (that.settings.click) {
                 that.index = this.value - 1;
-                that.settings.click(event, this.value);
+                that.settings.click(e, this.value);
             }
         }, false);
 
@@ -45,39 +45,38 @@ tVote.prototype.init = function () {
     this.info = document.createTextNode("");
     parent.appendChild(this.info);
 
-    parent.onmouseout = function(event) {
+    parent.onmouseout = function() {
         that.set(that.index);
     };
 
     this.set(this.index);
-}
+};
 
-tVote.prototype.addHandler = function (callback) {
+tVote.prototype.addHandler = function(callback) {
     var parent = document.getElementById(this.container);
 
     for (var i = 0; i < parent.children.length; i++) {
-        parent.children[i].addEventListener('click', function (event) {
+        parent.children[i].addEventListener('click', function(event) {
             var e = event || window.event;
             if (callback) {
-                callback(event, this.value);
+                callback(e, this.value);
             }
         }, false);
     }
-}
+};
 
-tVote.prototype.clear = function () {
+tVote.prototype.clear = function() {
     for (var i = 0; i < this.settings.max; i++) {
         this.images[i].src = this.DARK_STAR;
     }
-}
+};
 
-tVote.prototype.set = function (idx, voting) {
+tVote.prototype.set = function(idx, voting) {
     this.updateInfo(idx + 1);
     if (idx < 0) {
         this.clear();
         return;
-    }
-    else if (idx >= this.settings.max) {
+    } else if (idx >= this.settings.max) {
         idx = this.settings.max - 1;
     }
 
@@ -100,20 +99,19 @@ tVote.prototype.set = function (idx, voting) {
         prev.src = imgsrc;
         prev = prev.previousSibling;
     }
-}
+};
 
-tVote.prototype.updateInfo = function (idx) {
+tVote.prototype.updateInfo = function(idx) {
     var text;
     if (idx > 0)
         text = idx + "/" + this.settings.max;
     else
         text = "-/" + this.settings.max;
 
-    //this.info.nodeValue = text;
     this.info.textContent = " " + text;
-}
+};
 
-tVote.prototype.reset = function (num) {
+tVote.prototype.reset = function(num) {
     this.index = (num) ? num : this.settings.def;
     this.set(--this.index);
-}
+};

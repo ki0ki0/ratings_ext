@@ -11,62 +11,55 @@
 
 class Options
 {
-    constructor(callInit:boolean) {
-        var _this = this;
-        new Settings(function () {
-            if (callInit) {
-                _this.initOptionsValues();
-            }
-        });
+    public settings: Settings;
+
+    constructor(init: boolean) {
+        if (init) {
+            this.settings = new Settings(() => { this.initOptionsValues(); });
+            debug("this.settings" + this.settings);
+        }
     }
 
     initOptionsPage() {
         var text = kango.i18n.getMessage("settings");
         document.getElementById("settingMess").textContent = text;
-
-        var text = kango.i18n.getMessage("playerOnly");
+        text = kango.i18n.getMessage("playerOnly");
         document.getElementById("playerOnlyLabel").textContent = text;
-
-        var text = kango.i18n.getMessage("playerOnlySub");
+        text = kango.i18n.getMessage("playerOnlySub");
         document.getElementById("playerOnlySub").textContent = text;
-
-        var text = kango.i18n.getMessage("showVoting");
+        text = kango.i18n.getMessage("showVoting");
         document.getElementById("showVotingLabel").textContent = text;
-
-        var text = kango.i18n.getMessage("showVotingSub");
+        text = kango.i18n.getMessage("showVotingSub");
         document.getElementById("showVotingSub").textContent = text;
-
-        var text = kango.i18n.getMessage("removeAdv");
+        text = kango.i18n.getMessage("removeAdv");
         document.getElementById("removeAdvLabel").textContent = text;
-
-        var text = kango.i18n.getMessage("removeAdvSub");
+        text = kango.i18n.getMessage("removeAdvSub");
         document.getElementById("removeAdvSub").textContent = text;
     }
 
     initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-        var _this = this;
-        val.addEventListener("click", function () { _this.saveSettings(); });
-        val.checked = Settings.GetSettings().GetIsClearPlayer();
+        val.addEventListener("click", () => { this.saveSettings(); });
+        val.checked = this.settings.GetIsClearPlayer();
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
-        val.addEventListener("click", function () { _this.saveSettings(); });
-        val.checked = Settings.GetSettings().GetIsShowVoting();
+        val.addEventListener("click", () => { this.saveSettings(); });
+        val.checked = this.settings.GetIsShowVoting();
 
         val = <HTMLInputElement> document.getElementById("removeAdvVal");
-        val.addEventListener("click", function () { _this.saveSettings(); });
-        val.checked = Settings.GetSettings().GetIsRemoveAd();
+        val.addEventListener("click", () => { this.saveSettings(); });
+        val.checked = this.settings.GetIsRemoveAd();
     }
 
     saveSettings() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
-        Settings.GetSettings().SetIsClearPlayer(val.checked);
+        this.settings.SetIsClearPlayer(val.checked);
 
         val = <HTMLInputElement> document.getElementById("showVotingVal");
-        Settings.GetSettings().SetIsShowVoting(val.checked);
+        this.settings.SetIsShowVoting(val.checked);
 
         val = <HTMLInputElement> document.getElementById("removeAdvVal");
-        Settings.GetSettings().SetIsRemoveAd(val.checked);
+        this.settings.SetIsRemoveAd(val.checked);
     }
 
 }

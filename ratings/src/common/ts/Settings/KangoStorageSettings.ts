@@ -14,7 +14,6 @@ class KangoStorageSettings implements ISettings {
     private callback:Function = null;
 
     constructor(names:string[], callback: Function) {
-        var _this = this;
 
         this.callback = callback;
 
@@ -22,11 +21,11 @@ class KangoStorageSettings implements ISettings {
             this.storage[names[i]] = true;
         }
         if (kango.storage === undefined) {
-            kango.invokeAsync("kango.storage.getItem", "options", function (data) { _this.getCallback(data); });
+            kango.invokeAsync("kango.storage.getItem", "options", (data) => { this.getCallback(data); });
         }
         else {
-            var vals = kango.storage.getItem("options");
-            this.getCallback(vals);
+            var vals = kango.storage.getItem("options");// do not add to setTimeout scope
+            setTimeout(() => { this.getCallback(vals); }, 1); // do callback call async
         }
     }
 

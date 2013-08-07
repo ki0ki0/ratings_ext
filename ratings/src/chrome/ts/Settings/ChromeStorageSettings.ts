@@ -28,8 +28,7 @@ class ChromeStorageSettings implements ISettings {
             this.storage = chrome.storage.local;
         this.callback = callback;
         this.obj = obj;
-        var pThis = this;
-        this.storage.get(names, function (val) { pThis.getCallback(val); });
+        this.storage.get(names, (val) => { this.getCallback(val); });
     }
 
     private getCallback (val) {
@@ -62,7 +61,7 @@ class ChromeStorageSettings implements ISettings {
     Set(name: string, val: any) {
         var i = this.Names.indexOf(name);
         if ( i == -1)
-            return null;
+            return;
         this.Values[i] = val;
         this.save();
     }

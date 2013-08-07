@@ -76,10 +76,10 @@ class KpDatabaseInfo implements IDatabaseInfo {
 
     private userRatingCallback(data) {
         var your = /myVote:([0-9]*)/g;
-        var arr_your = your.exec(data);
+        var arrYour = your.exec(data);
         var rate = "-";
-        if ((arr_your != null) && (arr_your.length > 0)) {
-            rate = arr_your[1];
+        if ((arrYour != null) && (arrYour.length > 0)) {
+            rate = arrYour[1];
         }
 
         var exp = /user_code:'([0-9a-f]*)'/g;
@@ -117,8 +117,7 @@ class KpDatabaseInfo implements IDatabaseInfo {
 
         var url = "http://www.kinopoisk.ru/film/" + this.kpInfo.id + "/#" + rating + "#" + this.auth;
 
-        var _this = this;
-        window.addEventListener("message", function (ev) { _this.receiveMessage(ev); }, false);
+        window.addEventListener("message", (ev) => { this.receiveMessage(ev); }, false);
 
         var ifr = <HTMLIFrameElement> document.createElement("iframe");
         ifr.height = "0";

@@ -12,6 +12,6 @@
 
 debug("init");
 
-new Settings(function () {
+var settings = new Settings(function () {
     new Ratings().GetRatings();
 });

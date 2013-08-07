@@ -29,7 +29,7 @@ class FSUAInformationProvider implements IInformationProvider {
             return null;
 
         var category = document.getElementsByTagName("h1");
-        if ((category === undefined) && (category.length <= 0))
+        if ((category === undefined) || (category === null) || (category.length <= 0))
             return null;
 
         var text = category[0].textContent.trim();
@@ -37,19 +37,19 @@ class FSUAInformationProvider implements IInformationProvider {
         if (titles.length == 0)
             return null;
 
-        var item_info = document.getElementsByClassName("item-info");
-        if (item_info.length == 0)
+        var itemInfo = document.getElementsByClassName("item-info");
+        if (itemInfo.length == 0)
             return null;
 
-        var year;
-        if (item_info.length > 0) {
-            var el: Element = <Element>item_info[0];
+        var year: number = null;
+        if (itemInfo.length > 0) {
+            var el: Element = <Element>itemInfo[0];
             var td = el.getElementsByTagName("td");
             for (var i = 0; i < td.length; i++) {
                 var yearInfo = td[i].textContent.trim();
                 var match = yearInfo.match(/[0-9][0-9][0-9][0-9]/g);
                 if ((match != null) && (match.length > 0)) {
-                    year = match[0];
+                    year = parseInt( match[0]);
                     break;
                 }
             }
@@ -57,8 +57,11 @@ class FSUAInformationProvider implements IInformationProvider {
 
         var info = new FSUAInformation();
         info.titles = titles;
-        info.years = new Array(year);
-        info.container = item_info[0];
+        if (year !== null) {
+            info.years = new Array(1);
+            info.years[0] = year;
+        }
+        info.container = itemInfo[0];
         return info;
     }
 
@@ -106,7 +109,8 @@ class FSUAInformationProvider implements IInformationProvider {
 
         var bdd = document.getElementsByClassName("b-dropdown");
         var bdds = new Array();
-        for (var i = 0; i < bdd.length; i++)
+        var i;
+        for (i = 0; i < bdd.length; i++)
         {
             bdds[i] = bdd[i];
         }
@@ -124,7 +128,7 @@ class FSUAInformationProvider implements IInformationProvider {
 
         document.body.appendChild(bp);
 
-        for (var i = 0; i < bdds.length; i++) {
+        for (i = 0; i < bdds.length; i++) {
             document.body.appendChild(bdds[i]);
         }
 
@@ -191,30 +195,31 @@ class FSUAInformationProvider implements IInformationProvider {
         this.ChangeLists();
 
         this.setCookie("preroll", 1);
-        var ad;
-        for (var i = 0; i < this.ids.length; i++)
+        var ad: HTMLDivElement;
+        var i: number;
+        for (i = 0; i < this.ids.length; i++)
         {
             ad = <HTMLDivElement> document.getElementById(this.ids[i]);
-            if (ad !== null)
+            if ((ad !== undefined) && (ad !== null))
                 ad.style.display = "none";
         }
 
-        for (var i = 0; i < this.classes.length; i++)
+        for (i = 0; i < this.classes.length; i++)
         {
             var ads = document.getElementsByClassName(this.classes[i]);
             for (var n = 0; n < ads.length; n++)
             {
                 ad = <HTMLDivElement> ads[n];
-                if (ad !== null)
+                if ((ad !== undefined) && (ad !== null))
                     ad.style.display = "none";
             }
         }
     }
 
-    setCookie(c_name, value, exdays = null) {
+    setCookie(cName, value, exdays = null) {
         var exdate = new Date();
         exdate.setDate(exdate.getDate() + exdays);
-        var c_value = encodeURIComponent(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-        document.cookie = c_name + "=" + c_value;
+        var cValue = encodeURIComponent(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+        document.cookie = cName + "=" + cValue;
     }
 }

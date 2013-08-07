@@ -12,12 +12,11 @@
 
 class OptionsFirefox extends Options {
     
-    private settings: SettingsFirefox;
+    public settings: SettingsFirefox;
 
     constructor() {
         super(false);
-        var _this = this;
-        this.settings = new SettingsFirefox(function () { _this.initOptionsValues(); });
+        this.settings = new SettingsFirefox( () => { this.initOptionsValues(); });
     }
 
     initOptionsPage() {

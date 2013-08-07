@@ -30,9 +30,9 @@ function addScript(scriptSource) {
 // HtmlDecode http://lab.msdn.microsoft.com/annotations/htmldecode.js
 //   client side version of the useful Server.HtmlDecode method
 //   takes one string (encoded) and returns another (decoded)
-function HtmlDecode(s) {
+function HtmlDecode(s): string {
     var out = "";
-    if (s == null) return;
+    if (s == null) return null;
     
     var l = s.length;
     for (var i = 0; i < l; i++)

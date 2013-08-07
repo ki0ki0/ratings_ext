@@ -69,16 +69,19 @@ class KpLookuper implements ILookuper {
                 return this.callback(info);
 
             var films = data["searchFilms"];
-            for (var i = 0; films !== undefined && i < films.length; i++) {
-                info = this.checkItem(films[i]);
-                if (info != null)
-                    return this.callback(info);
+            if ((films !== undefined) && (films !== null)) {
+                for (var i = 0; i < films.length; i++) {
+                    info = this.checkItem(films[i]);
+                    if (info != null)
+                        return this.callback(info);
+                }
             }
         }
         this.Lookup();
+        return null;
     }
 
-    private checkItem = function (film) : KpInfo {
+    private checkItem(film) : KpInfo {
         if (film == null)
             return null;
 

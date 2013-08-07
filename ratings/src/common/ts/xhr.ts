@@ -15,7 +15,7 @@ function xhr(url: string, object: Object, success: Function, error: Function) {
         method: 'GET',
         async: false
     };
-    kango.xhr.send(details, function (data) {
+    kango.xhr.send(details, (data) => {
         if (data.status == 200 && data.response != null) {
             var text = data.response;
             success.call(object, text);
@@ -33,7 +33,7 @@ function xhrJson(url: string, object: Object, success: Function, error: Function
         async: false,
         contentType: 'json'
     };
-    kango.xhr.send(details, function (data) {
+    kango.xhr.send(details, (data) => {
         if (data.status == 200 && data.response != null) {
             var text = data.response;
             success.call(object, text);

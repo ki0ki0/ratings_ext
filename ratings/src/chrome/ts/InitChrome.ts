@@ -13,13 +13,13 @@
 if (navigator["vendor"].indexOf("Google") != -1)
 {
     debug("chrome/init");
-    new SettingsChrome(function () {
+    var settingsChrome  = new SettingsChrome(function () {
         new Ratings().GetRatings();
     }, null);
 }
 else {
     debug("blink/init");
-    new Settings(function () {
+    var settings = new Settings(function () {
         new Ratings().GetRatings();
     });
 }

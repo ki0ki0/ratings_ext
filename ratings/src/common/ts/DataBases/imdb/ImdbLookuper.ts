@@ -55,7 +55,7 @@ class ImdbLookuper implements ILookuper {
 
     private Success(data: JSON) {
         if (data !== null) {
-            var group = data["title_popular"]
+            var group = data["title_popular"];
             if (group !== undefined) {
                 var info = this.checkFilms(group);
                 if (info != null)
@@ -81,13 +81,17 @@ class ImdbLookuper implements ILookuper {
             }
         }
         this.Lookup();
+        return null;
     }
 
     private checkFilms(array) {
         if (array == null)
             return null;
         for (var i in array) {
-            var year = array[i]["description"].match("[0-9][0-9][0-9][0-9]")[0];
+            var years = array[i]["description"].match("[0-9][0-9][0-9][0-9]");
+            if (years === null)
+                continue;
+            var year = years[0];
             var id = array[i]["id"];
             var title = array[i]["title"];
             if (this.checkFilm(title, year)) {

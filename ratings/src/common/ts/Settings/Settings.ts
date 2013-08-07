@@ -28,11 +28,7 @@ class Settings {
         if (callback == null)
             return;
         this.callback = callback;
-        var _this = this;
-        this.local = new KangoStorageSettings(this.names, function () {
-            _this.local = this;
-            _this.storageCallback();
-        });
+        this.local = new KangoStorageSettings(this.names, () => { this.storageCallback();});
     }
 
     private storageCallback() {

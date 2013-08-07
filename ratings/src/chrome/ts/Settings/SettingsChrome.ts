@@ -49,12 +49,13 @@ class SettingsChrome extends Settings{
     SetIsSync(isSync: boolean) { 
         this.sync.Set(this.namesChrome[3], isSync);
         this.localChrome.Set(this.namesChrome[3], isSync);
+        var i: string;
         if (isSync) {
-            for (var i in this.namesChrome)
+            for (i in this.namesChrome)
                 this.sync.Set(this.namesChrome[i], this.localChrome.Get(this.namesChrome[i]));
         }
         else {
-            for (var i in this.namesChrome)
+            for (i in this.namesChrome)
                 this.localChrome.Set(this.namesChrome[i], this.sync.Get(this.namesChrome[i]));
         }
     }
