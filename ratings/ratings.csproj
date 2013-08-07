@@ -22,6 +22,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="src\chrome\options.html" />
+    <TypeScriptCompile Include="tests_src\simpleTest.ts" />
+    <Content Include="tests_src\tsUnit.ts" />
     <TypeScriptCompile Include="src\chrome\ts\InitChrome.ts" />
     <Content Include="src\common\res\comajax_gray.gif" />
     <Content Include="src\common\res\dark_star.png" />
@@ -144,7 +146,7 @@
     <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)build.cmd</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)build.cmd</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

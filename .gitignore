@@ -8,10 +8,10 @@ obj/
 
 bin/
 
-output/*
-src/*/ts/*.js
-src/*/ts/*.js.map
-src/*/ts/*/*.js
-src/*/ts/*/*.js.map
-src/*/ts/*/*/*.js
-src/*/ts/*/*/*.js.map
+output/
+ratings/src/*/ts/*.js
+ratings/src/*/ts/*/*.js
+ratings/src/*/ts/*/*/*.js
+TestResults/
+*.js.map
+ratings/tests_src/*.js
