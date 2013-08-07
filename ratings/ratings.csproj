@@ -71,7 +71,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\common\options.html" />
-    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\common\extension_info.json" />
