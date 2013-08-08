@@ -195,6 +195,8 @@ class FSUAInformationProvider implements IInformationProvider {
         this.ChangeLists();
 
         this.setCookie("preroll", 1);
+        location.href = "javascript:void(window.FS_FLOWPLAYER_CONFIG.ads.rotation = false)"; // remove player ad (unsafeWindow location hack)
+
         var ad: HTMLDivElement;
         var i: number;
         for (i = 0; i < this.ids.length; i++)
@@ -212,6 +214,15 @@ class FSUAInformationProvider implements IInformationProvider {
                 ad = <HTMLDivElement> ads[n];
                 if ((ad !== undefined) && (ad !== null))
                     ad.style.display = "none";
+            }
+        }
+
+        var scripts = document.getElementsByTagName('script');
+        for (i = scripts.length - 1; i >= 0; --i) {
+            var script = <HTMLScriptElement> scripts[i];
+            if (script === undefined) continue;
+            if (/(hit\.ua|adriver\.ru|admixer\.net|mediacom\.com\.ua|adocean\.pl|admaster\.net|46\.182\.85\.201|adfox\.ru)/i.test(script.src)) {
+                script.parentNode.removeChild(script);
             }
         }
     }
