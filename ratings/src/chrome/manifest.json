@@ -4,7 +4,7 @@
 		{
 			"matches": [
 				"http://fs.to/*",
-				"http://www.ex.ua/view/*",
+				"http://www.ex.ua/*",
 				"http://www.kinopoisk.ru/film/*" 
 			],
 			"all_frames": true,

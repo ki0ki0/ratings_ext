@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Ratings for FS.TO (ex FS.UA) and EX.UA
 // @include http://fs.to/*
-// @include http://www.ex.ua/view/*
+// @include http://www.ex.ua/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
@@ -15,8 +15,15 @@ class EXUAInformation implements IInformationContainer {
 
 class EXUAInformationProvider implements IInformationProvider {
     GetInfo(): IInformationContainer {
-        if (window.location.href.indexOf("http://www.ex.ua/view/") == -1)
+        if (window.location.href.indexOf("http://www.ex.ua/") == -1)
             return null;
+
+        var reg: RegExp = new RegExp("www.ex.ua\/([0-9]+)?", "g");
+        var urlMatch = reg.exec(window.location.href);
+        if (urlMatch == null || urlMatch.length <= 1 || urlMatch[1] === undefined)
+            return null;
+
+        debug(urlMatch.join());
 
         var titles;
         var year = null;
@@ -26,9 +33,9 @@ class EXUAInformationProvider implements IInformationProvider {
             return null;
 
         var text = header[0].textContent.trim();
-        var reg: RegExp = new RegExp("([^ |,./\\(\\)\\[\\]]*)", "g");
+        reg = new RegExp("([^ |,./\\(\\)\\[\\]]*)", "g");
         titles = text.match(reg);
-        if (titles.length == 0)
+        if (titles == null || titles.length == 0)
             return null;
         for (var i in titles) {
             titles[i] = titles[i].trim();
