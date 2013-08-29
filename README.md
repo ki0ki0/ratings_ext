@@ -1,7 +1,12 @@
 ratings_ext
 ===========
 
-Extention for Chrome to show ratings on FS.TO (ex FS.UA) and EX.UA
+Extention for browsers to show ratings on FS.TO (ex FS.UA) and EX.UA
+
+Chrome: https://chrome.google.com/webstore/detail/ratings-for-fsto-ex-fsua/cdjfijnbamnnkfnienhbmfacflpckhgd
+Opera: https://addons.opera.com/extensions/details/ratings-for-fsto-ex-fsua-and-exua/
+Firefox: https://addons.mozilla.org/firefox/addon/ratings-for-fsua-and-exua/
+Safari: http://safariaddons.com/safari/addon/217
 
 TODO:
 - Player page clearing for firefox
