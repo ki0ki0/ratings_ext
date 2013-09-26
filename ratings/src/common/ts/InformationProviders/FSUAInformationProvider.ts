@@ -32,10 +32,15 @@ class FSUAInformationProvider implements IInformationProvider {
         if ((category === undefined) || (category === null) || (category.length <= 0))
             return null;
 
-        var text = category[0].textContent.trim();
+        var titleLocal = <HTMLElement> category[0];
+        var titleOrg = titleLocal.nextElementSibling;
+        var text = titleLocal.textContent.trim();
         var titles = text.split(String.fromCharCode(160, 47, 160));
         if (titles.length == 0)
             return null;
+
+        if (titleOrg != null)
+            titles[titles.length] = titleOrg.textContent.trim();
 
         var itemInfo = document.getElementsByClassName("item-info");
         if (itemInfo.length == 0)

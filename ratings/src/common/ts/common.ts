@@ -10,7 +10,7 @@ var isDebug = true;
 
 function debug(a) {
     if (isDebug) {
-        console.log(a);
+        //console.log("ratings: " + a);
     }
 }
 
