@@ -167,7 +167,10 @@ class FSUAInformationProvider implements IInformationProvider {
     ];
 
     classes = ["h-ad",
-        "l-content-right"
+        "l-content-right",
+        "b-adsuniversal-wrap",
+        "b-section-banner-wrap",
+        "l-body-branding"
     ];
 
 
@@ -200,7 +203,6 @@ class FSUAInformationProvider implements IInformationProvider {
         this.ChangeLists();
 
         this.setCookie("preroll", 1);
-        location.href = "javascript:void(window.FS_FLOWPLAYER_CONFIG.ads.rotation = false)"; // remove player ad (unsafeWindow location hack)
 
         var ad: HTMLDivElement;
         var i: number;
@@ -208,7 +210,7 @@ class FSUAInformationProvider implements IInformationProvider {
         {
             ad = <HTMLDivElement> document.getElementById(this.ids[i]);
             if ((ad !== undefined) && (ad !== null))
-                ad.style.display = "none";
+                ad.parentNode.removeChild(ad);
         }
 
         for (i = 0; i < this.classes.length; i++)
@@ -217,10 +219,17 @@ class FSUAInformationProvider implements IInformationProvider {
             for (var n = 0; n < ads.length; n++)
             {
                 ad = <HTMLDivElement> ads[n];
-                if ((ad !== undefined) && (ad !== null))
-                    ad.style.display = "none";
+                if ((ad !== undefined) && (ad !== null)) 
+                    ad.parentNode.removeChild(ad);
             }
         }
+
+        var inners = document.getElementsByClassName("l-body-inner");
+        if (inners !== undefined && inners != null && inners.length > 0) {
+            var inner = <HTMLDivElement> inners[0];
+            inner.className = inner.className.replace("l-body-inner", "l-body-inner-inner");
+            }
+
 
         var scripts = document.getElementsByTagName('script');
         for (i = scripts.length - 1; i >= 0; --i) {
