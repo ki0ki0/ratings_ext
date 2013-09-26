@@ -47,8 +47,10 @@ class Ratings {
             if (infoTmp != null) {
                 this.info = infoTmp;
                 debug("Info found");
-                debug(infoTmp.titles.join(","));
-                debug(infoTmp.years.join(","));
+                if ((infoTmp.titles !== undefined) && (infoTmp.titles != null))
+                    debug(infoTmp.titles.join(","));
+                if ((infoTmp.years !== undefined) && (infoTmp.years != null))
+                    debug(infoTmp.years.join(","));
                 break;
             }
         }

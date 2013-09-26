@@ -33,7 +33,7 @@ class EXUAInformationProvider implements IInformationProvider {
             return null;
 
         var text = header[0].textContent.trim();
-        reg = new RegExp("([^ |,./\\(\\)\\[\\]]*)", "g");
+        reg = new RegExp("([^|,./\\(\\)\\[\\]]*)", "g");
         titles = text.match(reg);
         if (titles == null || titles.length == 0)
             return null;
