@@ -6,11 +6,11 @@
 // @all-frames true
 // ==/UserScript==
 
-var isDebug = true;
+var isDebug = false;
 
 function debug(a) {
     if (isDebug) {
-        //console.log("ratings: " + a);
+        console.log("ratings: " + a);
     }
 }
 
