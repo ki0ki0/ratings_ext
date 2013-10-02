@@ -5,10 +5,10 @@
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
 
-/// <reference path="isettings.ts"/> 
+/// <reference path="../Interfaces/ISettingsStorage.ts"/> 
 /// <reference path="../kango.d.ts"/> 
 
-class KangoStorageSettings implements ISettings {
+class KangoStorageSettings implements ISettingsStorage {
 
     private storage = new Object();
     private callback:Function = null;

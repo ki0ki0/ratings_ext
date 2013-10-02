@@ -6,7 +6,7 @@
 // @all-frames true
 // ==/UserScript==
 
-var isDebug = false;
+var isDebug = true;
 
 function debug(a) {
     if (isDebug) {

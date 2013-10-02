@@ -1,4 +1,4 @@
-/// <reference path="Localization/Ii18n.ts"/> 
+/// <reference path="Interfaces/Ii18n.ts"/> 
 
 interface KangoXhr {
 //    getXMLHttpRequest(): XMLHttpRequest;  missed in 1.2

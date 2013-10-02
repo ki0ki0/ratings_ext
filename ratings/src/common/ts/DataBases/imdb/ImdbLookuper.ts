@@ -7,31 +7,30 @@
 
 /// <reference path="../../common.ts"/>
 
-/// <reference path="../ILookuper.ts"/> 
+/// <reference path="../../Interfaces/IFilmLookuper.ts"/> 
 /// <reference path="../../xhr.ts"/> 
-/// <reference path="ImdbInfo.ts"/> 
 
 
-class ImdbLookuper implements ILookuper {
-    private info:ILookupInfo;
-    private callback: (any) => void;
+class ImdbLookuper implements IFilmLookuper {
+    private callback: (dbInfo: IDbFilmInfo) => void;
+    private info: IFilmInfo;
 
-    private titleIndex: number = 0;
+    private titleIndex: number;
 
-    public GetId(info: ILookupInfo, callback: (any) => void ): void {
-        debug("ImdbLookuper GetId");
-        if ((info != undefined) && (callback != undefined)) {
-            debug("ImdbLookuper GetId initiated");
-            this.info = info;
-            this.callback = callback;
-            this.Lookup();
-        }
+    GetId(settings: ISettings, info: IFilmInfo, callback: (dbInfo: IDbFilmInfo) => void): void
+    {
+        this.callback = callback;
+        this.info = info;
+
+        this.titleIndex = 0;
+
+        this.Lookup();
     }
 
     private Lookup() {
         var title = this.NextTitle();
         if (title == null) {
-            debug("KpLookuper Lookup finished");
+            debug("ImdbLookuper Lookup finished");
             this.callback(null);
         }
         else {
@@ -42,8 +41,8 @@ class ImdbLookuper implements ILookuper {
 
     private NextTitle(): string {
         var res = null;
-        if (this.titleIndex < this.info.titles.length) {
-            res = this.info.titles[this.titleIndex];
+        if (this.titleIndex < this.info.GetTitles().length) {
+            res = this.info.GetTitles()[this.titleIndex];
             this.titleIndex++;
         }
         return res;
@@ -84,7 +83,7 @@ class ImdbLookuper implements ILookuper {
         return null;
     }
 
-    private checkFilms(array) {
+    private checkFilms(array): ImdbDatabaseInfo {
         if (array == null)
             return null;
         for (var i in array) {
@@ -95,9 +94,7 @@ class ImdbLookuper implements ILookuper {
             var id = array[i]["id"];
             var title = array[i]["title"];
             if (this.checkFilm(title, year)) {
-                var itemInfo: ImdbInfo = new ImdbInfo();
-                itemInfo.id = id;
-                itemInfo.title = title;
+                var itemInfo: ImdbDatabaseInfo = new ImdbDatabaseInfo(id, title);
                 return itemInfo;
             }
         }
@@ -105,12 +102,12 @@ class ImdbLookuper implements ILookuper {
     }
 
     private checkFilm(title, year) {
-        if ((this.info.years === undefined) || (this.info.years == null))
+        if ((this.info.GetYears() === undefined) || (this.info.GetYears() == null))
             return true;
-        for (var i in this.info.years) {
-            if (this.info.years[i] == year)
+        for (var i in this.info.GetYears()) {
+            if (this.info.GetYears()[i] == year)
                 return true;
-        }       
+        }
         return false;
     }
 }

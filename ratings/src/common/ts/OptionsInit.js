@@ -4,8 +4,6 @@
 // @include http://www.ex.ua/*
 // @include http://www.kinopoisk.ru/film/*
 // ==/UserScript==
-
-class ImdbInfo {
-    public id: string;
-    public title: string;
-};
+/// <reference path="kango.d.ts"/>
+/// <reference path="Options.ts"/>
+var options = new Options(true);

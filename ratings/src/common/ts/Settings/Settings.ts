@@ -9,7 +9,9 @@
 
 /// <reference path="KangoStorageSettings.ts"/> 
 
-class Settings {
+/// <reference path="../Interfaces/ISettings.ts"/> 
+
+class Settings implements ISettings {
     private static _this: Settings;
 
     public static GetSettings():Settings {
@@ -35,12 +37,12 @@ class Settings {
         this.callback();
     }
 
-    GetIsClearPlayer(): any { return this.local.Get(this.names[0]); }
+    GetIsClearPlayer(): boolean { return this.local.Get(this.names[0]) != false; }
     SetIsClearPlayer(isClear: boolean) { this.local.Set(this.names[0], isClear); }
 
-    GetIsShowVoting(): any { return this.local.Get(this.names[1]); }
+    GetIsShowVoting(): boolean { return this.local.Get(this.names[1]) != false; }
     SetIsShowVoting(isClear: boolean) { this.local.Set(this.names[1], isClear); }
 
-    GetIsRemoveAd(): any { return this.local.Get(this.names[2]); }
+    GetIsRemoveAd(): boolean { return this.local.Get(this.names[2]) != false; }
     SetIsRemoveAd(isClear: boolean) { this.local.Set(this.names[2], isClear); }
 }

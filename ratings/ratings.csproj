@@ -40,46 +40,26 @@
     <Content Include="kango_src\common\res\dark_star.png" />
     <Content Include="kango_src\common\res\star.png" />
     <Content Include="kango_src\firefox\options.html" />
-    <TypeScriptCompile Include="src\chrome\ts\InitChrome.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\OptionsInit.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\Init.ts" />
+    <TypeScriptCompile Include="src\chrome\kango.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\ISettings.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\ICustomHandler.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\IAdLocator.ts" />
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\Settings\LocalStorageSettings.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\IDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbDatabaseInfo.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbInfo.ts" />
     <TypeScriptCompile Include="src\common\js\md5.d.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpLookuper.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\Ratings.ts" />
     <TypeScriptCompile Include="src\common\ts\common.ts" />
     <TypeScriptCompile Include="src\common\ts\xhr.ts" />
     <TypeScriptCompile Include="src\common\ts\Settings\Settings.ts" />
     <TypeScriptCompile Include="src\common\ts\Options.ts" />
-    <TypeScriptCompile Include="src\common\ts\OptionsInit.ts" />
-    <TypeScriptCompile Include="src\common\ts\Init.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\Chrome.d.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAInformationProvider.ts" />
-    <TypeScriptCompile Include="src\common\ts\InformationProviders\EXUAInformationProvider.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\ILookuper.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\IFilmLookuper.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbLookuper.ts" />
-    <TypeScriptCompile Include="src\common\ts\InformationProviders\IInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\IInformationSource.ts" />
     <TypeScriptCompile Include="src\common\ts\Settings\KangoStorageSettings.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\Settings\ChromeStorageSettings.ts" />
-    <TypeScriptCompile Include="src\common\ts\Localization\Ii18n.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\Ii18n.ts" />
     <TypeScriptCompile Include="src\common\ts\kango.d.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\OptionsChrome.ts" />
-    <TypeScriptCompile Include="src\common\ts\Settings\ISettings.ts" />
-    <TypeScriptCompile Include="src\chrome\ts\Settings\SettingsChrome.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="src\firefox\ts\Init.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\OptionsFirefox.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\InitFirefox.ts" />
+    <TypeScriptCompile Include="src\common\ts\Interfaces\ISettingsStorage.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.cmd" />
@@ -115,6 +95,7 @@
     <Content Include="kango_src\safari\extension_info.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\firefox\" />
     <Folder Include="src\ie\" />
     <Folder Include="src\opera\" />
     <Folder Include="src\safari\" />

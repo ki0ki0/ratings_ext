@@ -8,127 +8,40 @@
 
 /// <reference path="../../common.ts"/>
 
-/// <reference path="../IDatabaseInfo.ts"/> 
+/// <reference path="../../Interfaces/ISettings.ts"/> 
+/// <reference path="../../Interfaces/IFilmLookuper.ts"/> 
 /// <reference path="../../xhr.ts"/>
-/// <reference path="ImdbInfo.ts"/> 
 
-class ImdbDatabaseInfo implements IDatabaseInfo {
+class ImdbDatabaseInfo implements IDbFilmInfo {
 
-    public IsValid(id: any) {
-        return (id instanceof ImdbInfo);
+    private id: string;
+    private title: string;
+
+    constructor(id: string, title: string) {
+        this.id = id;
+        this.title = title;
     }
 
-    public CreateItemRatingImg(id: any, parent: Node): Element {
-        if (id instanceof ImdbInfo === false)
-            return null;
-        var itemInfo: ImdbInfo = id;
-
-        var img = "http://tracker.0day.kiev.ua/imdb/imdb_" + itemInfo.id + ".gif";
-        var url = "http://www.imdb.com/title/" + itemInfo.id;
-        var name = "imdb";
-
-        var item: HTMLDivElement = <HTMLDivElement>document.createElement("div");
-        item.style.display = "table-cell";
-        parent.appendChild(item);
-
-        var input: HTMLInputElement = <HTMLInputElement> document.createElement("input");
-        item.appendChild(input);
-        input.type = "hidden";
-        input.name = name + "_id";
-        input.value = itemInfo.id;
-
-        var link = <HTMLAnchorElement> document.createElement("a");
-        item.appendChild(link);
-        link.href = url;
-
-        var image = <HTMLImageElement> document.createElement("img");
-        link.appendChild(image);
-        image.src = img;
-
-        var txtNode = document.createTextNode(HtmlDecode(itemInfo.title));
-
-        var txt = document.createElement("p");
-        txt.appendChild(txtNode);
-        link.appendChild(txt);
-        return item;
+    GetName(): string {
+        return this.title;
     }
-
-    private callback: Function;
-
-    public GetUserRating(id: any, callback: Function): boolean {
-        if (id instanceof ImdbInfo === false)
-            return false;
-        debug("Imdb GetUserRating");
-        var itemInfo: ImdbInfo = id;
-
-        this.callback = callback;
-
-        var url = "http://www.imdb.com/title/" + itemInfo.id + "/";
-        xhr(url, this, this.userRatingCallback, this.userRatingCallbackError);
-        return true;
+    GetLocalName(): string {
+        return this.title;
     }
-
-    private userRatingCallbackError() {
-        this.callback(null);
+    GetYear(): number {
+        return null;
     }
-
-    private auth: string = null;
-
-    private userRatingCallback(data) {
-        var your = /<span class="value">([0-9\-]+)<\/span>/g;
-        var arrYour = your.exec(data);
-        var rate = null;
-        if ((arrYour != null) && (arrYour.length > 0)) {
-            rate = arrYour[1];
-        }
-
-        var exp = /data-auth="([^\"]*)"/g;
-        var arr = exp.exec(data);
-        if ((arr != null) && (arr.length > 0)) {
-            var auth = arr[1];
-            if (auth.length == 0) {
-                rate = null;
-            }
-            else {
-                this.auth = auth;
-            }
-        }
-        else {
-            rate = null;
-        }
-
-        this.callback(rate);
+    GetRating(): number {
+        return null;
     }
-
-
-    private itemInfo: ImdbInfo;
-
-    Vote(id: any, rating: number, callback: Function): boolean {
-        if (id instanceof ImdbInfo === false)
-            return false;
-        debug("Imdb voting.");
-        this.itemInfo = id;
-
-        this.callback = callback;
-
-        var auth = encodeURIComponent(this.auth);
-
-        var url = "http://www.imdb.com/ratings/_ajax/title?tconst=" + this.itemInfo.id + "&rating=" + rating + "&auth=" + auth
-            + "&tracking_tag=title-maindetails";
-
-        debug(url);
-        xhr(url, this, this.voteCallback, this.voteCallbackError);
-        return true;
+    GetRatingImgSrc(): string {
+        return null;
     }
-
-    private voteCallbackError(data) {
-        debug("Imdb voting error." + data.status);
-        this.callback(this.itemInfo, false);
+    GetUserRating(callback: (userRating: number) => void): boolean {
+        return null;
     }
-
-    private voteCallback(data) {
-        debug("Imdb voting success." + data);
-        this.callback(this.itemInfo, true);
+    Vote(rating: number, callback: (successful: boolean) => void): boolean {
+        return null;
     }
 
 }

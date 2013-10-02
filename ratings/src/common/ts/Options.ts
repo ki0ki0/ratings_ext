@@ -15,12 +15,13 @@ class Options
 
     constructor(init: boolean) {
         if (init) {
-            this.settings = new Settings(() => { this.initOptionsValues(); });
+            this.settings = new Settings( () => this.initOptionsValues());
+            KangoAPI.onReady( () => this.initOptionsPage());
             debug("this.settings" + this.settings);
         }
     }
 
-    initOptionsPage() {
+    private initOptionsPage() {
         var text = kango.i18n.getMessage("settings");
         document.getElementById("settingMess").textContent = text;
         text = kango.i18n.getMessage("playerOnly");
@@ -37,7 +38,7 @@ class Options
         document.getElementById("removeAdvSub").textContent = text;
     }
 
-    initOptionsValues() {
+    private initOptionsValues() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
         val.addEventListener("click", () => { this.saveSettings(); });
         val.checked = this.settings.GetIsClearPlayer();
@@ -51,7 +52,7 @@ class Options
         val.checked = this.settings.GetIsRemoveAd();
     }
 
-    saveSettings() {
+    private saveSettings() {
         var val: HTMLInputElement = <HTMLInputElement> document.getElementById("playerOnlyVal");
         this.settings.SetIsClearPlayer(val.checked);
 
@@ -63,3 +64,5 @@ class Options
     }
 
 }
+
+var options = new Options(true);
