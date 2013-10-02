@@ -1,17 +1,5 @@
-*.zip
-
 *.user
-
 *.suo
-
 obj/
-
 bin/
-
-output/
-ratings/src/*/ts/*.js
-ratings/src/*/ts/*/*.js
-ratings/src/*/ts/*/*/*.js
 TestResults/
-*.js.map
-ratings/tests_src/*.js

@@ -10,6 +10,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{BDCEC319-60AE-4DD9-8995-62C049F9F7C5}"
+	ProjectSection(SolutionItems) = preProject
+		Other\ban.pdn = Other\ban.pdn
+		Other\ban.png = Other\ban.png
+		Other\ban1.pdn = Other\ban1.pdn
+		Other\ban1.png = Other\ban1.png
+		Other\ban2.pdn = Other\ban2.pdn
+		Other\ban2.png = Other\ban2.png
+		Other\ban_safari.pdn = Other\ban_safari.pdn
+		Other\ban_safari.png = Other\ban_safari.png
+		Other\dark_star.png = Other\dark_star.png
+		Other\icon128.pdn = Other\icon128.pdn
+		Other\icon256.pdn = Other\icon256.pdn
+		Other\icon256.png = Other\icon256.png
+		Other\screen1.png = Other\screen1.png
+		Other\screen2.png = Other\screen2.png
+		Other\screen3.png = Other\screen3.png
+		Other\star.png = Other\star.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +47,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDCEC319-60AE-4DD9-8995-62C049F9F7C5} = {7ACA20B0-D2D8-4FDC-816C-A60989E91011}
 	EndGlobalSection
 EndGlobal

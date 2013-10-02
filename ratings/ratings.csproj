@@ -6,7 +6,6 @@
     <ProjectGuid>{7574BEA9-FCD8-4082-B231-87D709D0A23A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <OutputPath>bin</OutputPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
@@ -20,14 +19,28 @@
     <IISExpressUseClassicPipelineMode />
     <UpgradeBackupLocation />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
-    <Content Include="src\chrome\options.html" />
-    <TypeScriptCompile Include="tests_src\simpleTest.ts" />
-    <Content Include="tests_src\tsUnit.ts" />
+    <Content Include="kango_src\chrome\options.html" />
+    <Content Include="kango_src\common\icons\button.png" />
+    <Content Include="kango_src\common\icons\icon100.png" />
+    <Content Include="kango_src\common\icons\icon128.png" />
+    <Content Include="kango_src\common\icons\icon32.png" />
+    <Content Include="kango_src\common\icons\icon48.png" />
+    <Content Include="kango_src\common\icons\icon64.png" />
+    <Content Include="kango_src\common\js\md5.js" />
+    <Content Include="kango_src\common\js\tVote.js" />
+    <Content Include="kango_src\common\options.html" />
+    <Content Include="kango_src\common\res\comajax_gray.gif" />
+    <Content Include="kango_src\common\res\dark_star.png" />
+    <Content Include="kango_src\common\res\star.png" />
+    <Content Include="kango_src\firefox\options.html" />
     <TypeScriptCompile Include="src\chrome\ts\InitChrome.ts" />
-    <Content Include="src\common\res\comajax_gray.gif" />
-    <Content Include="src\common\res\dark_star.png" />
-    <Content Include="src\common\res\star.png" />
     <TypeScriptCompile Include="src\chrome\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\chrome\ts\Init.ts" />
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
@@ -37,13 +50,6 @@
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbInfo.ts" />
     <TypeScriptCompile Include="src\common\js\md5.d.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo_Helper.ts" />
-    <Content Include="src\common\icons\button.png" />
-    <Content Include="src\common\icons\icon100.png" />
-    <Content Include="src\common\icons\icon128.png" />
-    <Content Include="src\common\icons\icon32.png" />
-    <Content Include="src\common\icons\icon48.png" />
-    <Content Include="src\common\icons\icon64.png" />
-    <Content Include="src\common\js\md5.js" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpLookuper.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo.ts" />
@@ -54,7 +60,6 @@
     <TypeScriptCompile Include="src\common\ts\Options.ts" />
     <TypeScriptCompile Include="src\common\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\common\ts\Init.ts" />
-    <Content Include="src\common\js\tVote.js" />
     <TypeScriptCompile Include="src\chrome\ts\Chrome.d.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAInformationProvider.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\EXUAInformationProvider.ts" />
@@ -70,42 +75,52 @@
     <TypeScriptCompile Include="src\chrome\ts\Settings\SettingsChrome.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\common\options.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\common\extension_info.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\chrome\extension_info.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\chrome\manifest.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\common\locales\en.json" />
-    <Content Include="src\common\locales\ru.json" />
-    <Content Include="src\common\locales\uk.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\firefox\extension_info.json" />
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="src\firefox\ts\Init.ts" />
     <TypeScriptCompile Include="src\firefox\ts\OptionsFirefox.ts" />
     <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
     <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
-    <Content Include="src\firefox\options.html" />
     <TypeScriptCompile Include="src\firefox\ts\InitFirefox.ts" />
-    <Content Include="src\ie\extension_info.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\opera\extension_info.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\safari\extension_info.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\chrome\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\chrome\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\common\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\common\locales\en.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\common\locales\ru.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\common\locales\uk.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\firefox\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\ie\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\opera\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kango_src\safari\extension_info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\ie\" />
+    <Folder Include="src\opera\" />
+    <Folder Include="src\safari\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="certificates\chrome.pem" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -145,7 +160,7 @@
     <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(ProjectDir)build.cmd</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)build.cmd $(OutDir)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
@@ -156,9 +171,19 @@
     <PublishDatabases>false</PublishDatabases>
     <PackageAsSingleFile>true</PackageAsSingleFile>
   </PropertyGroup>
-  <Target Name="BeforeBuild">
-    <Message Text="Compiling TypeScript files" />
-    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-    <Exec Command="tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-  </Target>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutDir>$(OutDir)src</TypeScriptOutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutDir>$(OutDir)src</TypeScriptOutDir>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" />
 </Project>

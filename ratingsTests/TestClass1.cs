@@ -3,7 +3,7 @@
 namespace ratingsTests
 {
     [TestClass]
-    [DeploymentItem(@"..\..\..\ratings\tests_src", "tests_src")]
+    //[DeploymentItem(@"..\..\tests_src", "tests_src")]
     public class TestClass1
     {
         private TestContext _context;
@@ -19,8 +19,8 @@ namespace ratingsTests
             // Load JavaScript files
             jsHelper.LoadFiles(new[]
             {
-                @"tests_src\tsUnit.js",
-                @"tests_src\simpleTest.js"
+                @"tsUnit.js",
+                @"simpleTest.js"
                 
             });
             // Execute JavaScript Test
@@ -34,8 +34,8 @@ namespace ratingsTests
             // Load JavaScript files
             jsHelper.LoadFiles(new[]
             {
-                @"tests_src\tsUnit.js",
-                @"tests_src\simpleTest.js"
+                @"tsUnit.js",
+                @"simpleTest.js"
                 
             });
             // Execute JavaScript Test

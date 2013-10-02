@@ -4,8 +4,10 @@ SET KANGODIR=C:\kango-framework
 
 PUSHD %~dp0
 
-call "%KANGODIR%\kango.py" build .\
+xcopy /S /Y kango_src %~dp1src\
 
-call clean.cmd 2> nul > nul
+xcopy /S /Y certificates %~dp1certificates\
+
+call "%KANGODIR%\kango.py" build %~dp1
 
 POPD
