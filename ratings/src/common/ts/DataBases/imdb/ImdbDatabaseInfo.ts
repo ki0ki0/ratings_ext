@@ -34,8 +34,11 @@ class ImdbDatabaseInfo implements IDbFilmInfo {
     GetRating(): number {
         return null;
     }
+    GetInfoUrl(): string {
+        return "http://www.imdb.com/title/" + this.id + "/";
+    }
     GetRatingImgSrc(): string {
-        return null;
+        return "http://tracker.0day.kiev.ua/imdb/imdb_" + this.id + ".gif";
     }
     GetUserRating(callback: (userRating: number) => void): boolean {
         return null;

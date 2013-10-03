@@ -17,13 +17,44 @@ class FSUAFilmInfo implements IFilmInfo {
 
     private titles: string[];
     private years: number[];
+    private containerRatings: HTMLTableRowElement;
+    private containerVoting: HTMLDivElement;
 
-    constructor(titles: string[], year: number) {
+    constructor(titles: string[], year: number, container: HTMLElement) {
         this.titles = titles;
         if (year != null) {
             this.years = new Array<number>();
             this.years[0] = year;
         }
+
+        var table = document.createElement("table");
+        container.appendChild(table);
+
+        var trRatings = document.createElement("tr");
+        table.appendChild(trRatings);
+
+        this.containerRatings = trRatings;
+
+        var trVoting = document.createElement("tr");
+        table.appendChild(trVoting);
+
+        var tdVoting = document.createElement("td");
+        trVoting.appendChild(tdVoting);
+
+        var divVoting = document.createElement("div");
+        tdVoting.appendChild(divVoting);
+
+        this.containerVoting = divVoting;
+
+        var txtNode = document.createTextNode("Vote:");
+        divVoting.appendChild(txtNode);
+        divVoting.id = "voting";
+        divVoting.style.display = "none";
+
+        kango.invokeAsync("kango.i18n.getMessage", "vote", (data) => {
+            divVoting.textContent = data;
+        });
+
     }
 
     GetTitles(): string[]{
@@ -33,6 +64,14 @@ class FSUAFilmInfo implements IFilmInfo {
     GetYears(): number[]{
         return this.years;
     }
+
+    GetContainerRatings(): HTMLTableRowElement {
+        return this.containerRatings;
+    }
+
+    GetContainerVoting(): HTMLDivElement {
+        return this.containerVoting;
+    }
 }
 
 class FSUAInformationProvider implements IInformationSource {
@@ -41,14 +80,32 @@ class FSUAInformationProvider implements IInformationSource {
 
         var info: FSUAFilmInfo = this.GetInfo();
 
+        var rating = info.GetContainerRatings();
+
         for (var i: number = 0; i < lookupers.length; i++) {
-            lookupers[i].GetId(settings, info, (dbInfo: IDbFilmInfo) => this.GetIdCallback(dbInfo));
+            var tdRating = document.createElement("td");
+            rating.appendChild(tdRating);
+
+            lookupers[i].GetId(settings, info, (dbInfo: IDbFilmInfo) => this.GetIdCallback(tdRating, dbInfo));
         }
     }
 
-    GetIdCallback(dbInfo: IDbFilmInfo): void {
-        debug("info present");
-        debug(dbInfo.GetName());
+    GetIdCallback(tdRating: HTMLTableDataCellElement, dbInfo: IDbFilmInfo): void {
+        debug("GetIdCallback");
+        
+        var link = <HTMLAnchorElement> document.createElement("a");
+        tdRating.appendChild(link);
+        link.href = dbInfo.GetInfoUrl();
+
+        var image = <HTMLImageElement> document.createElement("img");
+        link.appendChild(image);
+        image.src = dbInfo.GetRatingImgSrc();
+
+        var txt = document.createElement("p");
+        link.appendChild(txt);
+
+        var txtNode = document.createTextNode(HtmlDecode(dbInfo.GetLocalName()));
+        txt.appendChild(txtNode);
     }
 
     GetInfo(): FSUAFilmInfo {
@@ -87,7 +144,7 @@ class FSUAInformationProvider implements IInformationSource {
             }
         }
 
-        var info = new FSUAFilmInfo(titles, year);
+        var info = new FSUAFilmInfo(titles, year, <HTMLElement>itemInfo[0]);
         return info;
     }
 }

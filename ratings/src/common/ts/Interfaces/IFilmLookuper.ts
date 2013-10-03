@@ -8,6 +8,7 @@ interface IDbFilmInfo {
     GetLocalName(): string;
     GetYear(): number;
     GetRating(): number;
+    GetInfoUrl(): string;
     GetRatingImgSrc(): string;
     GetUserRating(callback: (userRating: number) => void): boolean;
     Vote(rating: number, callback: (successful: boolean) => void): boolean;
