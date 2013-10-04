@@ -16,10 +16,12 @@ class ImdbDatabaseInfo implements IDbFilmInfo {
 
     private id: string;
     private title: string;
+    private year: number;
 
-    constructor(id: string, title: string) {
+    constructor(id: string, title: string, year: number) {
         this.id = id;
         this.title = title;
+        this.year = year;
     }
 
     GetName(): string {
@@ -29,7 +31,7 @@ class ImdbDatabaseInfo implements IDbFilmInfo {
         return this.title;
     }
     GetYear(): number {
-        return null;
+        return this.year;
     }
     GetRating(): number {
         return null;

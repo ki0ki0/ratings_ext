@@ -40,6 +40,7 @@
     <Content Include="kango_src\common\res\dark_star.png" />
     <Content Include="kango_src\common\res\star.png" />
     <Content Include="kango_src\firefox\options.html" />
+    <TypeScriptCompile Include="src\common\ts\RatingsImgViewer.ts" />
     <TypeScriptCompile Include="src\chrome\kango.ts" />
     <TypeScriptCompile Include="src\common\ts\Interfaces\ISettings.ts" />
     <TypeScriptCompile Include="src\common\ts\Interfaces\ICustomHandler.ts" />

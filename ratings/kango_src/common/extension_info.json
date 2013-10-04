@@ -7,6 +7,7 @@
 		"ts/xhr.js",
 		"ts/Settings/Settings.js",
 		"ts/Settings/KangoStorageSettings.js",
+		"ts/RatingsImgViewer.js",
 		"ts/InformationProviders/FSUAInformationProvider.js",
 		"ts/DataBases/imdb/ImdbLookuper.js",
 		"ts/DataBases/imdb/ImdbDatabaseInfo.js",

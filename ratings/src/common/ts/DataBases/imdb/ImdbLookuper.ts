@@ -90,18 +90,18 @@ class ImdbLookuper implements IFilmLookuper {
             var years = array[i]["description"].match("[0-9][0-9][0-9][0-9]");
             if (years === null)
                 continue;
-            var year = years[0];
-            var id = array[i]["id"];
-            var title = array[i]["title"];
+            var year: number = parseInt(years[0]);
+            var id: string = array[i]["id"];
+            var title: string = array[i]["title"];
             if (this.checkFilm(title, year)) {
-                var itemInfo: ImdbDatabaseInfo = new ImdbDatabaseInfo(id, title);
+                var itemInfo: ImdbDatabaseInfo = new ImdbDatabaseInfo(id, title, year);
                 return itemInfo;
             }
         }
         return null;
     }
 
-    private checkFilm(title, year) {
+    private checkFilm(title: string, year: number) {
         if ((this.info.GetYears() === undefined) || (this.info.GetYears() == null))
             return true;
         for (var i in this.info.GetYears()) {
