@@ -15,7 +15,8 @@
 class Ratings {
     private providers: IInformationSource[] =
         [
-            new FSUAInformationProvider()
+            new FSUAInformationProvider(),
+            new EXUAInformationProvider()
         ];
 
     private lookupers: IFilmLookuper[] =
@@ -24,19 +25,19 @@ class Ratings {
         ];
 
     public GetRatings(): void {
-        debug("GetRatings");
+        debug("Ratings::GetRatings");
         var settings = new Settings(() => this.SettingsCallback(settings));
-        debug("GetRatings Done");
+        debug("Ratings::GetRatings Done");
     }
 
     private SettingsCallback(settings: ISettings): void {
-        debug("SettingsCallback");
+        debug("Ratings::SettingsCallback");
 
         for (var i: number = 0; i < this.providers.length; i++) {
             this.providers[i].ProcessRatings(settings, this.lookupers);
         }
 
-        debug("SettingsCallback Done");
+        debug("Ratings::SettingsCallback Done");
     }
        
 }

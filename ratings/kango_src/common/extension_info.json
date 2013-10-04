@@ -9,6 +9,7 @@
 		"ts/Settings/KangoStorageSettings.js",
 		"ts/RatingsImgViewer.js",
 		"ts/InformationProviders/FSUAInformationProvider.js",
+		"ts/InformationProviders/EXUAInformationProvider.js",
 		"ts/DataBases/imdb/ImdbLookuper.js",
 		"ts/DataBases/imdb/ImdbDatabaseInfo.js",
 		"js/md5.js",

@@ -50,6 +50,7 @@ class RatingsImgViewer {
 
         var divVoting = document.createElement("div");
         tdVoting.appendChild(divVoting);
+        tdVoting.style.display = "none";
 
         this.containerVoting = divVoting;
 

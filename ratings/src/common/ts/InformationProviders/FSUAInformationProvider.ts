@@ -41,11 +41,14 @@ class FSUAFilmInfo implements IRatingsImgContainer {
 class FSUAInformationProvider implements IInformationSource {
 
     ProcessRatings(settings: ISettings, lookupers: IFilmLookuper[]): void {
-
+        debug("FSUAInformationProvider::ProcessRatings");
         var info: FSUAFilmInfo = this.GetInfo();
 
-        var viewer = new RatingsImgViewer(settings, lookupers);
-        viewer.GetRattings(info);
+        if (info != null) {
+            var viewer = new RatingsImgViewer(settings, lookupers);
+            viewer.GetRattings(info);
+            debug("FSUAInformationProvider::ProcessRatings Done");
+        }
     }
 
     GetInfo(): FSUAFilmInfo {
