@@ -16,7 +16,7 @@ class Options
     constructor(init: boolean) {
         if (init) {
             this.settings = new Settings( () => this.initOptionsValues());
-            KangoAPI.onReady( () => this.initOptionsPage());
+            this.initOptionsPage();
             debug("this.settings" + this.settings);
         }
     }
@@ -65,4 +65,5 @@ class Options
 
 }
 
-var options = new Options(true);
+
+KangoAPI.onReady(() => new Options(true));
