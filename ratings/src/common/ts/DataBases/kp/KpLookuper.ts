@@ -41,7 +41,7 @@ class KpLookuper implements IFilmLookuper {
             query = query + "&key=" + hash;
 
             var url = "http://ext.kinopoisk.ru/android/1.2.0/" + query;
-
+            //debug("kinopoisk query: " + url);
             xhrJson(url, this, this.Success, this.Error);
         }
     }
@@ -83,9 +83,20 @@ class KpLookuper implements IFilmLookuper {
     private checkItem(film): KpDatabaseInfo {
         if (film == null)
             return null;
-
-        if (this.checkFilm(film["nameRU"], film["year"])) {
-            var itemInfo: KpDatabaseInfo = new KpDatabaseInfo(film["id"], film["nameRU"], film["year"]);
+        var nameRu = film["nameRU"];
+        var nameOrg = film["nameEN"];
+        if (this.checkFilm(nameRu, film["year"]) || this.checkFilm(nameOrg, film["year"])) {
+            if (nameOrg === "") {
+                nameOrg = nameRu;
+            }
+            var ratingStr: string = film["rating"];
+            var ratingExpr: RegExp = new RegExp("^([0-9\.]+)");
+            var exec = ratingExpr.exec(ratingStr);
+            var rating: number = null;
+            if ((exec !== null) && (exec !== undefined) && (exec.length > 1)) {
+                rating = parseFloat(exec[1]);
+            }
+            var itemInfo: KpDatabaseInfo = new KpDatabaseInfo(film["id"], nameOrg, nameRu, film["year"], rating);
             return itemInfo;
         }
         return null;

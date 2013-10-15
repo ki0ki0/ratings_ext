@@ -16,19 +16,23 @@ class KpDatabaseInfo implements IDbFilmInfo {
 
     private id: string;
     private title: string;
+    private titleLocal: string;
     private year: number;
+    private rating: number;
 
-    constructor(id: string, title: string, year: number) {
+    constructor(id: string, title: string, titleLocal: string, year: number, rating: number) {
         this.id = id;
         this.title = title;
+        this.titleLocal = titleLocal;
         this.year = year;
+        this.rating = rating;
     }
 
     GetName(): string {
         return this.title;
     }
     GetLocalName(): string {
-        return this.title;
+        return this.titleLocal;
     }
     GetYear(): number {
         return this.year;

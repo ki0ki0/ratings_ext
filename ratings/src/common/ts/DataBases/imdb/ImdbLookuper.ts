@@ -34,7 +34,9 @@ class ImdbLookuper implements IFilmLookuper {
             this.callback(null);
         }
         else {
-            xhrJson("http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title),
+            var url = "http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=" + encodeURIComponent(title);
+            //debug("imdb query: " + url);
+            xhrJson(url,
                 this, this.Success, this.Error);
         }
     }
