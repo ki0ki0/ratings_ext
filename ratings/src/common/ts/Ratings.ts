@@ -21,7 +21,8 @@ class Ratings {
 
     private lookupers: IFilmLookuper[] =
         [
-            new ImdbLookuper()
+            new ImdbLookuper(),
+            new KpLookuper()
         ];
 
     public GetRatings(): void {

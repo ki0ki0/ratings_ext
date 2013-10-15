@@ -64,15 +64,16 @@ class RatingsImgViewer {
         });
 
         for (var i: number = 0; i < this.lookupers.length; i++) {
-            var tdRating = document.createElement("td");
-            trRatings.appendChild(tdRating);
-
-            this.lookupers[i].GetId(this.settings, containerInfo, (dbInfo: IDbFilmInfo) => this.GetIdCallback(tdRating, dbInfo));
+            
+            this.lookupers[i].GetId(this.settings, containerInfo, (dbInfo: IDbFilmInfo) => this.GetIdCallback(trRatings, dbInfo));
         }
     }
     
-    private GetIdCallback(tdRating: HTMLTableDataCellElement, dbInfo: IDbFilmInfo): void {
+    private GetIdCallback(trRatings: HTMLTableRowElement, dbInfo: IDbFilmInfo): void {
         debug("GetIdCallback");
+
+        var tdRating = document.createElement("td");
+        trRatings.appendChild(tdRating);
 
         var link = <HTMLAnchorElement> document.createElement("a");
         tdRating.appendChild(link);

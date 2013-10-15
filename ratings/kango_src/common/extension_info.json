@@ -12,6 +12,8 @@
 		"ts/InformationProviders/EXUAInformationProvider.js",
 		"ts/DataBases/imdb/ImdbLookuper.js",
 		"ts/DataBases/imdb/ImdbDatabaseInfo.js",
+		"ts/DataBases/kp/KpLookuper.js",
+		"ts/DataBases/kp/KpDatabaseInfo.js",
 		"js/md5.js",
 		"js/tVote.js",
 		"ts/Ratings.js"
