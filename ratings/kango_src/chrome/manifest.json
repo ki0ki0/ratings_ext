@@ -4,6 +4,9 @@
 		{
 			"matches": [
 				"http://fs.to/*",
+				"http://brb.to/*",
+				"http://ewq.to/*",
+				"http://sdf.to/*",
 				"http://www.ex.ua/*",
 				"http://www.kinopoisk.ru/film/*" 
 			],

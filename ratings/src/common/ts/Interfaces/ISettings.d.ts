@@ -1,5 +1,5 @@
-interface ISettings {
-    GetIsClearPlayer(): boolean;
+﻿interface ISettings {
+GetIsClearPlayer(): boolean;
     SetIsClearPlayer(isClear: boolean);
 
     GetIsShowVoting(): boolean;

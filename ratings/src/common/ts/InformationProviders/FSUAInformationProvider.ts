@@ -1,14 +1,5 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-/// <reference path="../Interfaces/IInformationSource.ts"/> 
-
+﻿/// <reference path="../Interfaces/IInformationSource.d.ts"/>
 /// <reference path="../Settings/Settings.ts"/> 
-
 /// <reference path="../RatingsImgViewer.ts"/> 
 
 class FSUAFilmInfo implements IRatingsImgContainer {
@@ -52,7 +43,14 @@ class FSUAInformationProvider implements IInformationSource {
     }
 
     GetInfo(): FSUAFilmInfo {
-        if (window.location.href.indexOf("http://fs.to/video/") == -1)
+
+    	if ((window.location.href.indexOf("http://fs.to/") == -1) &&
+            (window.location.href.indexOf("http://brb.to/") == -1) &&
+            (window.location.href.indexOf("http://ewq.to/") == -1) &&
+            (window.location.href.indexOf("http://sdf.to/") == -1))
+            return null;
+	    
+        if (window.location.href.indexOf("/video/") == -1)
             return null;
 
         var category = document.getElementsByTagName("h1");

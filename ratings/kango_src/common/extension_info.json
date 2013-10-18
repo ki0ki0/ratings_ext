@@ -19,7 +19,7 @@
 		"ts/Ratings.js"
 	], 
 	"homepage_url": "https://github.com/ki0ki0/ratings_ext", 
-	"version": "2.1.7",
+	"version": "2.1.8",
 	"options_page": "options.html",
 	"default_locale": "en"
 }

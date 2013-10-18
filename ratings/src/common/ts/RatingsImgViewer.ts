@@ -1,13 +1,4 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// @all-frames true
-// ==/UserScript==
-
-
-interface IRatingsImgContainer extends IFilmInfo {
+﻿interface IRatingsImgContainer extends IFilmInfo {
 
     GetTitles(): string[];
 

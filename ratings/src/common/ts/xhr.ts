@@ -1,14 +1,4 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// @all-frames true
-// ==/UserScript==
-
-
-/// <reference path="kango.d.ts"/> 
-
+﻿/// <reference path="kango.d.ts"/>
 function xhr(url: string, object: Object, success: Function, error: Function) {
     var details = {
         url: url,

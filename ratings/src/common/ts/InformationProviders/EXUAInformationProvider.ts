@@ -1,14 +1,5 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-/// <reference path="../Interfaces/IInformationSource.ts"/> 
-
+﻿/// <reference path="../Interfaces/IInformationSource.d.ts"/>
 /// <reference path="../Settings/Settings.ts"/> 
-
 /// <reference path="../RatingsImgViewer.ts"/> 
 
 class EXUAFilmInfo implements IRatingsImgContainer {

@@ -1,14 +1,6 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-/// <reference path="common.ts"/>
-
+﻿/// <reference path="common.ts"/>
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
-/// <reference path="Interfaces/IFilmLookuper.ts"/> 
+/// <reference path="Interfaces/IFilmLookuper.d.ts"/> 
 /// <reference path="Databases/imdb/ImdbLookuper.ts"/> 
 /// <reference path="Settings/Settings.ts"/>
 

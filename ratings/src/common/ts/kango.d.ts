@@ -1,5 +1,4 @@
-/// <reference path="Interfaces/Ii18n.ts"/> 
-
+﻿/// <reference path="Interfaces/Ii18n.d.ts"/>
 interface KangoXhr {
 //    getXMLHttpRequest(): XMLHttpRequest;  missed in 1.2
     send(details, callback: Function);

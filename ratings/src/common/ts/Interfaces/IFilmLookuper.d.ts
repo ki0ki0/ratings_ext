@@ -1,5 +1,5 @@
-interface IFilmInfo {
-    GetTitles(): string[];
+﻿interface IFilmInfo {
+GetTitles(): string[];
     GetYears(): number[];
 }
 
