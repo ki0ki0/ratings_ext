@@ -1,5 +1,5 @@
-function tVote(star, dartStar, voteStar, containerId, settings) {
-    this.STAR = star;
+﻿function tVote(star, dartStar, voteStar, containerId, settings) {
+this.STAR = star;
     this.DARK_STAR = dartStar;
     this.VOTE_STAR = voteStar;
 

@@ -1,10 +1,4 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://www.kinopoisk.ru/film/*
-// @all-frames true
-// ==/UserScript==
-
-/// <reference path="../../common.ts"/>
+﻿/// <reference path="../../common.ts"/>
 
 /// <reference path="../../xhr.ts"/>
 

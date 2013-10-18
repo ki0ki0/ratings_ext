@@ -1,0 +1,11 @@
+﻿// ==UserScript==
+// @name Ratings for FS.TO (ex FS.UA) and EX.UA
+// @include http://fs.to/*
+// @include http://fs.ua/*
+// @include http://brb.to/*
+// @include http://ewq.to/*
+// @include http://sdf.to/*
+// @include http://www.ex.ua/*
+// @include http://www.kinopoisk.ru/film/*
+// @all-frames true
+// ==/UserScript==

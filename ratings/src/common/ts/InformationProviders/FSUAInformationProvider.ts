@@ -1,17 +1,13 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-/// <reference path="IInformationProvider.ts"/> 
+﻿/// <reference path="IInformationProvider.d.ts"/> 
 
 /// <reference path="../Settings/Settings.ts"/> 
 
 declare var $f;
 
 declare var FS_FLOWPLAYER_CONFIG;
+
+declare var FS_GLOBALS;
+declare var FS_BRANDING;
 
 class FSUAInformation implements IInformationContainer {
     titles: string[];
@@ -21,11 +17,19 @@ class FSUAInformation implements IInformationContainer {
 
 class FSUAInformationProvider implements IInformationProvider {
     GetInfo(): IInformationContainer {
+
+        if ((window.location.href.indexOf("http://fs.to/") == -1) &&
+            (window.location.href.indexOf("http://brb.to/") == -1) &&
+            (window.location.href.indexOf("http://ewq.to/") == -1) &&
+            (window.location.href.indexOf("http://sdf.to/") == -1))
+            return null;
+
+
         this.CheckPlayerPage();
 
         this.CheckAndCleanAd();
 
-        if (window.location.href.indexOf("http://fs.to/video/") == -1)
+        if (window.location.href.indexOf("/video/") == -1)
             return null;
 
         var category = document.getElementsByTagName("h1");
@@ -95,7 +99,7 @@ class FSUAInformationProvider implements IInformationProvider {
     
 
     CheckPlayerPage() {
-        if ((window.location.href.indexOf("http://fs.to/view") == -1) || (window.location.href.indexOf("?play") == -1))
+        if ((window.location.href.indexOf("/view") == -1) || (window.location.href.indexOf("?play") == -1))
             return;
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
@@ -191,10 +195,12 @@ class FSUAInformationProvider implements IInformationProvider {
         }
     }
 
-    CheckAndCleanAd() {
-        if (window.location.href.indexOf("http://fs.to/") == -1)
-            return;
+    test() {
+        FS_GLOBALS = 0;
+        FS_BRANDING = 0;
+    }
 
+    CheckAndCleanAd() {
         if (Settings.GetSettings().GetIsRemoveAd() == false)
             return;
 
@@ -203,6 +209,9 @@ class FSUAInformationProvider implements IInformationProvider {
         this.ChangeLists();
 
         this.setCookie("preroll", 1);
+
+
+        executeScript(this.test);
 
         var ad: HTMLDivElement;
         var i: number;
