@@ -1,12 +1,18 @@
 ratings_ext
 ===========
 
-Extention for browsers to show ratings on FS.TO (ex FS.UA) and EX.UA
+Extention for browsers to show ratings on FS.TO (ex FS.UA, incl ewq.to, sdf.to, brb.to) and EX.UA
 
-Chrome: https://chrome.google.com/webstore/detail/ratings-for-fsto-ex-fsua/cdjfijnbamnnkfnienhbmfacflpckhgd
-Opera: https://addons.opera.com/extensions/details/ratings-for-fsto-ex-fsua-and-exua/
-Firefox: https://addons.mozilla.org/firefox/addon/ratings-for-fsua-and-exua/
-Safari: http://safariaddons.com/safari/addon/217
++ [Chrome extention version](https://chrome.google.com/webstore/detail/ratings-for-fsto-ex-fsua/cdjfijnbamnnkfnienhbmfacflpckhgd)
+or [direct link](https://dl.dropboxusercontent.com/u/8771963/ratings_lastest/ratingsforfstoexfsuaandexua.crx). 
+It's compatible with Yandex browser and Opera 15(and later)
++ [Opera addons version](https://addons.opera.com/extensions/details/ratings-for-fsto-ex-fsua-and-exua/)
+or [direct link](https://dl.dropboxusercontent.com/u/8771963/ratings_lastest/ratingsforfstoexfsuaandexua.oex).
++ [Firefox addons version](https://addons.mozilla.org/firefox/addon/ratings-for-fsua-and-exua/)
+(HUGE update lag because of long validation) 
+or [direct link](https://dl.dropboxusercontent.com/u/8771963/ratings_lastest/ratingsforfstoexfsuaandexua.xpi).
++ [Safari extention version](http://safariaddons.com/safari/addon/217)
+or [direct link](https://dl.dropboxusercontent.com/u/8771963/ratings_lastest/ratingsforfstoexfsuaandexua.safariextz).
 
 TODO:
 - Player page clearing for firefox
