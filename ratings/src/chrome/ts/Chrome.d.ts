@@ -1,5 +1,4 @@
-/// <reference path="../../common/ts/Localization/Ii18n.ts"/> 
-
+﻿/// <reference path="../../common/ts/Localization/Ii18n.d.ts"/>
 interface ChromeStorage {
     get(name, callback: Function);
     set(name, callback: Function);

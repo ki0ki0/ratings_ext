@@ -1,12 +1,4 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-
-/// <reference path="ChromeStorageSettings.ts"/> 
+﻿/// <reference path="ChromeStorageSettings.ts"/> 
 /// <reference path="../../../common/ts/Settings/Settings.ts"/> 
 
 class SettingsChrome extends Settings{

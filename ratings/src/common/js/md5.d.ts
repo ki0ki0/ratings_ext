@@ -1,1 +1,1 @@
-declare function MD5(string);
+﻿declare function MD5(string);

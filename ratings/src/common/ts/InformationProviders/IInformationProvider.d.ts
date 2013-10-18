@@ -1,5 +1,5 @@
-interface IInformationContainer {
-    titles: string[];
+﻿interface IInformationContainer {
+titles: string[];
     years: Number[];
     container: Node;
 }

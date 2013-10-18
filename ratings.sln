@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ratings", "ratings\ratings.csproj", "{7574BEA9-FCD8-4082-B231-87D709D0A23A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5} = {4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ratingsTests", "ratingsTests\ratingsTests.csproj", "{D6446A00-7D4E-4771-AE69-626D053B0BCE}"
 EndProject
@@ -30,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{BDCEC319
 		Other\star.png = Other\star.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addHeader", "addHeader\addHeader.csproj", "{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +49,10 @@ Global
 		{D6446A00-7D4E-4771-AE69-626D053B0BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6446A00-7D4E-4771-AE69-626D053B0BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6446A00-7D4E-4771-AE69-626D053B0BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA96061-6BF4-460D-9E7E-9A22DB38AEB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

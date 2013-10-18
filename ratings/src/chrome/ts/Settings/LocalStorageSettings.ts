@@ -1,5 +1,4 @@
-/// <reference path="../../../common/ts/Settings/ISettings.ts"/> 
-
+﻿/// <reference path="../../../common/ts/Settings/ISettings.d.ts"/>
 class LocalStorageSettings implements ISettings {
     Get(name: string): any {
         return (localStorage[name] === undefined) ? true : localStorage[name];
