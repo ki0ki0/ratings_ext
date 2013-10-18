@@ -1,13 +1,6 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
+﻿/// <reference path="../../common.ts"/>
 
-/// <reference path="../../common.ts"/>
-
-/// <reference path="../ILookuper.ts"/> 
+/// <reference path="../ILookuper.d.ts"/> 
 /// <reference path="../../xhr.ts"/> 
 /// <reference path="../../../js/md5.d.ts"/> 
 /// <reference path="KpInfo.ts"/> 

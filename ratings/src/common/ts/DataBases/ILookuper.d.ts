@@ -1,5 +1,5 @@
-interface ILookupInfo {
-    titles: string[];
+﻿interface ILookupInfo {
+titles: string[];
     years: Number[];
 }
 

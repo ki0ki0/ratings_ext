@@ -1,11 +1,4 @@
-// ==UserScript==
-// @name Ratings for FS.TO (ex FS.UA) and EX.UA
-// @include http://fs.to/*
-// @include http://www.ex.ua/*
-// @include http://www.kinopoisk.ru/film/*
-// ==/UserScript==
-
-/// <reference path="isettings.ts"/> 
+﻿/// <reference path="isettings.d.ts"/> 
 /// <reference path="../kango.d.ts"/> 
 
 class KangoStorageSettings implements ISettings {

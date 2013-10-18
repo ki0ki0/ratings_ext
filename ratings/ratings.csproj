@@ -45,7 +45,7 @@
     <TypeScriptCompile Include="src\chrome\ts\Init.ts" />
     <TypeScriptCompile Include="src\common\js\tVote.d.ts" />
     <TypeScriptCompile Include="src\chrome\ts\Settings\LocalStorageSettings.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\IDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\IDatabaseInfo.d.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbInfo.ts" />
     <TypeScriptCompile Include="src\common\js\md5.d.ts" />
@@ -63,15 +63,15 @@
     <TypeScriptCompile Include="src\chrome\ts\Chrome.d.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAInformationProvider.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\EXUAInformationProvider.ts" />
-    <TypeScriptCompile Include="src\common\ts\DataBases\ILookuper.ts" />
+    <TypeScriptCompile Include="src\common\ts\DataBases\ILookuper.d.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\imdb\ImdbLookuper.ts" />
-    <TypeScriptCompile Include="src\common\ts\InformationProviders\IInformationProvider.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\IInformationProvider.d.ts" />
     <TypeScriptCompile Include="src\common\ts\Settings\KangoStorageSettings.ts" />
     <TypeScriptCompile Include="src\chrome\ts\Settings\ChromeStorageSettings.ts" />
-    <TypeScriptCompile Include="src\common\ts\Localization\Ii18n.ts" />
+    <TypeScriptCompile Include="src\common\ts\Localization\Ii18n.d.ts" />
     <TypeScriptCompile Include="src\common\ts\kango.d.ts" />
     <TypeScriptCompile Include="src\chrome\ts\OptionsChrome.ts" />
-    <TypeScriptCompile Include="src\common\ts\Settings\ISettings.ts" />
+    <TypeScriptCompile Include="src\common\ts\Settings\ISettings.d.ts" />
     <TypeScriptCompile Include="src\chrome\ts\Settings\SettingsChrome.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +182,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES3</TypeScriptTarget>
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
     <TypeScriptOutDir>$(OutDir)src</TypeScriptOutDir>
