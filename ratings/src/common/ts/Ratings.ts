@@ -1,14 +1,15 @@
-﻿/// <reference path="common.ts"/>
-/// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
-/// <reference path="Interfaces/IFilmLookuper.d.ts"/> 
-/// <reference path="Databases/imdb/ImdbLookuper.ts"/> 
-/// <reference path="Settings/Settings.ts"/>
+﻿///// <reference path="common.ts"/>
+///// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
+///// <reference path="Interfaces/IFilmLookuper.d.ts"/> 
+///// <reference path="Databases/imdb/ImdbLookuper.ts"/> 
+///// <reference path="Settings/Settings.ts"/>
 
 class Ratings {
     private providers: IInformationSource[] =
         [
             new FSUAInformationProvider(),
-            new EXUAInformationProvider()
+            new EXUAInformationProvider(),
+            new FSUAListInformationProvider(),
         ];
 
     private lookupers: IFilmLookuper[] =

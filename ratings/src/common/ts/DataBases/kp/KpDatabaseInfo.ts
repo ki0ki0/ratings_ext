@@ -29,7 +29,7 @@ class KpDatabaseInfo implements IDbFilmInfo {
         return this.year;
     }
     GetRating(): number {
-        return null;
+        return this.rating;
     }
     GetInfoUrl(): string {
         return "http://www.kinopoisk.ru/film/" + this.id + "/";

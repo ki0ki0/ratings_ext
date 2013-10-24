@@ -39,6 +39,8 @@
     <Content Include="kango_src\common\res\dark_star.png" />
     <Content Include="kango_src\common\res\star.png" />
     <Content Include="kango_src\firefox\options.html" />
+    <TypeScriptCompile Include="src\common\ts\RatingsTxtViewer.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAListInformationProvider.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kp\KpLookuper.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kp\KpDatabaseInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\InformationProviders\EXUAInformationProvider.ts" />
