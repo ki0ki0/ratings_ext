@@ -32,19 +32,26 @@ class FSUAInformationProvider implements IInformationProvider {
         if (window.location.href.indexOf("/video/") == -1)
             return null;
 
-        var category = document.getElementsByTagName("h1");
-        if ((category === undefined) || (category === null) || (category.length <= 0))
+        var titleInner = document.getElementsByClassName("b-tab-item__title-inner");
+        if ((titleInner === undefined) || (titleInner === null) || (titleInner.length <= 0))
             return null;
 
-        var titleLocal = <HTMLElement> category[0];
-        var titleOrg = titleLocal.nextElementSibling;
-        var text = titleLocal.textContent.trim();
-        var titles = text.split(String.fromCharCode(160, 47, 160));
+        var titleInner0 = <HTMLElement> titleInner[0];
+        if ((titleInner0 === undefined) || (titleInner0 === null) || (titleInner0.children.length < 1))
+            return null;
+        var child = <HTMLElement> titleInner0.children[0];
+        var title = child.innerText;
+        var titleOrg = null;
+        if (titleInner0.children.length > 1) {
+            child = <HTMLElement> titleInner0.children[1];
+            titleOrg = child.innerText;
+        }
+        var titles = title.split(String.fromCharCode(160, 47, 160));
         if (titles.length == 0)
             return null;
 
         if (titleOrg != null)
-            titles[titles.length] = titleOrg.textContent.trim();
+            titles[titles.length] = titleOrg;
 
         var itemInfo = document.getElementsByClassName("item-info");
         if (itemInfo.length == 0)
