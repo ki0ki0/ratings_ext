@@ -40,7 +40,8 @@
 		"storage",
 		"http://www.imdb.com/*",
 		"http://www.kinopoisk.ru/*" ,
-		"http://ext.kinopoisk.ru/*"
+		"http://ext.kinopoisk.ru/*",
+		"https://ext.kinopoisk.ru/*"
 	],
 	"update_url": "",
 	"homepage_url": "",

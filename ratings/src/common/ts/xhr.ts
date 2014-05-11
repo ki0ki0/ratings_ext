@@ -22,7 +22,8 @@ function xhrJson(url: string, object: Object, success: Function, error: Function
         url: url,
         method: 'GET',
         async: false,
-        contentType: 'json'
+        contentType: 'json',
+        headers: { 'device': 'android'}
     };
     kango.xhr.send(details, (data) => {
         if (data.status == 200 && data.response != null) {

@@ -30,11 +30,11 @@ class KpLookuper implements ILookuper {
         else {
             var query = "getKPGlobalSearch?cityID=49&countryID=62&keyword=";
             query = query + encodeURIComponent(title).replace(/!/g, "%21");
-            var hash = MD5(query + "andrliravlik");
+            var hash = MD5(query + "samuraivbolote");
 
             query = query + "&key=" + hash;
 
-            var url = "http://ext.kinopoisk.ru/android/1.2.0/" + query;
+            var url = "https://ext.kinopoisk.ru/ios/3.1.0/" + query;
 
             xhrJson(url, this, this.Success, this.Error);
         }
@@ -78,7 +78,15 @@ class KpLookuper implements ILookuper {
         if (film == null)
             return null;
 
-        if (this.checkFilm(film["nameRU"], film["year"])) {
+        var year = film["year"].substring(0, 4);
+
+        if (this.checkFilm(film["nameRU"], year)) {
+            var itemInfo: KpInfo = new KpInfo();
+            itemInfo.id = film["id"];
+            itemInfo.title = film["nameRU"];
+            return itemInfo;
+        }
+        if (this.checkFilm(film["nameEN"], year)) {
             var itemInfo: KpInfo = new KpInfo();
             itemInfo.id = film["id"];
             itemInfo.title = film["nameRU"];
