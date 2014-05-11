@@ -40,11 +40,11 @@ class FSUAInformationProvider implements IInformationProvider {
         if ((titleInner0 === undefined) || (titleInner0 === null) || (titleInner0.children.length < 1))
             return null;
         var child = <HTMLElement> titleInner0.children[0];
-        var title = child.innerText;
+        var title = child.textContent;
         var titleOrg = null;
         if (titleInner0.children.length > 1) {
             child = <HTMLElement> titleInner0.children[1];
-            titleOrg = child.innerText;
+            titleOrg = child.textContent;
         }
         var titles = title.split(String.fromCharCode(160, 47, 160));
         if (titles.length == 0)
