@@ -32,18 +32,18 @@ class FSUAInformationProvider implements IInformationProvider {
         if (window.location.href.indexOf("/video/") == -1)
             return null;
 
-        var titleInner = document.getElementsByClassName("b-tab-item__title-inner");
-        if ((titleInner === undefined) || (titleInner === null) || (titleInner.length <= 0))
+        var headerInner = document.getElementsByClassName("b-player-skin__header-inner");
+        if ((headerInner === undefined) || (headerInner === null) || (headerInner.length <= 0))
             return null;
 
-        var titleInner0 = <HTMLElement> titleInner[0];
-        if ((titleInner0 === undefined) || (titleInner0 === null) || (titleInner0.children.length < 1))
+        var headerInner0 = <HTMLElement> headerInner[0];
+        if ((headerInner0 === undefined) || (headerInner0 === null) || (headerInner0.children.length < 1))
             return null;
-        var child = <HTMLElement> titleInner0.children[0];
+        var child = <HTMLElement> headerInner0.children[0];
         var title = child.textContent;
         var titleOrg = null;
-        if (titleInner0.children.length > 1) {
-            child = <HTMLElement> titleInner0.children[1];
+        if (headerInner0.children.length > 1) {
+            child = <HTMLElement> headerInner0.children[1];
             titleOrg = child.textContent;
         }
         var titles = title.split(String.fromCharCode(160, 47, 160));
@@ -53,23 +53,29 @@ class FSUAInformationProvider implements IInformationProvider {
         if (titleOrg != null)
             titles[titles.length] = titleOrg;
 
-        var itemInfo = document.getElementsByClassName("item-info");
+        var itemInfo = document.getElementsByClassName("b-player-skin__year");
         if (itemInfo.length == 0)
             return null;
 
         var year: number = null;
         if (itemInfo.length > 0) {
             var el: Element = <Element>itemInfo[0];
-            var td = el.getElementsByTagName("td");
-            for (var i = 0; i < td.length; i++) {
-                var yearInfo = td[i].textContent.trim();
-                var match = yearInfo.match(/[0-9][0-9][0-9][0-9]/g);
-                if ((match != null) && (match.length > 0)) {
-                    year = parseInt( match[0]);
-                    break;
-                }
-            }
+            year = parseInt( el.textContent);
         }
+
+        var parents = document.getElementsByClassName("l-content-player-skin");
+        if (parents.length == 0)
+            return null;
+        var p = document.createElement("p");
+        parents[0].appendChild(p);
+        p.className = "b-player-skin-play";
+        p.style.display = "inline";
+        p.style.backgroundImage = "url()";
+        p.style.backgroundColor = "white";
+        p.style.width = "initial";
+        p.style.height = "initial";
+        p.style.left = "350px";
+
 
         var info = new FSUAInformation();
         info.titles = titles;
@@ -77,7 +83,7 @@ class FSUAInformationProvider implements IInformationProvider {
             info.years = new Array(1);
             info.years[0] = year;
         }
-        info.container = itemInfo[0];
+        info.container = p;
         return info;
     }
 
