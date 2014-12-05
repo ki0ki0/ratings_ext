@@ -1,6 +1,7 @@
 ﻿/// <reference path="common.ts"/>
 
 /// <reference path="InformationProviders/FSUAInformationProvider.ts"/> 
+/// <reference path="InformationProviders/FSUAInformationProviderOld.ts"/> 
 /// <reference path="InformationProviders/EXUAInformationProvider.ts"/> 
 ///// <reference path="InformationProviders/FakeInformationProvider.ts"/> 
 /// <reference path="Databases/ILookuper.d.ts"/> 
@@ -15,8 +16,9 @@
 class Ratings {
     private providers: IInformationProvider[] =
         [
-            new FSUAInformationProvider()
-            , new EXUAInformationProvider()
+            new FSUAInformationProvider(),
+            new FSUAInformationProviderOld(),
+            new EXUAInformationProvider()
         ];
 
     private lookupers: ILookuper[] =

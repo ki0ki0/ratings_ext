@@ -53,6 +53,7 @@
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpLookuper.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpInfo.ts" />
     <TypeScriptCompile Include="src\common\ts\DataBases\kinopoisk\KpDatabaseInfo.ts" />
+    <TypeScriptCompile Include="src\common\ts\InformationProviders\FSUAInformationProviderOld.ts" />
     <TypeScriptCompile Include="src\common\ts\Ratings.ts" />
     <TypeScriptCompile Include="src\common\ts\common.ts" />
     <TypeScriptCompile Include="src\common\ts\xhr.ts" />
