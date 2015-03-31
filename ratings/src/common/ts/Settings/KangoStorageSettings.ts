@@ -13,13 +13,8 @@ class KangoStorageSettings implements ISettings {
         for (var i = 0 ; i < names.length; i++){
             this.storage[names[i]] = true;
         }
-        if (kango.storage === undefined) {
-            kango.invokeAsync("kango.storage.getItem", "options", (data) => { this.getCallback(data); });
-        }
-        else {
-            var vals = kango.storage.getItem("options");// do not add to setTimeout scope
-            setTimeout(() => { this.getCallback(vals); }, 1); // do callback call async
-        }
+        var vals = kango.storage.getItem("options");// do not add to setTimeout scope
+        setTimeout(() => { this.getCallback(vals); }, 1); // do callback call async
     }
 
     private getCallback(data) {
