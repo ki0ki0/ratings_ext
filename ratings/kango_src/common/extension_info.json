@@ -1,29 +1,49 @@
 {
-	"name": "Ratings for FS.TO (ex FS.UA) and EX.UA",
-	"description": "Shows films and series rating from IMDB and Kinopoisk on FS.TO (ex FS.UA) and EX.UA. Allows to vote in both systems in place.", 
-	"creator": "Ihor Kostiuk", 
-	"content_scripts": [
-	    "ts/common.js",
-		"ts/xhr.js",
-		"ts/Settings/Settings.js",
-		"ts/Settings/KangoStorageSettings.js",
-		"ts/InformationProviders/FSUAInformationProvider.js",
+    "name": "Ratings for FS.TO (ex FS.UA) and EX.UA",
+    "description": "Shows films and series rating from IMDB and Kinopoisk on FS.TO (ex FS.UA) and EX.UA. Allows to vote in both systems in place.",
+    "creator": "Ihor Kostiuk",
+    "content_scripts": [
+        "ts/common.js",
+        "ts/xhr.js",
+        "ts/Settings/Settings.js",
+        "ts/Settings/KangoStorageSettings.js",
+        "ts/InformationProviders/FSUAInformationProvider.js",
         "ts/InformationProviders/FSUAInformationProviderOld.js",
-		"ts/InformationProviders/EXUAInformationProvider.js",
-		"ts/DataBases/imdb/ImdbInfo.js",
-		"ts/DataBases/imdb/ImdbLookuper.js",
-		"ts/DataBases/imdb/ImdbDatabaseInfo.js",
-		"ts/DataBases/kinopoisk/KpInfo.js",
-		"ts/DataBases/kinopoisk/KpLookuper.js",
-		"ts/DataBases/kinopoisk/KpDatabaseInfo_Helper.js",
-		"ts/DataBases/kinopoisk/KpDatabaseInfo.js",
-		"js/md5.js",
-		"js/tVote.js",
-		"ts/Ratings.js",
-		"ts/Init.js"
-	], 
-	"homepage_url": "https://github.com/ki0ki0/ratings_ext", 
-	"version": "2.1.12",
-	"options_page": "options.html",
-	"default_locale": "en"
+        "ts/InformationProviders/EXUAInformationProvider.js",
+        "ts/DataBases/imdb/ImdbInfo.js",
+        "ts/DataBases/imdb/ImdbLookuper.js",
+        "ts/DataBases/imdb/ImdbDatabaseInfo.js",
+        "ts/DataBases/kinopoisk/KpInfo.js",
+        "ts/DataBases/kinopoisk/KpLookuper.js",
+        "ts/DataBases/kinopoisk/KpDatabaseInfo_Helper.js",
+        "ts/DataBases/kinopoisk/KpDatabaseInfo.js",
+        "js/md5.js",
+        "js/tVote.js",
+        "ts/Ratings.js",
+        "ts/Init.js"
+    ],
+    "homepage_url": "https://github.com/ki0ki0/ratings_ext",
+    "version": "2.1.12",
+    "options_page": "options.html",
+    "default_locale": "en",
+    "permissions": {
+        "tabs": false,
+        "context_menu": false,
+        "web_navigation": false,
+        "storage": true,
+        "content_scripts": [
+            "http://fs.to/*",
+            "http://brb.to/*",
+            "http://ewq.to/*",
+            "http://sdf.to/*",
+            "http://www.ex.ua/*",
+            "http://www.kinopoisk.ru/film/*"
+        ],
+        "xhr": [
+            "http://www.imdb.com/*",
+            "http://www.kinopoisk.ru/*",
+            "http://ext.kinopoisk.ru/*",
+            "https://ext.kinopoisk.ru/*"
+        ]
+    }
 }
