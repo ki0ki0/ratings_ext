@@ -21,7 +21,8 @@ class FSUAInformationProvider implements IInformationProvider {
         if ((window.location.href.indexOf("http://fs.to/") == -1) &&
             (window.location.href.indexOf("http://brb.to/") == -1) &&
             (window.location.href.indexOf("http://ewq.to/") == -1) &&
-            (window.location.href.indexOf("http://sdf.to/") == -1))
+            (window.location.href.indexOf("http://sdf.to/") == -1) &&
+            (window.location.href.indexOf("http://cxz.to/") == -1))
             return null;
 
 
