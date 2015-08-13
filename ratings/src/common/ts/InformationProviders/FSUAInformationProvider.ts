@@ -117,7 +117,6 @@ class FSUAInformationProvider implements IInformationProvider {
             return;
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
-            this.ChangeLists();
             this.PlayerOnly();
         }
 
@@ -129,54 +128,11 @@ class FSUAInformationProvider implements IInformationProvider {
     PlayerOnly() {
         if (this.playerCleared === true)
             return;
-
-        var bdd = document.getElementsByClassName("b-dropdown");
-        var bdds = new Array();
-        var i;
-        for (i = 0; i < bdd.length; i++)
-        {
-            bdds[i] = bdd[i];
-        }
-
-        var bps = document.getElementsByClassName("b-player");
-        if (bps.length != 1)
+        let frames = document.getElementsByTagName("iframe");
+        if (frames.length === 0)
             return;
-        var bp = <HTMLElement> bps[0];
-        bp.style.width = "100%";
-
-        while (document.body.children.length > 0)
-        {
-            document.body.removeChild(document.body.firstChild);
-        }
-
-        document.body.appendChild(bp);
-
-        for (i = 0; i < bdds.length; i++) {
-            document.body.appendChild(bdds[i]);
-        }
-
-        var items = document.getElementsByClassName("b-tab-item m-wide");
-        if ((items != null) && (items.length > 0)) {
-            var item = <HTMLElement> items[0];
-            item.className = "";
-        }
-
-        var itemPlayer = <HTMLElement> document.getElementById("player");
-        if ((itemPlayer !== null) && (itemPlayer !== undefined))
-        {
-            var parent = <HTMLElement> itemPlayer.parentNode;
-            while (parent != document.body) {
-                if (parent.className != "main") {
-                    parent.style.width = "100%";
-                }
-                parent.style.margin = "0";
-                parent.style.height = "100%";
-                parent = <HTMLElement> parent.parentNode;
-            }
-            itemPlayer.style.height = "100%";
-            itemPlayer.style.width = "100%";
-        }
-        this.playerCleared = true;
+        var i = frames[0];
+        window.location.href = i.src;
     }
 
     ids = ["adsProxy-zone-section-glowadswide",
@@ -191,41 +147,11 @@ class FSUAInformationProvider implements IInformationProvider {
         "l-body-branding"
     ];
 
-
-    ChangeLists() {
-        var bti = document.getElementsByClassName("m-dropdown-movie");
-        if ((bti != null) && (bti.length > 0))
-        {
-            var insert = bti[0];
-            var parent = bti[0].parentNode;
-            var popup = document.getElementsByClassName("m-popup");
-            while ((popup != null) && (popup.length > 0))
-            {
-                var item = <HTMLDivElement> popup[0];
-                item.className = item.className.replace("m-popup", "m-dropdown-movie");
-                parent.insertBefore(item, insert);
-                popup = document.getElementsByClassName("m-popup");
-            }
-        }
-    }
-
-    test() {
-        FS_GLOBALS = 0;
-        FS_BRANDING = 0;
-    }
-
     CheckAndCleanAd() {
         if (Settings.GetSettings().GetIsRemoveAd() == false)
             return;
 
         debug("cleaner starting");
-
-        this.ChangeLists();
-
-        this.setCookie("preroll", 1);
-
-
-        executeScript(this.test);
 
         var ad: HTMLDivElement;
         var i: number;
@@ -264,10 +190,4 @@ class FSUAInformationProvider implements IInformationProvider {
         }
     }
 
-    setCookie(cName, value, exdays = null) {
-        var exdate = new Date();
-        exdate.setDate(exdate.getDate() + exdays);
-        var cValue = encodeURIComponent(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-        document.cookie = cName + "=" + cValue;
-    }
 }
