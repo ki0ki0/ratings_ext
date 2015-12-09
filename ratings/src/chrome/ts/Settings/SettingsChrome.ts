@@ -14,6 +14,7 @@ class SettingsChrome extends Settings{
         this.callbackChrome = callback;
         this.obj = obj;
         this.sync = new ChromeCachedStorageSettings(true, this.namesChrome, this.syncCallback, this);
+        this.sync.init();
     }
 
     private syncCallback() {
@@ -21,6 +22,7 @@ class SettingsChrome extends Settings{
             this.callCallback();
 
         this.localChrome = new ChromeCachedStorageSettings(false, this.namesChrome, this.localCallback, this);
+        this.localChrome.init();
     }
 
     private localCallback() {

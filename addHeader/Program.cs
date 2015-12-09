@@ -25,23 +25,24 @@ namespace addHeader
             "// @include http://ewq.to/*",
             "// @include http://sdf.to/*",
             "// @include http://www.ex.ua/*",
-            "// @include http://www.kinopoisk.ru/film/*"
+            "// @include http://www.kinopoisk.ru/film/*",
+            "// @all-frames true"
         };
 
         private static readonly string[][] HeadersAdditional =
         {
-            new[]
-            {
-                "common.js", "// @all-frames true"
-            },
-            new[]
-            {
-                "xhr.js", "// @all-frames true"
-            },
-            new[]
-            {
-                "KpDatabaseInfo_Helper.js", "// @all-frames true"
-            },
+            //new[]
+            //{
+            //    "common.js", "// @all-frames true"
+            //},
+            //new[]
+            //{
+            //    "xhr.js", "// @all-frames true"
+            //},
+            //new[]
+            //{
+            //    "KpDatabaseInfo_Helper.js", "// @all-frames true"
+            //},
         };
 
         private static readonly string[][] Headers4Files =

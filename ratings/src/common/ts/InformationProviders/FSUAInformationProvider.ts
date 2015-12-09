@@ -4,11 +4,6 @@
 
 declare var $f;
 
-declare var FS_FLOWPLAYER_CONFIG;
-
-declare var FS_GLOBALS;
-declare var FS_BRANDING;
-
 class FSUAInformation implements IInformationContainer {
     titles: string[];
     years: Number[];
@@ -28,14 +23,13 @@ class FSUAInformationProvider implements IInformationProvider {
 
         this.CheckPlayerPage();
 
-        this.CheckAndCleanAd();
-
         if (window.location.href.indexOf("/video/") == -1)
             return null;
 
         var headerInner = document.getElementsByClassName("b-player-skin__header-inner");
-        if ((headerInner === undefined) || (headerInner === null) || (headerInner.length <= 0))
+        if ((headerInner === undefined) || (headerInner === null) || (headerInner.length <= 0)) {
             return null;
+        }
 
         var headerInner0 = <HTMLElement> headerInner[0];
         if ((headerInner0 === undefined) || (headerInner0 === null) || (headerInner0.children.length < 1))
@@ -55,28 +49,22 @@ class FSUAInformationProvider implements IInformationProvider {
             titles[titles.length] = titleOrg;
 
         var itemInfo = document.getElementsByClassName("b-player-skin__year");
-        if (itemInfo.length == 0)
-            return null;
-
         var year: number = null;
-        if (itemInfo.length > 0) {
-            var el: Element = <Element>itemInfo[0];
-            year = parseInt( el.textContent);
+        if (itemInfo.length !== 0) {
+            if (itemInfo.length > 0) {
+                var el: Element = <Element>itemInfo[0];
+                year = parseInt(el.textContent);
+            }
         }
 
-        var parents = document.getElementsByClassName("l-content-player-skin");
+        var parents = document.getElementsByClassName("b-player-skin__genre");
         if (parents.length == 0)
             return null;
         var p = document.createElement("p");
-        parents[0].appendChild(p);
-        p.className = "b-player-skin-play";
-        p.style.display = "inline";
-        p.style.backgroundImage = "url()";
-        p.style.backgroundColor = "white";
-        p.style.width = "initial";
-        p.style.height = "initial";
-        p.style.left = "350px";
-
+        var element = <HTMLDivElement>parents[0];
+        element.style.height = "auto";
+        element.style.margin = "0 0 20px";
+        element.appendChild(p);
 
         var info = new FSUAInformation();
         info.titles = titles;
@@ -98,7 +86,7 @@ class FSUAInformationProvider implements IInformationProvider {
             history.replaceState(null, newUrl, newUrl);
         };
 
-        console.log("ratings replace in change url");
+        debug("ratings replace in change url");
         //var oldOnStart = FS_FLOWPLAYER_CONFIG.player.options.clip.onStart;
         //FS_FLOWPLAYER_CONFIG.player.options.clip.onStart = function (clip) {
         //    changeUrl(clip);
@@ -113,7 +101,8 @@ class FSUAInformationProvider implements IInformationProvider {
     
 
     CheckPlayerPage() {
-        if ((window.location.href.indexOf("/view") == -1) || (window.location.href.indexOf("?play") == -1))
+        if (((window.location.href.indexOf("/view") !== -1) && (window.location.href.indexOf("?play") !== -1))
+            || window.location.href.indexOf(".html") === -1)
             return;
 
         if (Settings.GetSettings().GetIsClearPlayer()) {
@@ -133,61 +122,5 @@ class FSUAInformationProvider implements IInformationProvider {
             return;
         var i = frames[0];
         window.location.href = i.src;
-    }
-
-    ids = ["adsProxy-zone-section-glowadswide",
-        "adsProxy-zone-section-adsuniversal",
-        "adsProxy-zone-video"
-    ];
-
-    classes = ["h-ad",
-        "l-content-right",
-        "b-adsuniversal-wrap",
-        "b-section-banner-wrap",
-        "l-body-branding"
-    ];
-
-    CheckAndCleanAd() {
-        if (Settings.GetSettings().GetIsRemoveAd() == false)
-            return;
-
-        debug("cleaner starting");
-
-        var ad: HTMLDivElement;
-        var i: number;
-        for (i = 0; i < this.ids.length; i++)
-        {
-            ad = <HTMLDivElement> document.getElementById(this.ids[i]);
-            if ((ad !== undefined) && (ad !== null))
-                ad.parentNode.removeChild(ad);
-        }
-
-        for (i = 0; i < this.classes.length; i++)
-        {
-            var ads = document.getElementsByClassName(this.classes[i]);
-            for (var n = 0; n < ads.length; n++)
-            {
-                ad = <HTMLDivElement> ads[n];
-                if ((ad !== undefined) && (ad !== null)) 
-                    ad.parentNode.removeChild(ad);
-            }
-        }
-
-        var inners = document.getElementsByClassName("l-body-inner");
-        if (inners !== undefined && inners != null && inners.length > 0) {
-            var inner = <HTMLDivElement> inners[0];
-            inner.className = inner.className.replace("l-body-inner", "l-body-inner-inner");
-            }
-
-
-        var scripts = document.getElementsByTagName('script');
-        for (i = scripts.length - 1; i >= 0; --i) {
-            var script = <HTMLScriptElement> scripts[i];
-            if (script === undefined) continue;
-            if (/(hit\.ua|adriver\.ru|admixer\.net|mediacom\.com\.ua|adocean\.pl|admaster\.net|46\.182\.85\.201|adfox\.ru)/i.test(script.src)) {
-                script.parentNode.removeChild(script);
-            }
-        }
-    }
-
+    }    
 }
