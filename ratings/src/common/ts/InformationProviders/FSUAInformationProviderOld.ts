@@ -16,7 +16,7 @@ class FSUAInformationOld implements IInformationContainer {
 }
 
 class FSUAInformationProviderOld implements IInformationProvider {
-    GetInfo(): IInformationContainer {
+    GetInfo(callback: (info: IInformationContainer) => void ) {
 
         if ((window.location.href.indexOf("http://fs.to/") == -1) &&
             (window.location.href.indexOf("http://brb.to/") == -1) &&
@@ -73,7 +73,7 @@ class FSUAInformationProviderOld implements IInformationProvider {
             info.years[0] = year;
         }
         info.container = itemInfo[0];
-        return info;
+        callback(info);
     }
 
 }

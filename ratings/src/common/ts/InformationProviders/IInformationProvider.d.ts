@@ -5,5 +5,5 @@ titles: string[];
 }
 
 interface IInformationProvider {
-    GetInfo(): IInformationContainer;
+    GetInfo(callback:(info: IInformationContainer) => void );
 }

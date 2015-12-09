@@ -5,6 +5,6 @@
 
 debug("init");
 
-var settings = new Settings(function () {
-    new Ratings().GetRatings();
+var settings = new Settings(() => {
+    new Ratings().getRatings();
 });

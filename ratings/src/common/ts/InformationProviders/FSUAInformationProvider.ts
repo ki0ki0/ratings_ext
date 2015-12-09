@@ -11,29 +11,34 @@ class FSUAInformation implements IInformationContainer {
 }
 
 class FSUAInformationProvider implements IInformationProvider {
-    GetInfo(): IInformationContainer {
+    GetInfo(callback: (info: IInformationContainer) => void ) {
+
 
         if ((window.location.href.indexOf("http://fs.to/") == -1) &&
             (window.location.href.indexOf("http://brb.to/") == -1) &&
             (window.location.href.indexOf("http://ewq.to/") == -1) &&
             (window.location.href.indexOf("http://sdf.to/") == -1) &&
             (window.location.href.indexOf("http://cxz.to/") == -1))
-            return null;
-
+            return;
 
         this.CheckPlayerPage();
-
         if (window.location.href.indexOf("/video/") == -1)
-            return null;
+            return;
 
+        var test = document.getElementsByClassName("b-view-iframe b-player");
+        if (test.length === 0)
+            return;
         var headerInner = document.getElementsByClassName("b-player-skin__header-inner");
-        if ((headerInner === undefined) || (headerInner === null) || (headerInner.length <= 0)) {
-            return null;
+        if (headerInner.length === 0) {
+            setTimeout(() => {
+                this.GetInfo(callback);
+            }, 100);
+            return;
         }
-
+        
         var headerInner0 = <HTMLElement> headerInner[0];
         if ((headerInner0 === undefined) || (headerInner0 === null) || (headerInner0.children.length < 1))
-            return null;
+            return;
         var child = <HTMLElement> headerInner0.children[0];
         var title = child.textContent;
         var titleOrg = null;
@@ -43,11 +48,9 @@ class FSUAInformationProvider implements IInformationProvider {
         }
         var titles = title.split(String.fromCharCode(160, 47, 160));
         if (titles.length == 0)
-            return null;
-
+            return;
         if (titleOrg != null)
             titles[titles.length] = titleOrg;
-
         var itemInfo = document.getElementsByClassName("b-player-skin__year");
         var year: number = null;
         if (itemInfo.length !== 0) {
@@ -56,10 +59,9 @@ class FSUAInformationProvider implements IInformationProvider {
                 year = parseInt(el.textContent);
             }
         }
-
         var parents = document.getElementsByClassName("b-player-skin__genre");
         if (parents.length == 0)
-            return null;
+            return;
         var p = document.createElement("p");
         var element = <HTMLDivElement>parents[0];
         element.style.height = "auto";
@@ -73,7 +75,7 @@ class FSUAInformationProvider implements IInformationProvider {
             info.years[0] = year;
         }
         info.container = p;
-        return info;
+        callback(info);
     }
 
     ChangeUrl() {

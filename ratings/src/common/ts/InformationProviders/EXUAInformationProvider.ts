@@ -7,7 +7,7 @@ class EXUAInformation implements IInformationContainer {
 }
 
 class EXUAInformationProvider implements IInformationProvider {
-    GetInfo(): IInformationContainer {
+    GetInfo(callback: (info: IInformationContainer) => void ) {
         if (window.location.href.indexOf("http://www.ex.ua/") == -1)
             return null;
 
@@ -44,6 +44,6 @@ class EXUAInformationProvider implements IInformationProvider {
             info.years[0] = year;
         }
         info.container = header[0];
-        return info;
+        callback(info);
     }
 }

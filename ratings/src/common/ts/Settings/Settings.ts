@@ -16,12 +16,14 @@ class Settings {
 
     constructor(callback: Function) {
         Settings._this = this;
-        debug("Constructor " + Settings._this);
+        debug("Constructor " + JSON.stringify(Settings._this));
 
         if (callback == null)
             return;
         this.callback = callback;
-        this.local = new KangoStorageSettings(this.names, () => { this.storageCallback();});
+        this.local = new KangoStorageSettings(this.names, () => {
+            this.storageCallback();
+        });
     }
 
     private storageCallback() {

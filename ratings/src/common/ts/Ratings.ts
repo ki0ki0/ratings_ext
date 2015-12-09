@@ -35,26 +35,27 @@ class Ratings {
 
     private info: IInformationContainer = null;
 
-    public GetRatings() {
+    public getRatings() {
+        debug("GetRatings");
         var i: number;
         for (i = 0; i < this.providers.length; i++) {
-            var infoTmp = this.providers[i].GetInfo();
-            if (infoTmp != null) {
-                this.info = infoTmp;
-                debug("Info found");
-                if ((infoTmp.titles !== undefined) && (infoTmp.titles != null))
-                    debug(infoTmp.titles.join(","));
-                if ((infoTmp.years !== undefined) && (infoTmp.years != null))
-                    debug(infoTmp.years.join(","));
-                break;
-            }
+            this.providers[i].GetInfo((info)=> { this.getRatingsCallback(info); });
         }
+    }
 
-        if (this.info == null)
+    private getRatingsCallback(info) {
+        if (info == null)
         {
             debug("No info found");
             return;
         }
+        
+        this.info = info;
+        debug("Info found");
+        if ((info.titles !== undefined) && (info.titles != null))
+            debug(info.titles.join(","));
+        if ((info.years !== undefined) && (info.years != null))
+            debug(info.years.join(","));
 
         var table = document.createElement("table");
         this.info.container.appendChild(table);
@@ -83,7 +84,7 @@ class Ratings {
             this.divVoting.textContent = data;
         });
 
-        for (i = 0; i < this.lookupers.length; i++) {
+        for (let i = 0; i < this.lookupers.length; i++) {
             this.lookupers[i].GetId(this.info, (id) => { this.GetIdCallback(id); });
         }
     }

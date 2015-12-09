@@ -77,13 +77,6 @@
     <TypeScriptCompile Include="src\chrome\ts\Settings\SettingsChrome.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\firefox\ts\Init.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\OptionsFirefox.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\OptionsInit.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\Settings\SettingsFirefox.ts" />
-    <TypeScriptCompile Include="src\firefox\ts\InitFirefox.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="build.cmd" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +110,7 @@
     <Content Include="kango_src\safari\extension_info.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\firefox\ts\" />
     <Folder Include="src\ie\" />
     <Folder Include="src\opera\" />
     <Folder Include="src\safari\" />
